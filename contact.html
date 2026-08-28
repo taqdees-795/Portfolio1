@@ -1,55 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Umair Ahmed</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Umair Ahmed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-      <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" id="sidebarToggle">
-            <i class="fas fa-bars"></i><span class="sidebar-toggle-text">Toggle Sidebar</span>
-        </button>
-        <nav class="sidebar-nav">
-            <a href="index.html" data-page="index.html" class="nav-link active" data-tooltip="Home">
-                <span class="nav-icon"><i class="fas fa-home"></i></span><span class="nav-text">Home</span>
-            </a>
-            <a href="international.html" data-page="international.html" class="nav-link" data-tooltip="International">
-                <span class="nav-icon"><i class="fas fa-globe"></i></span><span class="nav-text">International</span>
-            </a>
-            <a href="national.html" data-page="national.html" class="nav-link" data-tooltip="National">
-                <span class="nav-icon"><i class="fas fa-trophy"></i></span><span class="nav-text">National</span>
-            </a>
-            <a href="internships.html" data-page="internships.html" class="nav-link" data-tooltip="Internships">
-                <span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Internships</span>
-            </a>
-            <a href="research.html" data-page="research.html" class="nav-link" data-tooltip="Research">
-                <span class="nav-icon"><i class="fas fa-flask"></i></span><span class="nav-text">Research</span>
-            </a>
-            <a href="beyond-the-lab.html" data-page="beyond-the-lab.html" class="nav-link" data-tooltip="Beyond the Lab">
-                <span class="nav-icon"><i class="fas fa-user-graduate"></i></span><span class="nav-text">Beyond the Lab</span>
-            </a>
-            <a href="projects.html" data-page="projects.html" class="nav-link" data-tooltip="Projects">
-                <span class="nav-icon"><i class="fas fa-code-branch"></i></span><span class="nav-text">Projects</span>
-            </a>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="contact.html" data-page="contact.html" class="nav-link cta-link" data-tooltip="Contact">
-                <span class="nav-icon"><i class="fas fa-envelope"></i></span><span class="nav-text">Contact</span>
-            </a>
-        </div>
-    </div>
-    <div class="mobile-overlay"></div>
+
+    <!-- RIGHT SIDE DOTS (Contact removed) -->
+    <nav class="right-dots">
+        <a href="index.html" class="right-dot" data-tooltip="Home"></a>
+        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
+        <a href="international.html" class="right-dot" data-tooltip="International"></a>
+        <a href="national.html" class="right-dot" data-tooltip="National"></a>
+        <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
+        <a href="research.html" class="right-dot" data-tooltip="Research"></a>
+        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+    </nav>
 
     <main>
-        <section class="screen contact-screen">
+        <section class="screen">
             <div class="wrap">
-                <div class="contact-panel reveal">
+                <div class="contact-panel">
                     <div class="contact-panel-bg"></div>
                     <div class="contact-panel-ring"></div>
                     
@@ -61,23 +38,36 @@
                         <div class="contact-methods-grid">
                             <a href="mailto:ceo@senseguard.io" class="method-card">
                                 <div class="method-icon"><i class="fas fa-envelope-open-text"></i></div>
-                                <div class="method-content"><span class="method-label">Email</span><span class="method-value">ceo@senseguard.io</span></div>
+                                <div class="method-content">
+                                    <span class="method-label">Email</span>
+                                    <span class="method-value">ceo@senseguard.io</span>
+                                </div>
                             </a>
+                            
                             <a href="tel:+923010581109" class="method-card">
                                 <div class="method-icon"><i class="fas fa-phone-alt"></i></div>
-                                <div class="method-content"><span class="method-label">Phone</span><span class="method-value">+92 301 0581109</span></div>
+                                <div class="method-content">
+                                    <span class="method-label">Phone</span>
+                                    <span class="method-value">+92 301 0581109</span>
+                                </div>
                             </a>
+                            
                             <a href="https://www.linkedin.com/in/umair-ahmed-2274a9356/" target="_blank" rel="noopener" class="method-card">
                                 <div class="method-icon"><i class="fab fa-linkedin-in"></i></div>
-                                <div class="method-content"><span class="method-label">LinkedIn</span><span class="method-value">Connect with me</span></div>
+                                <div class="method-content">
+                                    <span class="method-label">LinkedIn</span>
+                                    <span class="method-value">Connect with me</span>
+                                </div>
                             </a>
                         </div>
-                        <div class="contact-footer-note"><span class="mono">AVAILABILITY: OPEN TO OPPORTUNITIES</span></div>
+                        
+                        <!-- OPEN TO OPPORTUNITIES REMOVED -->
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
     <footer><span>© 2026 Umair Ahmed.</span><span class="mono">SYS.STATUS // ONLINE</span></footer>
     <script src="script.js"></script>
 </body>

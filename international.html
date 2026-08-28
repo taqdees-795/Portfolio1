@@ -11,56 +11,160 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" id="sidebarToggle">
-            <i class="fas fa-bars"></i><span class="sidebar-toggle-text">Toggle Sidebar</span>
-        </button>
-        <nav class="sidebar-nav">
-            <a href="index.html" data-page="index.html" class="nav-link active" data-tooltip="Home">
-                <span class="nav-icon"><i class="fas fa-home"></i></span><span class="nav-text">Home</span>
-            </a>
-            <a href="international.html" data-page="international.html" class="nav-link" data-tooltip="International">
-                <span class="nav-icon"><i class="fas fa-globe"></i></span><span class="nav-text">International</span>
-            </a>
-            <a href="national.html" data-page="national.html" class="nav-link" data-tooltip="National">
-                <span class="nav-icon"><i class="fas fa-trophy"></i></span><span class="nav-text">National</span>
-            </a>
-            <a href="internships.html" data-page="internships.html" class="nav-link" data-tooltip="Internships">
-                <span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Internships</span>
-            </a>
-            <a href="research.html" data-page="research.html" class="nav-link" data-tooltip="Research">
-                <span class="nav-icon"><i class="fas fa-flask"></i></span><span class="nav-text">Research</span>
-            </a>
-            <a href="beyond-the-lab.html" data-page="beyond-the-lab.html" class="nav-link" data-tooltip="Beyond the Lab">
-                <span class="nav-icon"><i class="fas fa-user-graduate"></i></span><span class="nav-text">Beyond the Lab</span>
-            </a>
-            <a href="projects.html" data-page="projects.html" class="nav-link" data-tooltip="Projects">
-                <span class="nav-icon"><i class="fas fa-code-branch"></i></span><span class="nav-text">Projects</span>
-            </a>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="contact.html" data-page="contact.html" class="nav-link cta-link" data-tooltip="Contact">
-                <span class="nav-icon"><i class="fas fa-envelope"></i></span><span class="nav-text">Contact</span>
-            </a>
-        </div>
-    </div>
-    <div class="mobile-overlay"></div>
+
+ <!-- RIGHT SIDE DOTS NAVIGATION -->
+      <nav class="right-dots">
+        <a href="index.html" class="right-dot" data-tooltip="Home"></a>
+        <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
+        <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
+        <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
+        <a href="research.html" class="right-dot" data-tooltip="Research"></a>
+        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
+        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+    </nav>
 
     <main>
         <section class="screen">
             <div class="wrap">
                 <div class="section-id mono">SEC. 02</div>
-                <div class="section-head reveal"><div class="eyebrow">Global Stage</div><h2>International Recognition</h2><p>Representing Pakistan at the world's largest pre-college science and entrepreneurship competitions.</p></div>
-                <div class="recognition-grid reveal">
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Selected</span><span class="recognition-date">Jan 26 – 28, 2026</span></div><h3>International Greenwich Olympiad</h3><p>Won Best of Category in Environmental Engineering at NSEF 2026, earning selection to represent Pakistan in London.</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Runner-Up</span><span class="recognition-date">Dec 4 – 8, 2025</span></div><h3>APICTA Award 2025</h3><p>The only high school student in Pakistan's 55-member delegation to the Asia Pacific ICT Alliance Awards.</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Finalist</span><span class="recognition-date">May 10 – 16, 2025</span></div><h3>Regeneron ISEF</h3><p>Represented Pakistan with a novel embedded system tackling gas leakage and child safety (the seed of SenseGuard).</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Accepted</span><span class="recognition-date">Nov 18 – 20, 2025</span></div><h3>Published Research Paper</h3><p>First-authored paper accepted for oral presentation at the International Conference on Space Science & Technology.</p></div>
+                <div class="section-head">
+                    <div class="eyebrow">Global Stage</div>
+                    <h2>International Recognition</h2>
+                    <p>Representing Pakistan at the world's largest pre-college science and entrepreneurship competitions.</p>
                 </div>
+
+                <!-- LIST VIEW -->
+                <div id="recognitionList" class="recognition-list">
+                    <div class="recognition-list-item" data-id="1">
+                        <span class="num">01</span>
+                        <h3><i class="fas fa-award" style="margin-right:10px;"></i>International Greenwich Olympiad</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="2">
+                        <span class="num">02</span>
+                        <h3><i class="fas fa-trophy" style="margin-right:10px;"></i>APICTA Award 2025</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="3">
+                        <span class="num">03</span>
+                        <h3><i class="fas fa-medal" style="margin-right:10px;"></i>Regeneron ISEF</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="4">
+                        <span class="num">04</span>
+                        <h3><i class="fas fa-book-open" style="margin-right:10px;"></i>ICAST 2025 Research Paper</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- DETAIL VIEW -->
+                <div id="recognitionDetail" class="recognition-detail" style="display: none;">
+                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
+                    
+                    <!-- Slideshow container -->
+                    <div class="slideshow-wrapper">
+                        <div class="slideshow-container" id="slideshowContainer"></div>
+                        <div class="slideshow-dots" id="slideshowDots"></div>
+                    </div>
+
+                    <div class="detail-info">
+                        <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
+                        <div class="detail-block"><span class="detail-label">Role & Impact</span><p id="detailRole"></p></div>
+                        <div class="detail-block"><span class="detail-label">Secondary Contributor</span><p id="detailContributor"></p></div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
+
     <footer><span>© 2026 Umair Ahmed.</span><span class="mono">SYS.STATUS // ONLINE</span></footer>
-    <script src="script.js"></script>
+
+    <script>
+        const recognitionData = {
+            "1": { description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and selected for International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
+            "2": { description: "Runner-up at APICTA 2025 in Taiwan. Only high school student in Pakistan's 55-member delegation.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
+            "3": { description: "Finalist at Regeneron ISEF 2025 in USA for novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
+            "4": { description: "Research paper on 'Edge ML-Based CanSat' accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with Space Technology experts." }
+        };
+
+        const recognitionImages = {
+            "1": ["assets/APICTA1.jpg", "assets/APICTA2.jpg"],
+            "2": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg", "assets/APICTA4.jpg", "assets/APICTA5.jpg"],
+            "3": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"],
+            "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"]
+        };
+
+        document.querySelectorAll('.recognition-list-item').forEach(item => {
+            item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
+        });
+
+        let slideIndex = 0; let slideTimer = null;
+
+        // Create slides and dots dynamically
+        function buildSlideshow(id) {
+            const slideshowContainer = document.getElementById('slideshowContainer');
+            const dotsContainer = document.getElementById('slideshowDots');
+            
+            slideshowContainer.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            const images = recognitionImages[id];
+            images.forEach((imageSrc, index) => {
+                // Create Slide
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slides';
+                slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
+                slideshowContainer.appendChild(slideDiv);
+
+                // Create Dot
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.onclick = () => { slideIndex = index; showSlide(); };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function showSlide() {
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+
+            if (slides.length === 0) return;
+
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active-dot";
+        }
+
+        function showDetail(id) {
+            document.getElementById('recognitionList').style.display = 'none';
+            document.getElementById('recognitionDetail').style.display = 'block';
+
+            const data = recognitionData[id];
+            document.getElementById('detailDescription').textContent = data.description;
+            document.getElementById('detailRole').textContent = data.role;
+            document.getElementById('detailContributor').textContent = data.contributor;
+
+            buildSlideshow(id); // Build images and dots
+            slideIndex = 0;
+            clearInterval(slideTimer);
+            showSlide(); // Show first slide
+            slideTimer = setInterval(showSlide, 3000); // Auto-advance every 3 seconds
+        }
+
+        function showList() {
+            document.getElementById('recognitionDetail').style.display = 'none';
+            document.getElementById('recognitionList').style.display = 'flex';
+            clearInterval(slideTimer);
+        }
+    </script>
 </body>
 </html>

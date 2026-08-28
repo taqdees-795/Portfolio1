@@ -11,56 +11,107 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-       <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" id="sidebarToggle">
-            <i class="fas fa-bars"></i><span class="sidebar-toggle-text">Toggle Sidebar</span>
-        </button>
-        <nav class="sidebar-nav">
-            <a href="index.html" data-page="index.html" class="nav-link active" data-tooltip="Home">
-                <span class="nav-icon"><i class="fas fa-home"></i></span><span class="nav-text">Home</span>
-            </a>
-            <a href="international.html" data-page="international.html" class="nav-link" data-tooltip="International">
-                <span class="nav-icon"><i class="fas fa-globe"></i></span><span class="nav-text">International</span>
-            </a>
-            <a href="national.html" data-page="national.html" class="nav-link" data-tooltip="National">
-                <span class="nav-icon"><i class="fas fa-trophy"></i></span><span class="nav-text">National</span>
-            </a>
-            <a href="internships.html" data-page="internships.html" class="nav-link" data-tooltip="Internships">
-                <span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Internships</span>
-            </a>
-            <a href="research.html" data-page="research.html" class="nav-link" data-tooltip="Research">
-                <span class="nav-icon"><i class="fas fa-flask"></i></span><span class="nav-text">Research</span>
-            </a>
-            <a href="beyond-the-lab.html" data-page="beyond-the-lab.html" class="nav-link" data-tooltip="Beyond the Lab">
-                <span class="nav-icon"><i class="fas fa-user-graduate"></i></span><span class="nav-text">Beyond the Lab</span>
-            </a>
-            <a href="projects.html" data-page="projects.html" class="nav-link" data-tooltip="Projects">
-                <span class="nav-icon"><i class="fas fa-code-branch"></i></span><span class="nav-text">Projects</span>
-            </a>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="contact.html" data-page="contact.html" class="nav-link cta-link" data-tooltip="Contact">
-                <span class="nav-icon"><i class="fas fa-envelope"></i></span><span class="nav-text">Contact</span>
-            </a>
-        </div>
-    </div>
-    <div class="mobile-overlay"></div>
+   <!-- RIGHT SIDE DOTS NAVIGATION -->
+      <nav class="right-dots">
+        <a href="index.html" class="right-dot" data-tooltip="Home"></a>
+        <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
+        <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
+        <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
+        <a href="research.html" class="right-dot" data-tooltip="Research"></a>
+        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
+        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+    </nav>
 
     <main>
         <section class="screen">
             <div class="wrap">
                 <div class="section-id mono">SEC. 03</div>
-                <div class="section-head reveal"><div class="eyebrow">Home Ground</div><h2>National Recognition</h2><p>Building a track record across Pakistan's top innovation, entrepreneurship, and engineering programs.</p></div>
-                <div class="recognition-grid reveal">
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Gold</span><span class="recognition-date">Sep 19, 2025</span></div><h3>P@SHA ICT Award</h3><p>Gold winner at Pakistan's biggest entrepreneurship competition; selected to represent Pakistan at APICTA.</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Winner</span><span class="recognition-date">May 2 – 3, 2025</span></div><h3>COMPPEC '25</h3><p>Won the All Pakistan Computer Science Project Presentation &amp; Exhibition Competition.</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Incubated</span><span class="recognition-date">Oct 28, 2025</span></div><h3>NICAT Startup Incubation</h3><p>SenseGuard selected into NICAT with a selection rate under 2%; youngest founder in residence.</p></div>
-                    <div class="recognition-card"><div class="recognition-top"><span class="recognition-tag">Top 15</span><span class="recognition-date">Jul 14 – Sep 2, 2025</span></div><h3>League of Launchers</h3><p>Only high schooler in cohort, placing in top 15 startups.</p></div>
+                <div class="section-head">
+                    <div class="eyebrow">Home Ground</div>
+                    <h2>National Recognition</h2>
+                    <p>Building a track record across Pakistan's top innovation, entrepreneurship, and engineering programs.</p>
                 </div>
+
+                <!-- LIST VIEW -->
+                <div id="recognitionList" class="recognition-list">
+                    <div class="recognition-list-item" data-id="1">
+                        <span class="num">01</span>
+                        <h3><i class="fas fa-crown" style="margin-right:10px;"></i>P@SHA ICT Award — Gold Winner</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="2">
+                        <span class="num">02</span>
+                        <h3><i class="fas fa-code" style="margin-right:10px;"></i>COMPPEC '25 — Winner</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="3">
+                        <span class="num">03</span>
+                        <h3><i class="fas fa-rocket" style="margin-right:10px;"></i>NICAT Startup Incubation</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="recognition-list-item" data-id="4">
+                        <span class="num">04</span>
+                        <h3><i class="fas fa-chart-line" style="margin-right:10px;"></i>League of Launchers 2025 — Top 15</h3>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- DETAIL VIEW -->
+                <div id="recognitionDetail" class="recognition-detail" style="display: none;">
+                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
+                    <div class="slideshow-container">
+                        <div class="slides fade"><img src="images/national1.jpg" alt="Slide 1"></div>
+                        <div class="slides fade"><img src="images/national2.jpg" alt="Slide 2"></div>
+                        <div class="slides fade"><img src="images/national3.jpg" alt="Slide 3"></div>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
+                        <div class="detail-block"><span class="detail-label">Role & Impact</span><p id="detailRole"></p></div>
+                        <div class="detail-block"><span class="detail-label">Secondary Contributor</span><p id="detailContributor"></p></div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
+
     <footer><span>© 2026 Umair Ahmed.</span><span class="mono">SYS.STATUS // ONLINE</span></footer>
-    <script src="script.js"></script>
+
+    <script>
+        const recognitionData = {
+            "1": { description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", role: "Gold Award Winner & Youngest Innovator", contributor: "Supported by NICAT and Fazaian Science & Entrepreneurship Society." },
+            "2": { description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.", role: "Winner & Team Leader", contributor: "Collaborated with SenseGuard team members." },
+            "3": { description: "SenseGuard selected into NICAT, one of Pakistan's premier startup incubators with selection rate <2%. Youngest entrepreneur at NICAT.", role: "Founder & Youngest Entrepreneur", contributor: "Mentored by NICAT industry experts." },
+            "4": { description: "Placed Top 15 at League of Launchers 2025. Youngest and only high schooler in the cohort.", role: "Top 15 Startup Founder", contributor: "Supported by NIC Islamabad." }
+        };
+
+        document.querySelectorAll('.recognition-list-item').forEach(item => {
+            item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
+        });
+
+        let slideIndex = 0; let slideTimer = null;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            if (slides.length === 0) return;
+            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = "block";
+        }
+        function showDetail(id) {
+            document.getElementById('recognitionList').style.display = 'none';
+            document.getElementById('recognitionDetail').style.display = 'block';
+            const data = recognitionData[id];
+            document.getElementById('detailDescription').textContent = data.description;
+            document.getElementById('detailRole').textContent = data.role;
+            document.getElementById('detailContributor').textContent = data.contributor;
+            slideIndex = 0; clearInterval(slideTimer); showSlides(); slideTimer = setInterval(showSlides, 3000);
+        }
+        function showList() {
+            document.getElementById('recognitionDetail').style.display = 'none';
+            document.getElementById('recognitionList').style.display = 'flex';
+            clearInterval(slideTimer);
+        }
+    </script>
 </body>
 </html>

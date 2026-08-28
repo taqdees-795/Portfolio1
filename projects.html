@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Umair Ahmed</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Umair Ahmed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <div class="sidebar" id="sidebar">
-        <button class="sidebar-toggle" id="sidebarToggle">
-            <i class="fas fa-bars"></i><span class="sidebar-toggle-text">Toggle Sidebar</span>
-        </button>
-        <nav class="sidebar-nav">
-            <a href="index.html" data-page="index.html" class="nav-link active" data-tooltip="Home">
-                <span class="nav-icon"><i class="fas fa-home"></i></span><span class="nav-text">Home</span>
-            </a>
-            <a href="international.html" data-page="international.html" class="nav-link" data-tooltip="International">
-                <span class="nav-icon"><i class="fas fa-globe"></i></span><span class="nav-text">International</span>
-            </a>
-            <a href="national.html" data-page="national.html" class="nav-link" data-tooltip="National">
-                <span class="nav-icon"><i class="fas fa-trophy"></i></span><span class="nav-text">National</span>
-            </a>
-            <a href="internships.html" data-page="internships.html" class="nav-link" data-tooltip="Internships">
-                <span class="nav-icon"><i class="fas fa-briefcase"></i></span><span class="nav-text">Internships</span>
-            </a>
-            <a href="research.html" data-page="research.html" class="nav-link" data-tooltip="Research">
-                <span class="nav-icon"><i class="fas fa-flask"></i></span><span class="nav-text">Research</span>
-            </a>
-            <a href="beyond-the-lab.html" data-page="beyond-the-lab.html" class="nav-link" data-tooltip="Beyond the Lab">
-                <span class="nav-icon"><i class="fas fa-user-graduate"></i></span><span class="nav-text">Beyond the Lab</span>
-            </a>
-            <a href="projects.html" data-page="projects.html" class="nav-link" data-tooltip="Projects">
-                <span class="nav-icon"><i class="fas fa-code-branch"></i></span><span class="nav-text">Projects</span>
-            </a>
-        </nav>
-        <div class="sidebar-footer">
-            <a href="contact.html" data-page="contact.html" class="nav-link cta-link" data-tooltip="Contact">
-                <span class="nav-icon"><i class="fas fa-envelope"></i></span><span class="nav-text">Contact</span>
-            </a>
-        </div>
-    </div>
-    <div class="mobile-overlay"></div>
+
+   <!-- RIGHT SIDE DOTS NAVIGATION -->
+      <nav class="right-dots">
+        <a href="index.html" class="right-dot" data-tooltip="Home"></a>
+        <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
+        <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
+        <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
+        <a href="research.html" class="right-dot" data-tooltip="Research"></a>
+        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
+        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+    </nav>
+
+    <!-- CORNER CONTACT BUTTON -->
+    <a href="contact.html" class="corner-contact">CONTACT <i class="fas fa-arrow-up-right-from-square"></i></a>
 
     <main>
         <section class="screen">
             <div class="wrap">
-                <div class="section-id mono">SEC. 07</div>
-                <div class="section-head reveal"><div class="eyebrow">Built & Shipped</div><h2>Projects</h2><p>What the research, internships, and long nights have actually produced.</p></div>
-                <div class="proj-grid reveal">
-                    <div class="proj-card"><div class="proj-top"><div class="mono">Startup</div><h3>SenseGuard</h3></div><div class="proj-body"><p>Smart safety startup for gas-leakage detection & child safety. Incubated at NICAT, ISEF Finalist, P@SHA Gold, APICTA Runner-up.</p><div class="tag-row"><span>Embedded Systems</span><span>IoT</span><span>Startup</span></div></div></div>
-                    <div class="proj-card"><div class="proj-top"><div class="mono">Research Paper</div><h3>Edge ML-Based CanSat</h3></div><div class="proj-body"><p>Low-cost satellite running ML at the edge, published at ICAST 2025.</p><div class="tag-row"><span>Edge ML</span><span>Space</span></div></div></div>
-                    <div class="proj-card"><div class="proj-top"><div class="mono">Mobile ML</div><h3>Custom Object Detection App</h3></div><div class="proj-body"><p>Mobile app for training custom object detection models on phones (LUMS RISE 2025).</p><div class="tag-row"><span>Mobile ML</span><span>AgriTech</span></div></div></div>
+                <div class="section-id mono">SEC. 04</div>
+                <div class="section-head">
+                    <div class="eyebrow">Built & Shipped</div>
+                    <h2>Projects</h2>
+                    <p>What the research, internships, and long nights have actually produced.</p>
+                </div>
+
+                <div class="proj-grid">
+                    <div class="proj-card">
+                        <div class="proj-top"><div class="mono">Startup</div><h3>SenseGuard</h3></div>
+                        <div class="proj-body">
+                            <p>Smart safety startup for gas-leakage detection & child safety. Incubated at NICAT, ISEF Finalist, P@SHA Gold, APICTA Runner-up.</p>
+                            <div class="tag-row"><span>Embedded Systems</span><span>IoT</span><span>Startup</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <div class="proj-top"><div class="mono">Research Paper</div><h3>Edge ML-Based CanSat</h3></div>
+                        <div class="proj-body">
+                            <p>Low-cost satellite running ML at the edge, published at ICAST 2025.</p>
+                            <div class="tag-row"><span>Edge ML</span><span>Space</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <div class="proj-top"><div class="mono">Mobile ML</div><h3>Custom Object Detection App</h3></div>
+                        <div class="proj-body">
+                            <p>Mobile app for training custom object detection models on phones (LUMS RISE 2025).</p>
+                            <div class="tag-row"><span>Mobile ML</span><span>AgriTech</span></div>
+                        </div>
+                    </div>
+                    <div class="proj-card">
+                        <div class="proj-top"><div class="mono">Hardware</div><h3>Agricultural Field Monitoring System</h3></div>
+                        <div class="proj-body">
+                            <p>Embedded system addressing multiple agricultural field threats. Won Best of Category at NSEF 2026.</p>
+                            <div class="tag-row"><span>Embedded Systems</span><span>AgriTech</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
     <footer><span>© 2026 Umair Ahmed.</span><span class="mono">SYS.STATUS // ONLINE</span></footer>
     <script src="script.js"></script>
 </body>
