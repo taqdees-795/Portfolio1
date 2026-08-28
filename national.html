@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <!-- RIGHT SIDE DOTS NAVIGATION -->
-      <nav class="right-dots">
+
+    <!-- RIGHT SIDE DOTS NAVIGATION -->
+    <nav class="right-dots">
         <a href="index.html" class="right-dot" data-tooltip="Home"></a>
         <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
-        <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
+        <a href="national.html" class="right-dot active" data-tooltip="National Recognition"></a>
         <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
         <a href="research.html" class="right-dot" data-tooltip="Research"></a>
         <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
@@ -25,11 +26,20 @@
     <main>
         <section class="screen">
             <div class="wrap">
-                <div class="section-id mono">SEC. 03</div>
-                <div class="section-head">
-                    <div class="eyebrow">Home Ground</div>
-                    <h2>National Recognition</h2>
-                    <p>Building a track record across Pakistan's top innovation, entrepreneurship, and engineering programs.</p>
+                
+                <!-- BACK TO LIST BUTTON (Sab se upar) -->
+                <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
+                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
+                </div>
+
+                <!-- SECTION HEAD (Hidden in detail view) -->
+                <div id="sectionHeadWrapper">
+                    <div class="section-id mono">SEC. 03</div>
+                    <div class="section-head">
+                        <div class="eyebrow">Home Ground</div>
+                        <h2>National Recognition</h2>
+                        <p>Building a track record across Pakistan's top innovation, entrepreneurship, and engineering programs.</p>
+                    </div>
                 </div>
 
                 <!-- LIST VIEW -->
@@ -58,12 +68,19 @@
 
                 <!-- DETAIL VIEW -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
-                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
-                    <div class="slideshow-container">
-                        <div class="slides fade"><img src="images/national1.jpg" alt="Slide 1"></div>
-                        <div class="slides fade"><img src="images/national2.jpg" alt="Slide 2"></div>
-                        <div class="slides fade"><img src="images/national3.jpg" alt="Slide 3"></div>
+                    
+                    <!-- NAYA HEADER: Picture ke upar info -->
+                    <div class="detail-header">
+                        <div class="eyebrow">Achievement Focus</div>
+                        <h3 id="detailTitle"></h3>
+                        <p id="detailSubtitle"></p>
                     </div>
+
+                    <div class="slideshow-wrapper">
+                        <div class="slideshow-container" id="slideshowContainer"></div>
+                        <div class="slideshow-dots" id="slideshowDots"></div>
+                    </div>
+                    
                     <div class="detail-info">
                         <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
                         <div class="detail-block"><span class="detail-label">Role & Impact</span><p id="detailRole"></p></div>
@@ -79,36 +96,82 @@
 
     <script>
         const recognitionData = {
-            "1": { description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", role: "Gold Award Winner & Youngest Innovator", contributor: "Supported by NICAT and Fazaian Science & Entrepreneurship Society." },
-            "2": { description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.", role: "Winner & Team Leader", contributor: "Collaborated with SenseGuard team members." },
-            "3": { description: "SenseGuard selected into NICAT, one of Pakistan's premier startup incubators with selection rate <2%. Youngest entrepreneur at NICAT.", role: "Founder & Youngest Entrepreneur", contributor: "Mentored by NICAT industry experts." },
-            "4": { description: "Placed Top 15 at League of Launchers 2025. Youngest and only high schooler in the cohort.", role: "Top 15 Startup Founder", contributor: "Supported by NIC Islamabad." }
+            "1": { title: "P@SHA ICT Award — Gold Winner", subtitle: "Biggest Entrepreneurship Competition in Pakistan", description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", role: "Gold Award Winner & Youngest Innovator", contributor: "Supported by NICAT and Fazaian Science & Entrepreneurship Society." },
+            "2": { title: "COMPPEC '25 — Winner", subtitle: "All Pakistan Computer Science Project Competition", description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.", role: "Winner & Team Leader", contributor: "Collaborated with SenseGuard team members." },
+            "3": { title: "NICAT Startup Incubation", subtitle: "Premier Aerospace Tech Incubator (Under 2% Selection)", description: "SenseGuard selected into NICAT, one of Pakistan's premier startup incubators with selection rate <2%. Youngest entrepreneur at NICAT.", role: "Founder & Youngest Entrepreneur", contributor: "Mentored by NICAT industry experts." },
+            "4": { title: "League of Launchers 2025 — Top 15", subtitle: "University Startup Refinement Program", description: "Placed Top 15 at League of Launchers 2025. Youngest and only high schooler in the cohort.", role: "Top 15 Startup Founder", contributor: "Supported by NIC Islamabad." }
         };
+
+        // Assets folder se exact image paths
+        const recognitionImages = {
+            "1": ["assets/P@SHA.jpg", "assets/P@SHA1.jpg", "assets/P@SHA2.jpg"], 
+            "2": ["assets/COMPEC1.jpg", "assets/COMPEC2.jpg", "assets/COMPEC3.jpg"], 
+            "3": ["assets/P@SHA1.jpg", "assets/P@SHA2.jpg"], 
+            "4": ["assets/P@SHA.jpg", "assets/P@SHA1.jpg"] 
+        };
+
+        const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
+        const backBtnWrapper = document.getElementById('backBtnWrapper');
 
         document.querySelectorAll('.recognition-list-item').forEach(item => {
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
 
         let slideIndex = 0; let slideTimer = null;
-        function showSlides() {
+
+        function buildSlideshow(id) {
+            const slideshowContainer = document.getElementById('slideshowContainer');
+            const dotsContainer = document.getElementById('slideshowDots');
+            slideshowContainer.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            const images = recognitionImages[id];
+            images.forEach((imageSrc, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'slides';
+                slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
+                slideshowContainer.appendChild(slideDiv);
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.onclick = () => { slideIndex = index; showSlide(); };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function showSlide() {
             let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; dots[i].className = dots[i].className.replace(" active-dot", ""); }
             slideIndex++;
             if (slideIndex > slides.length) { slideIndex = 1; }
             slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active-dot";
         }
+
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
+            sectionHeadWrapper.style.display = 'none';
+            backBtnWrapper.style.display = 'block';
             document.getElementById('recognitionDetail').style.display = 'block';
+
             const data = recognitionData[id];
+            
+            // Naya Header Update
+            document.getElementById('detailTitle').textContent = data.title;
+            document.getElementById('detailSubtitle').textContent = data.subtitle;
+
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
-            slideIndex = 0; clearInterval(slideTimer); showSlides(); slideTimer = setInterval(showSlides, 3000);
+
+            buildSlideshow(id);
+            slideIndex = 0; clearInterval(slideTimer); showSlide(); slideTimer = setInterval(showSlide, 3000);
         }
+
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
+            backBtnWrapper.style.display = 'none';
+            sectionHeadWrapper.style.display = 'block';
             document.getElementById('recognitionList').style.display = 'flex';
             clearInterval(slideTimer);
         }

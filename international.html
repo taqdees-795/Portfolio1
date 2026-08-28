@@ -12,10 +12,10 @@
 </head>
 <body>
 
- <!-- RIGHT SIDE DOTS NAVIGATION -->
-      <nav class="right-dots">
+    <!-- RIGHT SIDE DOTS NAVIGATION -->
+    <nav class="right-dots">
         <a href="index.html" class="right-dot" data-tooltip="Home"></a>
-        <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
+        <a href="international.html" class="right-dot active" data-tooltip="International Recognition"></a>
         <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
         <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
         <a href="research.html" class="right-dot" data-tooltip="Research"></a>
@@ -26,11 +26,20 @@
     <main>
         <section class="screen">
             <div class="wrap">
-                <div class="section-id mono">SEC. 02</div>
-                <div class="section-head">
-                    <div class="eyebrow">Global Stage</div>
-                    <h2>International Recognition</h2>
-                    <p>Representing Pakistan at the world's largest pre-college science and entrepreneurship competitions.</p>
+                
+                <!-- BACK TO LIST BUTTON (Sab se upar) -->
+                <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
+                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
+                </div>
+
+                <!-- SECTION HEAD (Hidden in detail view) -->
+                <div id="sectionHeadWrapper">
+                    <div class="section-id mono">SEC. 02</div>
+                    <div class="section-head">
+                        <div class="eyebrow">Global Stage</div>
+                        <h2>International Recognition</h2>
+                        <p>Representing Pakistan at the world's largest pre-college science and entrepreneurship competitions.</p>
+                    </div>
                 </div>
 
                 <!-- LIST VIEW -->
@@ -59,14 +68,19 @@
 
                 <!-- DETAIL VIEW -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
-                    <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                     
-                    <!-- Slideshow container -->
+                    <!-- NAYA HEADER: Picture ke upar info -->
+                    <div class="detail-header">
+                        <div class="eyebrow">Achievement Focus</div>
+                        <h3 id="detailTitle"></h3>
+                        <p id="detailSubtitle"></p>
+                    </div>
+
                     <div class="slideshow-wrapper">
                         <div class="slideshow-container" id="slideshowContainer"></div>
                         <div class="slideshow-dots" id="slideshowDots"></div>
                     </div>
-
+                    
                     <div class="detail-info">
                         <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
                         <div class="detail-block"><span class="detail-label">Role & Impact</span><p id="detailRole"></p></div>
@@ -82,18 +96,23 @@
 
     <script>
         const recognitionData = {
-            "1": { description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and selected for International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
-            "2": { description: "Runner-up at APICTA 2025 in Taiwan. Only high school student in Pakistan's 55-member delegation.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
-            "3": { description: "Finalist at Regeneron ISEF 2025 in USA for novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
-            "4": { description: "Research paper on 'Edge ML-Based CanSat' accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with Space Technology experts." }
+            "1": { title: "International Greenwich Olympiad", subtitle: "Selected to represent Pakistan in London", description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and selected for International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
+            "2": { title: "APICTA Award 2025", subtitle: "Runner-Up at Asia Pacific ICT Alliance", description: "Runner-up at APICTA 2025 in Taiwan. Only high school student in Pakistan's 55-member delegation.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
+            "3": { title: "Regeneron ISEF", subtitle: "Finalist at World's Largest Pre-College Science Fair", description: "Finalist at Regeneron ISEF 2025 in USA for novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
+            "4": { title: "ICAST 2025 Research Paper", subtitle: "Published & Presented Satellite Technology Research", description: "Research paper on 'Edge ML-Based CanSat' accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with Space Technology experts." }
         };
 
+        // Assets folder se exact image paths
         const recognitionImages = {
-            "1": ["assets/APICTA1.jpg", "assets/APICTA2.jpg"],
-            "2": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg", "assets/APICTA4.jpg", "assets/APICTA5.jpg"],
-            "3": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"],
-            "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"]
+            "1": ["assets/APICTA1.jpg", "assets/APICTA2.jpg"], // Placeholder for Greenwich (Aap yahan Greenwich images daalein)
+            "2": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg", "assets/APICTA4.jpg", "assets/APICTA5.jpg"], // APICTA (5 images)
+            "3": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"], // Placeholder for ISEF (Aap yahan ISEF images daalein)
+            "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"] // ICAST (2 images)
         };
+
+        // Elements to toggle
+        const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
+        const backBtnWrapper = document.getElementById('backBtnWrapper');
 
         document.querySelectorAll('.recognition-list-item').forEach(item => {
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
@@ -101,23 +120,17 @@
 
         let slideIndex = 0; let slideTimer = null;
 
-        // Create slides and dots dynamically
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
-            
             slideshowContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
-
             const images = recognitionImages[id];
             images.forEach((imageSrc, index) => {
-                // Create Slide
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'slides';
                 slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
                 slideshowContainer.appendChild(slideDiv);
-
-                // Create Dot
                 const dot = document.createElement('span');
                 dot.className = 'dot';
                 dot.onclick = () => { slideIndex = index; showSlide(); };
@@ -128,40 +141,38 @@
         function showSlide() {
             let slides = document.getElementsByClassName("slides");
             let dots = document.getElementsByClassName("dot");
-
             if (slides.length === 0) return;
-
-            // Hide all slides
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                dots[i].className = dots[i].className.replace(" active-dot", "");
-            }
-
+            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; dots[i].className = dots[i].className.replace(" active-dot", ""); }
             slideIndex++;
             if (slideIndex > slides.length) { slideIndex = 1; }
-
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active-dot";
         }
 
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
+            sectionHeadWrapper.style.display = 'none';
+            backBtnWrapper.style.display = 'block';
             document.getElementById('recognitionDetail').style.display = 'block';
 
             const data = recognitionData[id];
+            
+            // Naya Header Update
+            document.getElementById('detailTitle').textContent = data.title;
+            document.getElementById('detailSubtitle').textContent = data.subtitle;
+
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
 
-            buildSlideshow(id); // Build images and dots
-            slideIndex = 0;
-            clearInterval(slideTimer);
-            showSlide(); // Show first slide
-            slideTimer = setInterval(showSlide, 3000); // Auto-advance every 3 seconds
+            buildSlideshow(id);
+            slideIndex = 0; clearInterval(slideTimer); showSlide(); slideTimer = setInterval(showSlide, 3000);
         }
 
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
+            backBtnWrapper.style.display = 'none';
+            sectionHeadWrapper.style.display = 'block';
             document.getElementById('recognitionList').style.display = 'flex';
             clearInterval(slideTimer);
         }

@@ -20,7 +20,7 @@
         <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
         <a href="research.html" class="right-dot" data-tooltip="Research"></a>
         <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
-        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+        <a href="beyond-the-lab.html" class="right-dot active" data-tooltip="Beyond the Lab"></a>
     </nav>
 
     <!-- CORNER CONTACT BUTTON -->
@@ -37,27 +37,52 @@
                 </div>
 
                 <div class="grid-3">
-                    <div class="pill-card">
+                    <div class="pill-card has-photo">
+                        <div class="pill-card-photo" onclick="openLightbox(this)">
+                            <img src="assets/FAIZAN1.jpg" alt="Headboy recognition, Fazaia Inter College" onload="this.parentElement.classList.add('has-image')">
+                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
+                            <span class="photo-caption">Headboy recognition ceremony</span>
+                        </div>
                         <div class="label">Leadership</div>
                         <h4>Headboy, 2025–26</h4>
                         <p>Leading the student body for the current academic session at Fazaia Inter College.</p>
                     </div>
-                    <div class="pill-card">
+                    <div class="pill-card has-photo">
+                        <div class="pill-card-photo" onclick="openLightbox(this)">
+                            <img src="assets/FAIZAN3.jpg" alt="Founder, Fazaian Science & Entrepreneurship Society" onload="this.parentElement.classList.add('has-image')">
+                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
+                            <span class="photo-caption">Presenting SenseGuard</span>
+                        </div>
                         <div class="label">Society</div>
                         <h4>Founder & President</h4>
                         <p>Founded and currently leading the Fazaian Science & Entrepreneurship Society.</p>
                     </div>
-                    <div class="pill-card">
+                    <div class="pill-card has-photo">
+                        <div class="pill-card-photo cert" onclick="openLightbox(this)">
+                            <img src="assets/JCMUN%20sheild.jpg" alt="JCMUN Best Delegate shield" onload="this.parentElement.classList.add('has-image')">
+                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
+                            <span class="photo-caption">JCMUN best delegate shield</span>
+                        </div>
                         <div class="label">Diplomacy</div>
                         <h4>General Secretary, JCMUN '26</h4>
                         <p>Runs the secretariat for the Jinnah Camp Model United Nations.</p>
                     </div>
-                    <div class="pill-card">
+                    <div class="pill-card has-photo">
+                        <div class="pill-card-photo cert" onclick="openLightbox(this)">
+                            <img src="assets/NSBP.jpg" alt="National Science Bowl Pakistan certificate" onload="this.parentElement.classList.add('has-image')">
+                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
+                            <span class="photo-caption">NSBP participation certificate</span>
+                        </div>
                         <div class="label">Volunteering</div>
                         <h4>National Science Bowl</h4>
                         <p>Volunteer for NSBP 2025–26, supporting Pakistan's flagship STEM competition.</p>
                     </div>
-                    <div class="pill-card">
+                    <div class="pill-card has-photo">
+                        <div class="pill-card-photo cert" onclick="openLightbox(this)">
+                            <img src="assets/FBISE_BASKETBALL1.jpg" alt="FBISE basketball merit certificate" onload="this.parentElement.classList.add('has-image')">
+                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
+                            <span class="photo-caption">FBISE basketball merit certificate</span>
+                        </div>
                         <div class="label">Sport</div>
                         <h4>Basketball</h4>
                         <p>Active school team member; runner-up at FBISE basketball competition.</p>
@@ -67,6 +92,12 @@
                         <h4>Youth Empowerment</h4>
                         <p>Committed to UN Sustainable Development Goals and creating positive change through advocacy.</p>
                     </div>
+                </div>
+
+                <!-- Lightbox: click any photo to view full size -->
+                <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+                    <div class="lightbox-close" onclick="closeLightbox(event)"><i class="fas fa-xmark"></i></div>
+                    <img id="lightboxImg" src="" alt="Full size photo">
                 </div>
             </div>
         </section>
