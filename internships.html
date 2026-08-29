@@ -15,11 +15,11 @@
   <!-- RIGHT SIDE DOTS NAVIGATION -->
       <nav class="right-dots">
         <a href="index.html" class="right-dot" data-tooltip="Home"></a>
+        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
         <a href="international.html" class="right-dot" data-tooltip="International Recognition"></a>
         <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
         <a href="internships.html" class="right-dot active" data-tooltip="Internships"></a>
         <a href="research.html" class="right-dot" data-tooltip="Research"></a>
-        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
         <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
     </nav>
 
@@ -38,11 +38,19 @@
 
                 <div class="card-grid">
                     <div class="card">
-                        <div class="card-photo" onclick="openLightbox(this)">
-                            <img src="assets/internship-lums.jpg" alt="RISE Internship at LUMS" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.style.cursor='default';">
-                            <div class="photo-placeholder"><i class="fas fa-image"></i><span>Add photo at:<br>assets/internship-lums.jpg</span></div>
-                            <span class="photo-zoom"><i class="fas fa-expand"></i></span>
-                            <span class="photo-caption">RISE internship — LUMS</span>
+                        <div class="card-photo slideshow" id="riseSlideshow">
+                            <div class="slides active-slide"><img src="assets/LUMS1.jpeg" alt="RISE internship at LUMS — 1" onclick="openLightboxDirect(this.src, this.alt)"></div>
+                            <div class="slides"><img src="assets/LUMS2.jpeg" alt="RISE internship at LUMS — 2" onclick="openLightboxDirect(this.src, this.alt)"></div>
+                            <div class="slides"><img src="assets/LUMS3.jpeg" alt="RISE internship at LUMS — 3" onclick="openLightboxDirect(this.src, this.alt)"></div>
+                            
+                            <!-- Agar LUMS4.jpeg maujood nahi hai, toh yeh line delete kar dein -->
+                            <div class="slides"><img src="assets/LUMS4.jpeg" alt="RISE internship at LUMS — 4" onclick="openLightboxDirect(this.src, this.alt)"></div>
+                            
+                            <div class="photo-placeholder" id="riseSlideshowEmpty"><i class="fas fa-image"></i><span>Add photos at:<br>assets/LUMS1.jpeg … LUMS4.jpeg</span></div>
+                            <div class="card-photo-arrow prev" onclick="event.stopPropagation(); riseSlide(-1)"><i class="fas fa-chevron-left"></i></div>
+                            <div class="card-photo-arrow next" onclick="event.stopPropagation(); riseSlide(1)"><i class="fas fa-chevron-right"></i></div>
+                            <div class="card-photo-count" id="riseSlideshowCount">1 / 4</div>
+                            <div class="card-photo-dots" id="riseSlideshowDots"></div>
                         </div>
                         <div class="card-top">
                             <div class="card-icon"><i class="fas fa-microchip"></i></div>
@@ -56,7 +64,7 @@
 
                     <div class="card">
                         <div class="card-photo" onclick="openLightbox(this)">
-                            <img src="assets/internship-fast.jpg" alt="Embedded Systems Lab at FAST NUCES" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.style.cursor='default';">
+                            <img src="assets/FAST.jpg" alt="Embedded Systems Lab at FAST NUCES" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.parentElement.style.cursor='default';">
                             <div class="photo-placeholder"><i class="fas fa-image"></i><span>Add photo at:<br>assets/internship-fast.jpg</span></div>
                             <span class="photo-zoom"><i class="fas fa-expand"></i></span>
                             <span class="photo-caption">Embedded systems lab — FAST NUCES</span>
