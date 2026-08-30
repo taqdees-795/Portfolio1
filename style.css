@@ -88,7 +88,7 @@ main, footer {
 /* Landing Page Specific */
 body.landing-page main, body.landing-page footer { margin-left: 0 !important; width: 100%; }
 .landing-page .hero-content { background: transparent; border: none; padding: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; z-index: 2; }
-.landing-page .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+.landing-page .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px; align-items: center; position: relative; z-index: 1; }
 
 /* Hero background grid */
 .hero-grid-bg { position: absolute; inset: -15% -5% auto -5%; height: 130%; background-image: linear-gradient(rgba(212,175,55,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.08) 1px, transparent 1px); background-size: 44px 44px; mask-image: radial-gradient(ellipse 65% 60% at 25% 35%, black, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 65% 60% at 25% 35%, black, transparent 75%); pointer-events: none; z-index: 0; }
@@ -241,12 +241,12 @@ footer { padding: 26px 32px; display: flex; justify-content: space-between; alig
 footer .mono { color: var(--accent); }
 
 /* ============ HERO — minimal, immersive (no navbar, no CTAs, no badges) ============ */
-.hero-minimal { min-height: 100vh; padding: 60px 0; display: flex; align-items: center; }
+.hero-minimal { min-height: 100vh; padding: 60px 0 30px; display: flex; align-items: center; }
 .hero-minimal .hero-content h1 { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .1s forwards; line-height: 1.02; }
 .hero-minimal .hero-content h1 .accent-name { color: var(--accent); }
 .hero-minimal .hero-role { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .22s forwards; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-top: 20px; display: flex; align-items: center; gap: 10px; }
 .hero-minimal .hero-role::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
-.hero-minimal .hero-intro { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .34s forwards; font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 440px; margin-top: 22px; }
+.hero-minimal .hero-intro { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .34s forwards; font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 560px; margin-top: 22px; }
 .hero-minimal .hero-intro strong { color: var(--accent); font-weight: 600; }
 .hero-minimal .hero-cta { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .46s forwards; margin-top: 30px; }
 
@@ -304,7 +304,7 @@ footer .mono { color: var(--accent); }
 .nav-card:hover .nav-card-go i { transform: translateX(4px); }
 
 /* ============ Credentials strip — unmissable proof right after hero ============ */
-.credentials-strip { padding: 0 0 40px; }
+.credentials-strip { padding: 0 0 40px; margin-top: -10px; }
 .credentials-strip .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .credentials-strip span { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .03em; color: var(--text); border: 1px solid var(--line); background: var(--accent-soft); padding: 9px 16px; border-radius: 20px; white-space: nowrap; }
 .credentials-strip span i { color: var(--accent); font-size: 12px; }
