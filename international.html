@@ -12,21 +12,20 @@
 </head>
 <body>
 
-    <!-- RIGHT SIDE DOTS NAVIGATION -->
-    <nav class="right-dots">
-        <a href="index.html" class="right-dot" data-tooltip="Home"></a>
-        <a href="international.html" class="right-dot active" data-tooltip="International Recognition"></a>
-        <a href="national.html" class="right-dot" data-tooltip="National Recognition"></a>
-        <a href="internships.html" class="right-dot" data-tooltip="Internships"></a>
-        <a href="research.html" class="right-dot" data-tooltip="Research"></a>
-        <a href="projects.html" class="right-dot" data-tooltip="Projects"></a>
-        <a href="beyond-the-lab.html" class="right-dot" data-tooltip="Beyond the Lab"></a>
+    <!-- Subtle page-position indicator, replaces the old right-side dots -->
+    <nav class="page-progress">
+        <a href="international.html" class="active">01</a>
+        <a href="national.html">02</a>
+        <a href="internships.html">03</a>
+        <a href="research.html">04</a>
+        <a href="beyond-the-lab.html">05</a>
+        <a href="projects.html">06</a>
     </nav>
 
     <main>
         <section class="screen">
             <div class="wrap">
-                
+
                 <!-- BACK TO LIST BUTTON (Sab se upar) -->
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
@@ -34,7 +33,7 @@
 
                 <!-- SECTION HEAD (Hidden in detail view) -->
                 <div id="sectionHeadWrapper">
-                    <div class="section-id mono">SEC. 02</div>
+                    <div class="section-id mono">SEC. 01</div>
                     <div class="section-head">
                         <div class="eyebrow">Global Stage</div>
                         <h2>International Recognition</h2>
@@ -45,62 +44,92 @@
                 <!-- LIST VIEW -->
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
-                        <span class="num">01</span>
-                        <h3><i class="fas fa-award" style="margin-right:10px;"></i>International Greenwich Olympiad</h3>
-                        <i class="fas fa-arrow-right"></i>
+                        <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>International Greenwich Olympiad <span class="short-form">(iGO)</span></h3>
+                            <span class="status-tag">Selected</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="2">
-                        <span class="num">02</span>
-                        <h3><i class="fas fa-trophy" style="margin-right:10px;"></i>APICTA Award 2025</h3>
-                        <i class="fas fa-arrow-right"></i>
+                        <div class="recognition-item-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>Asia Pacific ICT Alliance Award <span class="short-form">(APICTA)</span> 2025</h3>
+                            <span class="status-tag">Runner-Up</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="3">
-                        <span class="num">03</span>
-                        <h3><i class="fas fa-medal" style="margin-right:10px;"></i>Regeneron ISEF</h3>
-                        <i class="fas fa-arrow-right"></i>
+                        <div class="recognition-item-icon"><i class="fas fa-medal"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>International Science and Engineering Fair <span class="short-form">(ISEF)</span></h3>
+                            <span class="status-tag">Finalist &amp; Attendee</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="4">
-                        <span class="num">04</span>
-                        <h3><i class="fas fa-book-open" style="margin-right:10px;"></i>ICAST 2025 Research Paper</h3>
-                        <i class="fas fa-arrow-right"></i>
+                        <div class="recognition-item-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>International Conference on Applications of Space Science &amp; Technology <span class="short-form">(ICAST)</span> 2025</h3>
+                            <span class="status-tag">Paper Presenter</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
 
-                <!-- DETAIL VIEW -->
+                <!-- DETAIL VIEW: two columns, fits in one screen, auto slideshow if 2+ images -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
-                    
-                    <!-- NAYA HEADER: Picture ke upar info -->
+
                     <div class="detail-header">
-                        <div class="eyebrow">Achievement Focus</div>
                         <h3 id="detailTitle"></h3>
                         <p id="detailSubtitle"></p>
+                        <div class="detail-meta">
+                            <span class="status-tag" id="detailStatus"></span>
+                            <span class="detail-date" id="detailDate"></span>
+                        </div>
                     </div>
 
-                    <div class="slideshow-wrapper">
-                        <div class="slideshow-container" id="slideshowContainer"></div>
-                        <div class="slideshow-dots" id="slideshowDots"></div>
+                    <div class="detail-columns">
+                        <div class="detail-media" id="detailMedia">
+                            <div class="slideshow-container" id="slideshowContainer"></div>
+                            <div class="slideshow-dots" id="slideshowDots"></div>
+                        </div>
+
+                        <div class="detail-info">
+                            <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
+                            <div class="detail-block"><span class="detail-label">Role &amp; Impact</span><p id="detailRole"></p></div>
+                            <div class="detail-block"><span class="detail-label">Secondary Contributor</span><p id="detailContributor"></p></div>
+                        </div>
                     </div>
-                    
-                    <div class="detail-info">
-                        <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
-                        <div class="detail-block"><span class="detail-label">Role & Impact</span><p id="detailRole"></p></div>
-                        <div class="detail-block"><span class="detail-label">Secondary Contributor</span><p id="detailContributor"></p></div>
-                    </div>
+                </div>
+
+                <!-- JOURNEY NAVIGATION: replaces top navbar / footer -->
+                <div class="page-nav-bottom" id="pageNavBottom">
+                    <a href="index.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> Home</a>
+                    <span class="page-nav-pos">01 / 06</span>
+                    <a href="national.html" class="page-nav-link next">National Recognition <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- ACHIEVEMENT-LEVEL NAVIGATION: prev/next within this page's detail view -->
+                <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
+                    <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> International Recognition</a>
+                    <span class="page-nav-pos" id="achNavPos">01 / 04</span>
+                    <a href="#" class="page-nav-link next" id="achNavNext">Next Achievement <i class="fas fa-arrow-right"></i></a>
                 </div>
 
             </div>
         </section>
     </main>
 
-    <footer><span>© 2026 Umair Ahmed.</span><span class="mono">SYS.STATUS // ONLINE</span></footer>
-
     <script>
         const recognitionData = {
-            "1": { title: "International Greenwich Olympiad", subtitle: "Selected to represent Pakistan in London", description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and selected for International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
-            "2": { title: "APICTA Award 2025", subtitle: "Runner-Up at Asia Pacific ICT Alliance", description: "Runner-up at APICTA 2025 in Taiwan. Only high school student in Pakistan's 55-member delegation.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
-            "3": { title: "Regeneron ISEF", subtitle: "Finalist at World's Largest Pre-College Science Fair", description: "Finalist at Regeneron ISEF 2025 in USA for novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
-            "4": { title: "ICAST 2025 Research Paper", subtitle: "Published & Presented Satellite Technology Research", description: "Research paper on 'Edge ML-Based CanSat' accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with Space Technology experts." }
+            "1": { title: "International Greenwich Olympiad (iGO)", subtitle: "Selected to represent Pakistan in London", status: "Selected", date: "Jan 2026", description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and was selected to represent Pakistan at the International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
+            "2": { title: "Asia Pacific ICT Alliance Award (APICTA) 2025", subtitle: "Runner-up at the region's largest ICT & entrepreneurship award", status: "Runner-Up", date: "Dec 2025", description: "Runner-up at APICTA 2025 in Kaohsiung, Taiwan. Only high school student in Pakistan's 55-member delegation, competing in the Senior Students category.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
+            "3": { title: "International Science and Engineering Fair (ISEF)", subtitle: "Finalist & attendee at the world's largest pre-college science fair", status: "Finalist & Attendee", date: "May 2025", description: "Finalist and attendee at ISEF 2025 in Columbus, Ohio, USA — selected for a novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
+            "4": { title: "International Conference on Applications of Space Science & Technology (ICAST) 2025", subtitle: "Paper presenter on Edge ML-based CanSat research", status: "Paper Presenter", date: "Nov 2025", description: "Research paper on an Edge ML-based CanSat accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with space technology experts." }
         };
+
+        const achievementOrder = ["1", "2", "3", "4"];
 
         // Assets folder se exact image paths
         const recognitionImages = {
@@ -110,7 +139,6 @@
             "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"] // ICAST (2 images)
         };
 
-        // Elements to toggle
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
 
@@ -118,23 +146,33 @@
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
 
-        let slideIndex = 0; let slideTimer = null;
+        let slideIndex = 0;
+        let slideTimer = null;
 
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
             slideshowContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
-            const images = recognitionImages[id];
+            const images = recognitionImages[id] || [];
+
+            if (images.length === 0) {
+                slideshowContainer.innerHTML = '<div class="photo-placeholder"><i class="fas fa-image"></i>Photos coming soon</div>';
+                return;
+            }
+
             images.forEach((imageSrc, index) => {
                 const slideDiv = document.createElement('div');
                 slideDiv.className = 'slides';
                 slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
                 slideshowContainer.appendChild(slideDiv);
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.onclick = () => { slideIndex = index; showSlide(); };
-                dotsContainer.appendChild(dot);
+
+                if (images.length > 1) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot';
+                    dot.onclick = () => { slideIndex = index; showSlide(); };
+                    dotsContainer.appendChild(dot);
+                }
             });
         }
 
@@ -142,11 +180,31 @@
             let slides = document.getElementsByClassName("slides");
             let dots = document.getElementsByClassName("dot");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; dots[i].className = dots[i].className.replace(" active-dot", ""); }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active-slide');
+                if (dots[i]) dots[i].className = dots[i].className.replace(" active-dot", "");
+            }
+
             slideIndex++;
             if (slideIndex > slides.length) { slideIndex = 1; }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active-dot";
+
+            slides[slideIndex - 1].classList.add('active-slide');
+            if (dots[slideIndex - 1]) dots[slideIndex - 1].className += " active-dot";
+        }
+
+        function updateAchievementNav(id) {
+            const idx = achievementOrder.indexOf(id);
+            const total = achievementOrder.length;
+            document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+
+            const nextBtn = document.getElementById('achNavNext');
+            if (idx < total - 1) {
+                nextBtn.style.visibility = 'visible';
+                nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); };
+            } else {
+                nextBtn.style.visibility = 'hidden';
+            }
         }
 
         function showDetail(id) {
@@ -154,19 +212,28 @@
             sectionHeadWrapper.style.display = 'none';
             backBtnWrapper.style.display = 'block';
             document.getElementById('recognitionDetail').style.display = 'block';
+            document.getElementById('pageNavBottom').style.display = 'none';
+            document.getElementById('achievementNavBottom').style.display = 'flex';
 
             const data = recognitionData[id];
-            
-            // Naya Header Update
+
             document.getElementById('detailTitle').textContent = data.title;
             document.getElementById('detailSubtitle').textContent = data.subtitle;
-
+            document.getElementById('detailStatus').textContent = data.status;
+            document.getElementById('detailDate').textContent = data.date;
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
 
             buildSlideshow(id);
-            slideIndex = 0; clearInterval(slideTimer); showSlide(); slideTimer = setInterval(showSlide, 3000);
+            slideIndex = 0;
+            clearInterval(slideTimer);
+
+            const images = recognitionImages[id] || [];
+            if (images.length > 0) { showSlide(); }
+            if (images.length > 1) { slideTimer = setInterval(showSlide, 3000); }
+
+            updateAchievementNav(id);
         }
 
         function showList() {
@@ -174,6 +241,8 @@
             backBtnWrapper.style.display = 'none';
             sectionHeadWrapper.style.display = 'block';
             document.getElementById('recognitionList').style.display = 'flex';
+            document.getElementById('pageNavBottom').style.display = 'flex';
+            document.getElementById('achievementNavBottom').style.display = 'none';
             clearInterval(slideTimer);
         }
     </script>

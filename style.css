@@ -108,15 +108,19 @@ body.landing-page main, body.landing-page footer { margin-left: 0 !important; wi
 .corner-contact:hover { background: var(--accent); color: #121212; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
 
 /* Recognition Lists */
-.recognition-list { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
-.recognition-list-item { display: flex; align-items: center; justify-content: space-between; padding: 26px 32px; background: linear-gradient(145deg, var(--secondary) 0%, var(--accent-soft) 100%); border: 1px solid var(--line); border-radius: 16px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
+.recognition-list { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; }
+.recognition-list-item { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: linear-gradient(145deg, var(--secondary) 0%, var(--accent-soft) 100%); border: 1px solid var(--line); border-radius: 16px; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; }
 .recognition-list-item::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: bottom; }
 .recognition-list-item:hover::before { transform: scaleY(1); }
-.recognition-list-item:hover { border-color: var(--accent); box-shadow: 0 10px 24px rgba(212, 175, 55, 0.2); transform: translateX(10px); }
+.recognition-list-item:hover { border-color: var(--accent); box-shadow: 0 14px 28px rgba(212, 175, 55, 0.22); transform: translateY(-3px) translateX(6px); }
 .recognition-list-item .num { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--accent); font-weight: 700; margin-right: 20px; flex-shrink: 0; background: rgba(212, 175, 55, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--accent); }
 .recognition-list-item h3 { font-size: 20px; color: var(--primary); margin: 0; flex: 1; font-weight: 600; }
-.recognition-list-item i { font-size: 22px; color: var(--accent); transition: transform 0.3s ease; }
-.recognition-list-item:hover i { transform: translateX(5px); }
+.recognition-list-item i { font-size: 20px; color: var(--accent); transition: transform 0.3s ease, filter 0.3s ease; flex-shrink: 0; margin-left: 14px; }
+.recognition-list-item:hover i { transform: translateX(6px); filter: drop-shadow(0 0 6px rgba(212,175,55,.7)); }
+.recognition-item-cta { display: inline-flex; align-items: center; gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); flex-shrink: 0; margin-left: 16px; opacity: .85; transition: opacity .25s ease; }
+.recognition-item-cta i { font-size: 13px; transition: transform 0.3s ease, filter 0.3s ease; }
+.recognition-list-item:hover .recognition-item-cta { opacity: 1; }
+.recognition-list-item:hover .recognition-item-cta i { transform: translateX(5px); filter: drop-shadow(0 0 6px rgba(212,175,55,.7)); }
 
 /* Recognition Detail View */
 .recognition-detail { max-width: 1000px; margin: 20px auto 0; display: flex; flex-direction: column; }
@@ -288,9 +292,60 @@ footer .mono { color: var(--accent); }
 .nav-card .nav-card-go i { transition: transform .25s ease; }
 .nav-card:hover .nav-card-go i { transform: translateX(4px); }
 
+/* ============ Credentials strip — unmissable proof right after hero ============ */
+.credentials-strip { padding: 0 0 40px; }
+.credentials-strip .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.credentials-strip span { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .03em; color: var(--text); border: 1px solid var(--line); background: var(--accent-soft); padding: 9px 16px; border-radius: 20px; white-space: nowrap; }
+.credentials-strip span i { color: var(--accent); font-size: 12px; }
+
 /* ============ Subtle section boundaries (hero / about / explore) — soft shade, no lines ============ */
 .about-section { background: linear-gradient(180deg, rgba(255,255,255,0.015) 0%, rgba(0,0,0,0.12) 100%); }
 .explore-section { background: rgba(0,0,0,0.18); }
+
+/* ============ Portfolio journey navigation (inner pages, no navbar/footer) ============ */
+.portfolio-back { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--muted); margin-bottom: 28px; transition: color .2s ease, gap .2s ease; }
+.portfolio-back:hover { color: var(--accent); gap: 12px; }
+
+.page-nav-bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 34px 0 10px; margin-top: 46px; border-top: 1px solid var(--line); }
+.page-nav-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--text); transition: color .2s ease, gap .2s ease; }
+.page-nav-link:hover { color: var(--accent); }
+.page-nav-link.next { gap: 8px; margin-left: auto; text-align: right; }
+.page-nav-link.next:hover { gap: 12px; }
+.page-nav-pos { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: .1em; flex-shrink: 0; }
+
+.page-progress { position: fixed; right: 26px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 13px; z-index: 400; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+.page-progress a { color: var(--line); font-weight: 700; text-decoration: none; transition: color .25s ease; }
+.page-progress a:hover, .page-progress a.active { color: var(--accent); }
+
+/* ============ Recognition list — no numbers, icon + full name + status tag ============ */
+.recognition-list-item { align-items: center; }
+.recognition-item-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(212,175,55,.1); border: 1px solid var(--accent); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; margin-right: 18px; padding: 0; }
+.recognition-item-icon i { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; line-height: 1; text-align: center; margin: 0; }
+.recognition-item-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.recognition-item-text h3 { font-size: 17px; margin: 0; font-weight: 600; word-break: break-word; }
+.recognition-item-text .short-form { color: var(--muted); font-weight: 500; font-size: 14.5px; }
+.status-tag { align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 2px 10px; border-radius: 20px; background: rgba(212,175,55,.08); }
+
+/* ============ Detail view — two columns, fits without scrolling, auto slideshow ============ */
+.detail-header { padding: 16px 24px 8px; margin-bottom: 14px; }
+.detail-header h3 { font-size: 24px; margin: 0 0 6px; }
+.detail-meta { display: flex; align-items: center; gap: 14px; margin-top: 10px; }
+.detail-meta .status-tag { align-self: auto; }
+.detail-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: .05em; }
+.detail-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1050px; margin: 0 auto; align-items: stretch; }
+
+.detail-media { position: relative; border-radius: 16px; overflow: hidden; border: 2px solid var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.5); background: var(--secondary); min-height: 380px; max-height: 62vh; }
+.detail-media .slideshow-container { height: 100%; padding: 0; border: none; border-radius: 0; box-shadow: none; background: transparent; }
+.detail-media .slides { position: absolute; inset: 0; margin: 0; display: none; }
+.detail-media .slides.active-slide { display: flex; align-items: center; justify-content: center; }
+.detail-media .slides img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; box-shadow: none; max-height: none; background: var(--secondary); }
+.detail-media .slideshow-dots { position: absolute; bottom: 14px; left: 0; right: 0; padding: 0; z-index: 2; }
+.detail-media .photo-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 12.5px; text-align: center; }
+.detail-media .photo-placeholder i { font-size: 30px; color: var(--accent); }
+
+.detail-info { justify-content: center; max-height: 62vh; overflow-y: auto; padding-right: 4px; }
+.detail-info .detail-block { padding: 16px 20px; }
+.detail-info .detail-block p { font-size: 13.5px; line-height: 1.6; }
 
 /* Responsive */
 @media (max-width: 860px) {
@@ -303,10 +358,20 @@ footer .mono { color: var(--accent); }
 
   .right-dots { display: none; }
   .corner-contact { bottom: 20px; right: 20px; padding: 8px 14px; font-size: 12px; }
+  .page-progress { display: none; }
+  .page-nav-bottom { flex-wrap: wrap; }
+  .detail-columns { grid-template-columns: 1fr; }
+  .detail-media { min-height: 260px; max-height: 320px; }
+  .detail-info { max-height: none; overflow-y: visible; }
 
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .about-stats { gap: 28px; }
   .explore-grid { grid-template-columns: 1fr; }
+  .skill-chips { gap: 8px; }
+  .skill-chips span { font-size: 11px; padding: 6px 12px; }
+  .info-card { padding: 22px; }
+  .credentials-strip .wrap { gap: 10px; padding: 0 20px; }
+  .credentials-strip span { font-size: 11px; padding: 8px 13px; }
 
   .card-grid, .proj-grid, .grid-3, .recognition-grid { grid-template-columns: 1fr; }
   .screen { padding: 40px 0 60px; }
@@ -314,8 +379,12 @@ footer .mono { color: var(--accent); }
   .contact-methods-grid { flex-direction: column; }
   .method-card { width: 100%; }
   
-  .recognition-list-item { padding: 18px; }
-  .recognition-list-item h3 { font-size: 16px; }
+  .recognition-list-item { padding: 16px 18px; }
+  .recognition-list-item h3 { font-size: 15.5px; }
+  .recognition-item-icon { width: 36px; height: 36px; margin-right: 14px; }
+  .recognition-item-cta { margin-left: 10px; opacity: 1; }
+  .recognition-item-cta .cta-label { display: none; }
+  .recognition-item-cta i { font-size: 15px; }
   .slides img { max-height: 300px; }
   .card-photo { height: 140px; }
   .pill-card-photo { height: 120px; }
