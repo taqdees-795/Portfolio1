@@ -242,12 +242,23 @@ footer .mono { color: var(--accent); }
 
 /* ============ HERO — minimal, immersive (no navbar, no CTAs, no badges) ============ */
 .hero-minimal { min-height: 100vh; padding: 60px 0; display: flex; align-items: center; }
-.hero-minimal .hero-content h1 { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .1s forwards; }
-.hero-minimal .hero-role { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .22s forwards; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-top: 14px; display: flex; align-items: center; gap: 10px; }
+.hero-minimal .hero-content h1 { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .1s forwards; line-height: 1.02; }
+.hero-minimal .hero-content h1 .accent-name { color: var(--accent); }
+.hero-minimal .hero-role { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .22s forwards; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-top: 20px; display: flex; align-items: center; gap: 10px; }
 .hero-minimal .hero-role::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
-.hero-minimal .hero-intro { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .34s forwards; font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 440px; margin-top: 18px; }
+.hero-minimal .hero-intro { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .34s forwards; font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 440px; margin-top: 22px; }
 .hero-minimal .hero-intro strong { color: var(--accent); font-weight: 600; }
 .hero-minimal .hero-cta { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .46s forwards; margin-top: 30px; }
+
+.btn-journey { opacity: 0; transform: translateY(18px); animation: heroFadeUp .9s var(--ease) .48s forwards; display: inline-flex; align-items: center; gap: 14px; margin-top: 32px; padding: 6px 6px 6px 24px; border-radius: 50px; border: 1px solid var(--accent); background: rgba(212,175,55,.06); box-shadow: 0 10px 24px -14px rgba(212,175,55,.5); transition: background .35s var(--ease), box-shadow .35s var(--ease), transform .3s ease; }
+.btn-journey:hover { background: var(--accent); box-shadow: 0 16px 32px -12px rgba(212,175,55,.5); transform: translateY(-2px); }
+.btn-journey span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--text); transition: color .3s ease; }
+.btn-journey:hover span:first-child { color: #121212; }
+.btn-journey-arrow { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #121212; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .35s var(--ease), background .3s ease, color .3s ease; }
+.btn-journey:hover .btn-journey-arrow { transform: translateX(4px) rotate(-10deg); background: #121212; color: var(--accent); }
+
+.hero-caption { opacity: 0; transform: translateY(10px); animation: heroFadeUp .9s var(--ease) .6s forwards; margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--text); border: 1px solid var(--line); background: var(--accent-soft); padding: 8px 18px; border-radius: 20px; }
+.hero-caption i { color: var(--accent); font-size: 12px; }
 
 .hero-photo-wrap { opacity: 0; animation: heroImgIn 1s var(--ease) .25s forwards; }
 .hero-photo-wrap img { animation: heroFloat 7s ease-in-out .5s infinite; }
@@ -257,7 +268,7 @@ footer .mono { color: var(--accent); }
 @keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-minimal .hero-content h1, .hero-minimal .hero-intro, .hero-photo-wrap { animation: none; opacity: 1; transform: none; }
+  .hero-minimal .hero-content h1, .hero-minimal .hero-intro, .hero-photo-wrap, .btn-journey, .hero-caption { animation: none; opacity: 1; transform: none; }
   .hero-photo-wrap img { animation: none; }
 }
 
@@ -353,6 +364,8 @@ footer .mono { color: var(--accent); }
   .landing-page .hero .wrap { grid-template-columns: 1fr; }
   .hero { padding-top: 20px; }
   .hero-visual { margin-top: 40px; }
+  .btn-journey { margin-top: 26px; }
+  .hero-caption { margin-top: 14px; }
   .hero-nav-links { justify-content: center; }
   .hero-nav-pill { font-size: 12px; padding: 8px 12px; }
 
