@@ -77,29 +77,52 @@
                     </div>
                 </div>
 
-                <!-- DETAIL VIEW: two columns, fits in one screen, auto slideshow if 2+ images -->
+                <!-- DETAIL VIEW: two columns, fits in one screen, no scrolling -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
-
-                    <div class="detail-header">
-                        <h3 id="detailTitle"></h3>
-                        <p id="detailSubtitle"></p>
-                        <div class="detail-meta">
-                            <span class="status-tag" id="detailStatus"></span>
-                            <span class="detail-date" id="detailDate"></span>
-                        </div>
-                    </div>
-
                     <div class="detail-columns">
-                        <div class="detail-media" id="detailMedia">
-                            <div class="slideshow-container" id="slideshowContainer"></div>
+
+                        <div class="detail-left">
+                            <div class="detail-meta-row">
+                                <span class="status-tag" id="detailStatus"></span>
+                                <span class="detail-date-sep"></span>
+                                <span class="detail-date" id="detailDate"></span>
+                            </div>
+
+                            <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
+                            <p class="detail-subtitle" id="detailSubtitle"></p>
+                            <div class="detail-divider"></div>
+
+                            <div class="detail-info-grid">
+                                <div class="detail-info-block">
+                                    <div class="detail-info-head">
+                                        <div class="detail-info-icon"><i class="fas fa-star"></i></div>
+                                        <span class="detail-info-label">Role &amp; Impact</span>
+                                    </div>
+                                    <p id="detailRole"></p>
+                                </div>
+                                <div class="detail-info-block">
+                                    <div class="detail-info-head">
+                                        <div class="detail-info-icon"><i class="fas fa-people-group"></i></div>
+                                        <span class="detail-info-label">Secondary Contributor</span>
+                                    </div>
+                                    <p id="detailContributor"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-right">
+                            <div class="detail-media-stack">
+                                <div class="stack-card stack-card-2"></div>
+                                <div class="stack-card stack-card-1"></div>
+                                <div class="detail-media" id="detailMedia">
+                                    <div class="slideshow-container" id="slideshowContainer"></div>
+                                </div>
+                                <button type="button" class="media-arrow prev" id="mediaPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="media-arrow next" id="mediaNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                            </div>
                             <div class="slideshow-dots" id="slideshowDots"></div>
                         </div>
 
-                        <div class="detail-info">
-                            <div class="detail-block"><span class="detail-label">Description</span><p id="detailDescription"></p></div>
-                            <div class="detail-block"><span class="detail-label">Role &amp; Impact</span><p id="detailRole"></p></div>
-                            <div class="detail-block"><span class="detail-label">Secondary Contributor</span><p id="detailContributor"></p></div>
-                        </div>
                     </div>
                 </div>
 
@@ -123,10 +146,10 @@
 
     <script>
         const recognitionData = {
-            "1": { title: "International Greenwich Olympiad (iGO)", subtitle: "Selected to represent Pakistan in London", status: "Selected", date: "Jan 2026", description: "Participated in NSEF 2026, presenting research on embedded systems for agricultural threats. Won Best of Category and was selected to represent Pakistan at the International Greenwich Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
-            "2": { title: "Asia Pacific ICT Alliance Award (APICTA) 2025", subtitle: "Runner-up at the region's largest ICT & entrepreneurship award", status: "Runner-Up", date: "Dec 2025", description: "Runner-up at APICTA 2025 in Kaohsiung, Taiwan. Only high school student in Pakistan's 55-member delegation, competing in the Senior Students category.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
-            "3": { title: "International Science and Engineering Fair (ISEF)", subtitle: "Finalist & attendee at the world's largest pre-college science fair", status: "Finalist & Attendee", date: "May 2025", description: "Finalist and attendee at ISEF 2025 in Columbus, Ohio, USA — selected for a novel embedded system solving gas leakage and child safety.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
-            "4": { title: "International Conference on Applications of Space Science & Technology (ICAST) 2025", subtitle: "Paper presenter on Edge ML-based CanSat research", status: "Paper Presenter", date: "Nov 2025", description: "Research paper on an Edge ML-based CanSat accepted for oral presentation at ICAST 2025.", role: "First Author & Presenter", contributor: "Collaborated with space technology experts." }
+            "1": { icon: "fa-award", status: "Selected", date: "Jan 2026", titleMain: "International Greenwich Olympiad", titleAccent: "(iGO)", subtitle: "Selected to represent Pakistan at the Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
+            "2": { icon: "fa-trophy", status: "Runner-Up", date: "Dec 2025", titleMain: "Asia Pacific ICT Alliance Award", titleAccent: "(APICTA) 2025", subtitle: "Runner-up at the region's largest ICT & entrepreneurship award.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
+            "3": { icon: "fa-medal", status: "Finalist & Attendee", date: "May 2025", titleMain: "International Science and Engineering Fair", titleAccent: "(ISEF)", subtitle: "Finalist & attendee at the world's largest pre-college science fair.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
+            "4": { icon: "fa-book-open", status: "Paper Presenter", date: "Nov 2025", titleMain: "International Conference on Applications of Space Science & Technology", titleAccent: "(ICAST) 2025", subtitle: "Paper presenter on Edge ML-based CanSat research.", role: "First Author & Presenter", contributor: "Collaborated with space technology experts." }
         };
 
         const achievementOrder = ["1", "2", "3", "4"];
@@ -146,7 +169,7 @@
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
 
-        let slideIndex = 0;
+        let currentSlide = 0;
         let slideTimer = null;
 
         function buildSlideshow(id) {
@@ -167,31 +190,57 @@
                 slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
                 slideshowContainer.appendChild(slideDiv);
 
-                if (images.length > 1) {
-                    const dot = document.createElement('span');
-                    dot.className = 'dot';
-                    dot.onclick = () => { slideIndex = index; showSlide(); };
-                    dotsContainer.appendChild(dot);
-                }
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.onclick = () => { goToSlide(index); restartAutoplay(); };
+                dotsContainer.appendChild(dot);
             });
         }
 
-        function showSlide() {
-            let slides = document.getElementsByClassName("slides");
-            let dots = document.getElementsByClassName("dot");
+        function renderSlide() {
+            const slides = document.getElementsByClassName("slides");
+            const dots = document.getElementsByClassName("dot");
             if (slides.length === 0) return;
-
             for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active-slide');
-                if (dots[i]) dots[i].className = dots[i].className.replace(" active-dot", "");
+                slides[i].classList.toggle('active-slide', i === currentSlide);
+                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
             }
-
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
-
-            slides[slideIndex - 1].classList.add('active-slide');
-            if (dots[slideIndex - 1]) dots[slideIndex - 1].className += " active-dot";
         }
+
+        function nextSlide() {
+            const slides = document.getElementsByClassName("slides");
+            if (slides.length === 0) return;
+            currentSlide = (currentSlide + 1) % slides.length;
+            renderSlide();
+        }
+
+        function prevSlide() {
+            const slides = document.getElementsByClassName("slides");
+            if (slides.length === 0) return;
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            renderSlide();
+        }
+
+        function goToSlide(i) {
+            currentSlide = i;
+            renderSlide();
+        }
+
+        function restartAutoplay() {
+            clearInterval(slideTimer);
+            const slides = document.getElementsByClassName("slides");
+            if (slides.length > 1) { slideTimer = setInterval(nextSlide, 3500); }
+        }
+
+        function updateMediaControls(count) {
+            const showControls = count > 1;
+            document.getElementById('mediaPrev').style.display = showControls ? 'flex' : 'none';
+            document.getElementById('mediaNext').style.display = showControls ? 'flex' : 'none';
+            document.getElementById('slideshowDots').style.display = showControls ? 'flex' : 'none';
+        }
+
+        document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
+        document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
 
         function updateAchievementNav(id) {
             const idx = achievementOrder.indexOf(id);
@@ -217,21 +266,22 @@
 
             const data = recognitionData[id];
 
-            document.getElementById('detailTitle').textContent = data.title;
+            document.getElementById('detailTitleMain').textContent = data.titleMain;
+            document.getElementById('detailTitleAccent').textContent = data.titleAccent;
             document.getElementById('detailSubtitle').textContent = data.subtitle;
-            document.getElementById('detailStatus').textContent = data.status;
+            document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
             document.getElementById('detailDate').textContent = data.date;
-            document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
 
             buildSlideshow(id);
-            slideIndex = 0;
+            currentSlide = 0;
             clearInterval(slideTimer);
 
             const images = recognitionImages[id] || [];
-            if (images.length > 0) { showSlide(); }
-            if (images.length > 1) { slideTimer = setInterval(showSlide, 3000); }
+            updateMediaControls(images.length);
+            if (images.length > 0) { renderSlide(); }
+            restartAutoplay();
 
             updateAchievementNav(id);
         }
