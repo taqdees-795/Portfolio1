@@ -8,11 +8,9 @@
   --text: #f5efe6;
   --muted: #a8a29e;
   --line: #3d3a36;
-
   --radius: 14px;
   --ease: cubic-bezier(.4, 0, .2, 1);
 }
-
 
 /* =========================================================
    RESET
@@ -214,6 +212,7 @@ footer {
   content: "";
 
   width: 7px;
+
   height: 7px;
 
   border-radius: 50%;
@@ -4058,42 +4057,8 @@ footer .mono {
 
 
 /* =========================================================
-   =========================================================
    CINEMATIC 4-CARD FLY-IN + MERGE INTRO
-   =========================================================
-   =========================================================
-
-   REFINED FOR A PREMIUM / UNIVERSITY-APPLICATION-GRADE FEEL:
-
-   1. Rotation + travel distance drastically reduced
-      (was up to 65deg + far off-screen 3D flips — now a
-      tight 16-22deg max, cards stay closer to their final
-      resting spot the whole time).
-
-   2. Depth-of-field entrance — each card starts slightly
-      blurred and "far away", then racks into sharp focus
-      as it settles, like a studio photo reveal.
-
-   3. Single elegant ease-out curve (cubic-bezier(.22,1,.36,1))
-      on every animated property — no bounce, no overshoot,
-      just a smooth, continuous deceleration. Timing steps
-      overlap more so the four cards read as one fluid motion
-      instead of four separate mechanical pops.
-*/
-
-
-/*
-   IMPORTANT:
-
-   Put these files inside:
-
-   assets/
-      intro-1.jpg
-      intro-2.jpg
-      intro-3.jpg
-      intro-4.jpg
-*/
-
+   ========================================================= */
 
 .cinematic-intro {
   position: fixed;
@@ -4134,10 +4099,6 @@ footer .mono {
 }
 
 
-/* =========================================================
-   CARDS
-   ========================================================= */
-
 .intro-card {
   position: absolute;
 
@@ -4177,11 +4138,6 @@ footer .mono {
     -webkit-mask-image 1.4s ease;
 }
 
-
-/* Off-screen "flying in" starting positions (3D) —
-   distance and rotation trimmed way down for a
-   controlled, professional drift rather than a
-   chaotic tumble */
 
 .intro-card-1 {
   transform:
@@ -4270,10 +4226,7 @@ footer .mono {
 }
 
 
-/* =========================================================
-   MERGE — cards flatten out, borders disappear,
-   edges blend into one continuous background
-   ========================================================= */
+/* MERGE — cards flatten out, borders disappear, edges blend into one continuous background */
 
 .cinematic-intro.merging .intro-card {
   opacity: 1;
@@ -4358,9 +4311,7 @@ footer .mono {
 }
 
 
-/* =========================================================
-   CINEMATIC OVERLAY (dark scrim so hero text stays readable)
-   ========================================================= */
+/* CINEMATIC OVERLAY (dark scrim so hero text stays readable) */
 
 .intro-overlay {
   position: absolute;
@@ -4397,25 +4348,15 @@ footer .mono {
 }
 
 
-/* Settled, permanent overlay once it becomes the hero background */
-
 .cinematic-intro.as-background .intro-overlay {
   opacity: 0.6;
 }
 
 
-/* =========================================================
-   PREVENT SCROLLING DURING INTRO
-   ========================================================= */
-
 body.intro-active {
   overflow: hidden;
 }
 
-
-/* =========================================================
-   PAUSE / RESUME HERO TEXT UNTIL INTRO FINISHES
-   ========================================================= */
 
 .hero-minimal .hero-content h1,
 .hero-minimal .hero-role,
@@ -4436,10 +4377,6 @@ body.intro-done .hero-photo-wrap {
   animation-play-state: running;
 }
 
-
-/* =========================================================
-   RESPONSIVE — INTRO
-   ========================================================= */
 
 @media (max-width: 860px) {
 
@@ -4484,10 +4421,6 @@ body.intro-done .hero-photo-wrap {
 }
 
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
 
   .cinematic-intro {
@@ -4500,10 +4433,6 @@ body.intro-done .hero-photo-wrap {
 
 }
 
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
 
 @media (max-width: 860px) {
 
@@ -4776,10 +4705,6 @@ body.intro-done .hero-photo-wrap {
 }
 
 
-/* =========================================================
-   EXTRA SMALL DEVICES
-   ========================================================= */
-
 @media (max-width: 480px) {
 
   .wrap {
@@ -4874,3 +4799,223 @@ body.intro-done .hero-photo-wrap {
   }
 
 }
+
+
+/*=========================================================
+   FINAL CINEMATIC INTRO — SIDE FLY-IN + CENTER + CLEAN COLLAGE
+   Refined for a controlled, premium, university-application feel:
+   softer easing, gentle deceleration, no viewport-covering bug.
+   ========================================================= */
+.cinematic-intro {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100svh;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: 99999;
+  perspective: 1400px;
+  background: #0d1117;
+  isolation: isolate;
+  opacity: 1;
+  transition: opacity .8s cubic-bezier(.22,1,.36,1), visibility .8s ease;
+}
+ 
+/* When finished, the intro demotes into the hero's permanent
+   background instead of disappearing or staying pinned forever. */
+.cinematic-intro.as-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+}
+ 
+.cinematic-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(212,175,55,.10), transparent 38%);
+}
+ 
+/* Base card */
+.intro-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  filter: blur(14px) saturate(.92);
+  transform: scale(1.06);
+  border-radius: 18px;
+  will-change: opacity, filter, transform, left, top, width, height, border-radius;
+  transition:
+    opacity .75s cubic-bezier(.22,1,.36,1),
+    filter 1.05s cubic-bezier(.22,1,.36,1),
+    transform 1.15s cubic-bezier(.22,1,.36,1),
+    left 1.15s cubic-bezier(.22,1,.36,1),
+    top 1.15s cubic-bezier(.22,1,.36,1),
+    width 1.15s cubic-bezier(.22,1,.36,1),
+    height 1.15s cubic-bezier(.22,1,.36,1),
+    border-radius 1.15s cubic-bezier(.22,1,.36,1);
+  z-index: 2;
+}
+ 
+/* Initial fly-in states — gentle drift in from a side, no harsh 3D flip */
+.intro-card-1 { left: -18%; top: 0; transform: scale(1.04); }
+.intro-card-2 { left: 18%; top: 0; transform: scale(1.04); }
+.intro-card-3 { left: 0; top: -14%; transform: scale(1.04); }
+.intro-card-4 { left: 0; top: 14%; transform: scale(1.04); }
+ 
+/* Show states — the active photo settles into full-bleed, sharp focus */
+.cinematic-intro.show-1 .intro-card-1,
+.cinematic-intro.show-2 .intro-card-2,
+.cinematic-intro.show-3 .intro-card-3,
+.cinematic-intro.show-4 .intro-card-4 {
+  opacity: 1;
+  filter: blur(0) saturate(1);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  border-radius: 0;
+}
+ 
+/* Keep earlier photos hidden once the next one takes over */
+.cinematic-intro.show-2 .intro-card-1,
+.cinematic-intro.show-3 .intro-card-1,
+.cinematic-intro.show-3 .intro-card-2,
+.cinematic-intro.show-4 .intro-card-1,
+.cinematic-intro.show-4 .intro-card-2,
+.cinematic-intro.show-4 .intro-card-3 {
+  opacity: 0;
+  filter: blur(6px) saturate(.96);
+  transform: scale(0.98);
+}
+ 
+/* Merge — clean 2x2 collage, no gaps, no borders */
+.cinematic-intro.merging .intro-card {
+  opacity: 1;
+  filter: blur(0) saturate(1);
+  width: 50%;
+  height: 50%;
+  border-radius: 0;
+  transform: scale(1);
+}
+ 
+.cinematic-intro.merging .intro-card-1 { left: 0; top: 0; }
+.cinematic-intro.merging .intro-card-2 { left: 50%; top: 0; }
+.cinematic-intro.merging .intro-card-3 { left: 0; top: 50%; }
+.cinematic-intro.merging .intro-card-4 { left: 50%; top: 50%; }
+ 
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(5,8,12,.12), rgba(5,8,12,.32));
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+ 
+.cinematic-intro.as-background .intro-overlay {
+  opacity: .6;
+}
+ 
+body.intro-active { overflow: hidden; }
+body.intro-done { overflow-x: hidden; }
+ 
+.hero-minimal .hero-content,
+.hero-minimal .hero-visual { opacity: 1; }
+ 
+@media (max-width: 860px) {
+  .intro-card { width: 100%; height: 100%; }
+  .cinematic-intro.merging .intro-card { width: 50%; height: 50%; }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-intro { display: none !important; }
+  body.intro-active { overflow: auto; }
+}
+ 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 860px) {
+  .wrap { padding: 0 20px; }
+  .landing-page .hero .wrap { grid-template-columns: 1fr; }
+  .hero { padding-top: 20px; }
+  .hero-visual { margin-top: 40px; }
+  .btn-journey { margin-top: 26px; }
+  .hero-caption { margin-top: 14px; }
+  .hero-nav-links { justify-content: center; }
+  .hero-nav-pill { font-size: 12px; padding: 8px 12px; }
+  .right-dots { display: none; }
+  .corner-contact { bottom: 20px; right: 20px; padding: 8px 14px; font-size: 12px; }
+  .page-progress { display: none; }
+  .page-nav-bottom { flex-wrap: wrap; }
+  .detail-columns { grid-template-columns: 1fr; gap: 28px; }
+  .detail-right { order: -1; }
+  .detail-media-stack { max-width: 260px; aspect-ratio: 0.78; }
+  .stack-card { display: none; }
+  .media-arrow { width: 36px; height: 36px; font-size: 12px; }
+  .media-arrow.prev { left: 6px; }
+  .media-arrow.next { right: 6px; }
+  .detail-subtitle { max-width: none; }
+  .detail-info-grid { grid-template-columns: 1fr; }
+  .detail-meta-grid { grid-template-columns: 1fr 1fr; }
+  .detail-thumb { width: 42px; height: 42px; }
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-stats { gap: 28px; }
+  .explore-grid { grid-template-columns: 1fr; }
+  .skill-chips { gap: 8px; }
+  .skill-chips span { font-size: 11px; padding: 6px 12px; }
+  .info-card { padding: 22px; }
+  .credentials-strip .wrap { gap: 10px; padding: 0 20px; }
+  .credentials-strip span { font-size: 11px; padding: 8px 13px; }
+  .card-grid, .proj-grid, .grid-3, .recognition-grid { grid-template-columns: 1fr; }
+  .screen { padding: 40px 0 60px; }
+  .contact-panel { padding: 50px 26px; }
+  .contact-methods-grid { flex-direction: column; }
+  .method-card { width: 100%; }
+  .recognition-list-item { padding: 16px 18px; }
+  .recognition-list-item h3 { font-size: 15.5px; }
+  .recognition-item-icon { width: 36px; height: 36px; margin-right: 14px; }
+  .recognition-item-cta { margin-left: 10px; opacity: 1; }
+  .recognition-item-cta .cta-label { display: none; }
+  .recognition-item-cta i { font-size: 15px; }
+  .slides img { max-height: 300px; }
+  .card-photo { height: 140px; }
+  .pill-card-photo { height: 120px; }
+  .lightbox-close { top: 14px; right: 14px; }
+}
+ 
+@media (max-width: 480px) {
+  .wrap { padding: 0 16px; }
+  .hero-minimal { padding-top: 40px; }
+  .hero h1 { font-size: 42px; }
+  .hero-minimal .hero-role { font-size: 10.5px; letter-spacing: 0.05em; flex-wrap: wrap; }
+  .hero-minimal .hero-intro { font-size: 15px; }
+  .hero-photo-wrap { width: 270px; height: 340px; }
+  .hero-visual-ring { width: 300px; height: 370px; }
+  .hero-visual-bg { width: 340px; height: 340px; }
+  .credentials-strip span { width: 100%; justify-content: center; }
+  .about-stats { gap: 22px; }
+  .about-stats .stat-num { font-size: 28px; }
+  .nav-card { padding: 22px; }
+  .detail-meta-grid { grid-template-columns: 1fr; }
+  .btn-journey { padding-left: 18px; }
+  .btn-journey span:first-child { font-size: 11px; }
+}
+ 

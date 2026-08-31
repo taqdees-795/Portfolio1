@@ -2,124 +2,83 @@
    PORTFOLIO - COMPLETE SCRIPT.JS
    ========================================================= */
 
-
 /* =========================================================
-   0. CINEMATIC 4-CARD INTRO SEQUENCE
+   0. CINEMATIC 4-IMAGE INTRO
+   Sequence: 1 -> 2 -> 3 -> 4 -> final 2x2 collage -> hero
    ========================================================= */
-
 (function () {
+    const intro = document.getElementById('cinematicIntro');
 
-    const intro =
-        document.getElementById('cinematicIntro');
-
-    if (!intro) return;
-
-
-    const reduceMotion =
-        window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
-
-
-    /*
-     * Respect reduced-motion: skip straight to the
-     * finished state, no animation at all.
-     */
-    if (reduceMotion) {
-
+    if (!intro) {
         document.body.classList.add('intro-done');
-
         return;
     }
 
+    const reduceMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (reduceMotion) {
+        intro.classList.add('finished');
+        document.body.classList.add('intro-done');
+        return;
+    }
 
     document.body.classList.add('intro-active');
 
-
     /*
-     * Card fly-in / scatter / merge timeline.
-     * Adjust the "delay" values (ms) to speed up
-     * or slow down the whole sequence.
-     *
-     * Tuned for a slower, more deliberate "studio reveal":
-     * each card drifts in and settles into soft focus with
-     * generous overlap so the motion reads as one continuous
-     * gesture rather than four separate pops.
-     */
-    const steps = [
-        { delay: 150,  cls: 'show-1'  },
-        { delay: 700,  cls: 'show-2'  },
-        { delay: 1250, cls: 'show-3'  },
-        { delay: 1800, cls: 'show-4'  },
-        { delay: 2750, cls: 'merging' },
-        { delay: 4000, cls: 'finish'  }
+       Each image gets its own moment on screen.
+       The timings deliberately overlap slightly so the change feels
+       smooth and premium rather than like a slideshow widget.
+    */
+    const sequence = [
+        { at: 250,  className: 'show-1' },
+        { at: 1450, className: 'show-2' },
+        { at: 2650, className: 'show-3' },
+        { at: 3850, className: 'show-4' },
+        { at: 5050, className: 'merging' }
     ];
 
-    const timers = [];
-
-    steps.forEach(function (step) {
-
-        const id = setTimeout(
-            function () {
-                intro.classList.add(step.cls);
-            },
-            step.delay
-        );
-
-        timers.push(id);
-
+    sequence.forEach(function (step) {
+        window.setTimeout(function () {
+            intro.classList.add(step.className);
+        }, step.at);
     });
 
+    /*
+       Give the visitor enough time to actually see the final collage,
+       then fade it away and reveal the portfolio hero.
+    */
+    window.setTimeout(function () {
+        intro.classList.add('finished');
+        document.body.classList.remove('intro-active');
+        document.body.classList.add('intro-done');
+    }, 7600);
 
     /*
-     * End of sequence:
-     * - unlock page scroll
-     * - reveal the hero text
-     * - demote the merged photo montage into a
-     *   permanent hero background (it never disappears)
-     */
-    const finishId = setTimeout(
-        function () {
+       Asset safety: a missing intro image must NEVER create a black
+       locked screen. Failed backgrounds simply become transparent.
+    */
+    intro.querySelectorAll('.intro-card').forEach(function (card) {
+        const bg = card.style.backgroundImage || '';
+        const match = bg.match(/url\(["']?(.*?)["']?\)/);
 
-            document.body.classList.remove('intro-active');
-            document.body.classList.add('intro-done');
+        if (!match || !match[1]) return;
 
-            intro.classList.add('as-background');
+        const testImage = new Image();
+        testImage.src = match[1];
 
-        },
-        4400
-    );
-
-    timers.push(finishId);
-
-
-    /*
-     * Safety net: if a background image fails to load,
-     * don't let it break the sequence — just make sure
-     * scrolling/text always unlock even if something
-     * goes wrong with an asset.
-     */
-    intro
-        .querySelectorAll('.intro-card')
-        .forEach(function (card) {
-
-            const testImg = new Image();
-
-            const bg = card.style.backgroundImage;
-
-            const match =
-                bg && bg.match(/url\(["']?(.*?)["']?\)/);
-
-            if (!match) return;
-
-            testImg.src = match[1];
-
-            testImg.addEventListener('error', function () {
-                card.style.opacity = '0';
-            });
-
+        testImage.addEventListener('error', function () {
+            card.style.backgroundImage = 'none';
+            card.classList.add('asset-missing');
         });
+    });
 
+    /* Absolute safety fallback in case a browser blocks a timer. */
+    window.setTimeout(function () {
+        document.body.classList.remove('intro-active');
+        document.body.classList.add('intro-done');
+    }, 9000);
 })();
 
 
