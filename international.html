@@ -14,6 +14,7 @@
 
     <!-- Subtle page-position indicator, replaces the old right-side dots -->
     <nav class="page-progress">
+        <span class="page-progress-line"></span>
         <a href="international.html" class="active">01</a>
         <a href="national.html">02</a>
         <a href="internships.html">03</a>
@@ -77,20 +78,17 @@
                     </div>
                 </div>
 
-                <!-- DETAIL VIEW: two columns, fits in one screen, no scrolling -->
+                <!-- DETAIL VIEW: expanded layout matching reference -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
 
                         <div class="detail-left">
-                            <div class="detail-meta-row">
-                                <span class="status-tag" id="detailStatus"></span>
-                                <span class="detail-date-sep"></span>
-                                <span class="detail-date" id="detailDate"></span>
-                            </div>
+                            <span class="status-tag" id="detailStatus"></span>
 
                             <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
-                            <p class="detail-subtitle" id="detailSubtitle"></p>
-                            <div class="detail-divider"></div>
+                            <p class="detail-subtitle" id="detailDescription"></p>
+
+                            <div class="detail-meta-grid" id="detailMetaGrid"></div>
 
                             <div class="detail-info-grid">
                                 <div class="detail-info-block">
@@ -108,6 +106,14 @@
                                     <p id="detailContributor"></p>
                                 </div>
                             </div>
+
+                            <div class="detail-highlights-block">
+                                <div class="detail-info-head">
+                                    <div class="detail-info-icon"><i class="fas fa-bullseye"></i></div>
+                                    <span class="detail-info-label">Project Highlights</span>
+                                </div>
+                                <ul id="detailHighlights" class="detail-highlights-list"></ul>
+                            </div>
                         </div>
 
                         <div class="detail-right">
@@ -121,6 +127,9 @@
                                 <button type="button" class="media-arrow next" id="mediaNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="slideshow-dots" id="slideshowDots"></div>
+
+                            <div class="detail-thumbs" id="detailThumbs"></div>
+                            <div class="detail-media-count" id="detailMediaCount"></div>
                         </div>
 
                     </div>
@@ -146,10 +155,38 @@
 
     <script>
         const recognitionData = {
-            "1": { icon: "fa-award", status: "Selected", date: "Jan 2026", titleMain: "International Greenwich Olympiad", titleAccent: "(iGO)", subtitle: "Selected to represent Pakistan at the Olympiad in London.", role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS)." },
-            "2": { icon: "fa-trophy", status: "Runner-Up", date: "Dec 2025", titleMain: "Asia Pacific ICT Alliance Award", titleAccent: "(APICTA) 2025", subtitle: "Runner-up at the region's largest ICT & entrepreneurship award.", role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA and NICAT." },
-            "3": { icon: "fa-medal", status: "Finalist & Attendee", date: "May 2025", titleMain: "International Science and Engineering Fair", titleAccent: "(ISEF)", subtitle: "Finalist & attendee at the world's largest pre-college science fair.", role: "Pakistan's Representative & Innovator", contributor: "Mentored by school science club." },
-            "4": { icon: "fa-book-open", status: "Paper Presenter", date: "Nov 2025", titleMain: "International Conference on Applications of Space Science & Technology", titleAccent: "(ICAST) 2025", subtitle: "Paper presenter on Edge ML-based CanSat research.", role: "First Author & Presenter", contributor: "Collaborated with space technology experts." }
+            "1": {
+                icon: "fa-award", status: "Selected",
+                titleMain: "International Greenwich Olympiad", titleAccent: "(iGO)",
+                description: "Selected to represent Pakistan at the International Greenwich Olympiad in London after winning Best of Category at NSEF 2026 for research on embedded systems addressing agricultural threats.",
+                meta: { date: "Jan 2026", location: "London, UK", category: "Research Delegate", organization: "iGO" },
+                role: "Lead Researcher &amp; Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS).",
+                highlights: ["Won Best of Category at NSEF 2026 ahead of selection.", "Embedded sensor system designed for real farm conditions.", "One of a small group of Pakistani delegates selected for London."]
+            },
+            "2": {
+                icon: "fa-trophy", status: "Runner-Up",
+                titleMain: "Asia Pacific ICT Alliance Award", titleAccent: "(APICTA) 2025",
+                description: "Achieved 1st Runner-Up at the Asia Pacific ICT Alliance Awards (APICTA) 2025 — the region's largest ICT and entrepreneurship awards, recognizing innovative technology solutions with strong societal impact.",
+                meta: { date: "8 Dec 2025", location: "Kaohsiung, Taiwan", category: "Senior Student (HC-SS)", organization: "APICTA" },
+                role: "Youngest Delegate &amp; Entrepreneur", contributor: "Supported by P@SHA (Pakistan Software Houses Association) and NICAT.",
+                highlights: ["Only high school student in Pakistan's 55-member delegation.", "Competed against senior university and industry teams.", "Recognized for scalability, security, and real-world impact."]
+            },
+            "3": {
+                icon: "fa-medal", status: "Finalist & Attendee",
+                titleMain: "International Science and Engineering Fair", titleAccent: "(ISEF)",
+                description: "Finalist and attendee at ISEF 2025, the world's largest pre-college science and engineering fair, selected for a novel embedded system addressing gas leakage and child safety at home.",
+                meta: { date: "May 2025", location: "Columbus, Ohio, USA", category: "Embedded Systems", organization: "ISEF" },
+                role: "Pakistan's Representative &amp; Innovator", contributor: "Mentored by the school science club.",
+                highlights: ["Presented alongside finalists from 60+ countries.", "Prototype tested for real household gas-leak scenarios.", "Selected through Pakistan's national science fair circuit."]
+            },
+            "4": {
+                icon: "fa-book-open", status: "Paper Presenter",
+                titleMain: "International Conference on Applications of Space Science & Technology", titleAccent: "(ICAST) 2025",
+                description: "Presented an original research paper on an Edge ML-based CanSat at ICAST 2025, contributing to the intersection of embedded machine learning and space technology research.",
+                meta: { date: "Nov 2025", location: "Pakistan", category: "Research Paper", organization: "ICAST" },
+                role: "First Author &amp; Presenter", contributor: "Collaborated with space technology experts.",
+                highlights: ["Accepted for oral presentation after peer review.", "Applied edge ML techniques to CanSat telemetry.", "First authored and independently presented the paper."]
+            }
         };
 
         const achievementOrder = ["1", "2", "3", "4"];
@@ -169,18 +206,44 @@
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
 
+        const metaFields = [
+            { key: 'date', label: 'Date', icon: 'fa-calendar' },
+            { key: 'location', label: 'Location', icon: 'fa-location-dot' },
+            { key: 'category', label: 'Category', icon: 'fa-user' },
+            { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
+        ];
+
+        function renderMetaGrid(meta) {
+            const grid = document.getElementById('detailMetaGrid');
+            grid.innerHTML = metaFields.map(f => `
+                <div class="detail-meta-item">
+                    <div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div>
+                    <p>${meta[f.key]}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderHighlights(highlights) {
+            const list = document.getElementById('detailHighlights');
+            list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
+        }
+
         let currentSlide = 0;
         let slideTimer = null;
 
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
+            const thumbsContainer = document.getElementById('detailThumbs');
+            const countLabel = document.getElementById('detailMediaCount');
             slideshowContainer.innerHTML = '';
             dotsContainer.innerHTML = '';
+            thumbsContainer.innerHTML = '';
             const images = recognitionImages[id] || [];
 
             if (images.length === 0) {
                 slideshowContainer.innerHTML = '<div class="photo-placeholder"><i class="fas fa-image"></i>Photos coming soon</div>';
+                countLabel.textContent = '';
                 return;
             }
 
@@ -194,16 +257,26 @@
                 dot.className = 'dot';
                 dot.onclick = () => { goToSlide(index); restartAutoplay(); };
                 dotsContainer.appendChild(dot);
+
+                const thumb = document.createElement('div');
+                thumb.className = 'detail-thumb';
+                thumb.innerHTML = `<img src="${imageSrc}" alt="Thumbnail ${index + 1}">`;
+                thumb.onclick = () => { goToSlide(index); restartAutoplay(); renderSlide(); };
+                thumbsContainer.appendChild(thumb);
             });
+
+            countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
 
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
+            const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
             for (let i = 0; i < slides.length; i++) {
                 slides[i].classList.toggle('active-slide', i === currentSlide);
                 if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
+                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
             }
         }
 
@@ -237,6 +310,7 @@
             document.getElementById('mediaPrev').style.display = showControls ? 'flex' : 'none';
             document.getElementById('mediaNext').style.display = showControls ? 'flex' : 'none';
             document.getElementById('slideshowDots').style.display = showControls ? 'flex' : 'none';
+            document.getElementById('detailThumbs').style.display = count > 0 ? 'flex' : 'none';
         }
 
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
@@ -268,11 +342,13 @@
 
             document.getElementById('detailTitleMain').textContent = data.titleMain;
             document.getElementById('detailTitleAccent').textContent = data.titleAccent;
-            document.getElementById('detailSubtitle').textContent = data.subtitle;
+            document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
-            document.getElementById('detailDate').textContent = data.date;
-            document.getElementById('detailRole').textContent = data.role;
+            document.getElementById('detailRole').innerHTML = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
+
+            renderMetaGrid(data.meta);
+            renderHighlights(data.highlights);
 
             buildSlideshow(id);
             currentSlide = 0;
