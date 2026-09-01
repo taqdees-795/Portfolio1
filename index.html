@@ -25,7 +25,35 @@
   <link rel="stylesheet" href="style.css"> 
 </head> 
  
-<body class="landing-page"> 
+<body class="landing-page intro-active"> 
+
+  <!-- =====================================================
+       VIDEO INTRO
+       Plays assets/video.mp4 first. Once it ends (or the user
+       hits skip / it fails to load) it fades out and the
+       landing page underneath becomes visible + scrollable.
+       ===================================================== -->
+  <div class="video-intro" id="videoIntro">
+
+    <video
+      id="introVideo"
+      class="video-intro-media"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-intro-veil"></div>
+
+    <button class="video-skip" id="videoSkip" type="button">
+      <span>Skip Intro</span>
+      <i class="fas fa-forward"></i>
+    </button>
+
+  </div>
  
   <main> 
  
@@ -481,7 +509,51 @@
     </section> 
  
   </main> 
- 
+
+
+  <!-- =====================================================
+       VIDEO INTRO CONTROLLER
+       ===================================================== -->
+  <script>
+    (function () {
+      var introEl  = document.getElementById('videoIntro');
+      var videoEl  = document.getElementById('introVideo');
+      var skipBtn  = document.getElementById('videoSkip');
+      var body     = document.body;
+      var finished = false;
+
+      function endIntro() {
+        if (finished) return;
+        finished = true;
+
+        introEl.classList.add('fade-out');
+        body.classList.remove('intro-active');
+
+        // remove it from the DOM once the fade transition is done
+        window.setTimeout(function () {
+          if (introEl && introEl.parentNode) {
+            introEl.parentNode.removeChild(introEl);
+          }
+        }, 700);
+      }
+
+      // Normal path: video finishes playing on its own
+      videoEl.addEventListener('ended', endIntro);
+
+      // Manual skip
+      skipBtn.addEventListener('click', endIntro);
+
+      // Safety net: if assets/video.mp4 is missing / fails / can't
+      // autoplay on this browser, don't trap the user on a blank screen
+      videoEl.addEventListener('error', endIntro);
+
+      window.setTimeout(function () {
+        if (!finished && videoEl.paused && videoEl.readyState < 2) {
+          endIntro();
+        }
+      }, 4000);
+    })();
+  </script>
  
   <!-- JavaScript --> 
   <script src="script.js"></script> 
