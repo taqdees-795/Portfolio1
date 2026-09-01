@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html">01</a>
@@ -22,42 +21,38 @@
         <a href="projects.html">06</a>
         <a href="activity.html">07</a>
     </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
-
                 <div id="sectionHeadWrapper">
-                    <div class="section-id mono">SEC. 05</div>
+                    <div class="section-id mono">SEC. 04</div>
                     <div class="section-head">
                         <div class="eyebrow">Published Work</div>
                         <h2>Research Experience</h2>
-                        <p>From field-deployed sensors to a published paper on low-cost satellite systems.</p>
+                        <p>Independent research work from field sensors to satellite technology.</p>
                     </div>
                 </div>
-
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
-                        <div class="recognition-item-icon"><i class="fas fa-satellite"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-leaf"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Edge ML-Based CanSat <span class="short-form">(ICAST)</span></h3>
-                            <span class="status-tag">Research Paper</span>
+                            <h3>Agricultural Field Monitoring System <span class="short-form">(RISE 2025 - LUMS)</span></h3>
+                            <span class="status-tag">Research Work</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="2">
-                        <div class="recognition-item-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-satellite"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Embedded Agricultural & Safety Systems <span class="short-form">(NSEF)</span></h3>
-                            <span class="status-tag">Winner</span>
+                            <h3>Edge ML-Based CanSat <span class="short-form">(ICAST 2025)</span></h3>
+                            <span class="status-tag">Published Paper</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
                         <div class="detail-left">
@@ -80,16 +75,13 @@
                                 <ul id="detailHighlights" class="detail-highlights-list"></ul>
                             </div>
                         </div>
-
                         <div class="detail-right">
                             <div class="detail-media-stack">
                                 <div class="stack-card stack-card-2"></div>
                                 <div class="stack-card stack-card-1"></div>
-                                <div class="detail-media" id="detailMedia">
-                                    <div class="slideshow-container" id="slideshowContainer"></div>
-                                </div>
-                                <button type="button" class="media-arrow prev" id="mediaPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-                                <button type="button" class="media-arrow next" id="mediaNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                                <div class="detail-media" id="detailMedia"><div class="slideshow-container" id="slideshowContainer"></div></div>
+                                <button type="button" class="media-arrow prev" id="mediaPrev"><i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="media-arrow next" id="mediaNext"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="slideshow-dots" id="slideshowDots"></div>
                             <div class="detail-thumbs" id="detailThumbs"></div>
@@ -97,75 +89,44 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="internships.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> Internships</a>
                     <span class="page-nav-pos">04 / 07</span>
                     <a href="beyond-the-lab.html" class="page-nav-link next">Beyond the Lab <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> Research</a>
                     <span class="page-nav-pos" id="achNavPos">01 / 02</span>
-                    <a href="#" class="page-nav-link next" id="achNavNext">Next Research <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="page-nav-link next" id="achNavNext">Next <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
-
     <script>
         const recognitionData = {
-            "1": {
-                icon: "fa-satellite", status: "Research Paper",
-                titleMain: "Edge ML-Based CanSat", titleAccent: "(ICAST)",
-                description: "Low-cost satellite running machine learning at the edge, published and presented at ICAST 2025.",
-                meta: { date: "Nov 2025", location: "Pakistan", category: "Space Tech", organization: "ICAST" },
-                role: "First Author & Presenter", contributor: "Edge ML, Embedded Systems",
-                highlights: ["First-authored paper presented internationally.", "Applied edge ML techniques to CanSat telemetry.", "One of the youngest researchers in this field."]
-            },
-            "2": {
-                icon: "fa-leaf", status: "Winner",
-                titleMain: "Embedded Agricultural & Safety Systems", titleAccent: "(NSEF)",
-                description: "Designed an embedded system addressing agricultural field threats, winning Best of Category in Environmental Engineering.",
-                meta: { date: "2025 – 2026", location: "Pakistan", category: "AgriTech", organization: "NSEF" },
-                role: "Lead Researcher", contributor: "Embedded Systems, IoT Sensors",
-                highlights: ["Won Best of Category at NSEF 2026.", "Monitors multiple agricultural threats.", "Designed for low-cost deployment."]
-            }
+            "1": { icon: "fa-leaf", status: "Research Work", titleMain: "Agricultural Field Monitoring System", titleAccent: "(RISE 2025 - LUMS)", description: "Developed an independent embedded system addressing agricultural field threats with machine learning and a mobile app for custom datasets.", meta: { date: "2025", location: "LUMS", category: "Research", organization: "SBASSE" }, role: "Lead Researcher", contributor: "Machine Learning, Embedded Systems", highlights: ["Worked under Dr. Nauman Zaffar at LUMS.", "Built a mobile app for training ML models.", "Won Best of Category at NSEF 2026."] },
+            "2": { icon: "fa-satellite", status: "Published Paper", titleMain: "Edge ML-Based CanSat", titleAccent: "(ICAST 2025)", description: "First-authored research paper on a low-cost multipurpose remote sensing solution using Edge ML, published and presented at ICAST 2025.", meta: { date: "Nov 2025", location: "Pakistan", category: "Space Tech", organization: "ICAST" }, role: "First Author & Presenter", contributor: "Edge ML, Embedded Systems", highlights: ["Published internationally.", "Applied edge ML to satellite technology.", "One of the youngest researchers in this field."] }
         };
-
         const achievementOrder = ["1", "2"];
-
-        const recognitionImages = {
-            "1": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"],
-            "2": ["assets/P@SHA1.jpg", "assets/P@SHA.jpg"]
-        };
-
+        const recognitionImages = { "1": ["assets/LUMS1.jpeg", "assets/LUMS2.jpeg"], "2": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"] };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
-
-        document.querySelectorAll('.recognition-list-item').forEach(item => {
-            item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
-        });
-
+        document.querySelectorAll('.recognition-list-item').forEach(item => { item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); }); });
         const metaFields = [
             { key: 'date', label: 'Date', icon: 'fa-calendar' },
             { key: 'location', label: 'Location', icon: 'fa-location-dot' },
             { key: 'category', label: 'Category', icon: 'fa-tag' },
             { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
         ];
-
         function renderMetaGrid(meta) {
             const grid = document.getElementById('detailMetaGrid');
             grid.innerHTML = metaFields.map(f => `<div class="detail-meta-item"><div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div><p>${meta[f.key]}</p></div>`).join('');
         }
-
         function renderHighlights(highlights) {
             const list = document.getElementById('detailHighlights');
             list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
         }
-
         let currentSlide = 0; let slideTimer = null;
-
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
@@ -181,19 +142,13 @@
             });
             countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
-
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
             const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.toggle('active-slide', i === currentSlide);
-                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
-                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.toggle('active-slide', i === currentSlide); if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide); if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide); }
         }
-
         function nextSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
         function prevSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
         function goToSlide(i) { currentSlide = i; renderSlide(); }
@@ -207,7 +162,6 @@
         }
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
         document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
-
         function updateAchievementNav(id) {
             const idx = achievementOrder.indexOf(id); const total = achievementOrder.length;
             document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
@@ -215,7 +169,6 @@
             if (idx < total - 1) { nextBtn.style.visibility = 'visible'; nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); }; }
             else { nextBtn.style.visibility = 'hidden'; }
         }
-
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
             sectionHeadWrapper.style.display = 'none'; backBtnWrapper.style.display = 'block';
@@ -234,7 +187,6 @@
             const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();
             updateAchievementNav(id);
         }
-
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
             backBtnWrapper.style.display = 'none'; sectionHeadWrapper.style.display = 'block';

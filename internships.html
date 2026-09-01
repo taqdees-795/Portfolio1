@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html">01</a>
@@ -20,15 +19,14 @@
         <a href="research.html">04</a>
         <a href="beyond-the-lab.html">05</a>
         <a href="projects.html">06</a>
+        <a href="activity.html">07</a>
     </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
-
                 <div id="sectionHeadWrapper">
                     <div class="section-id mono">SEC. 04</div>
                     <div class="section-head">
@@ -37,12 +35,11 @@
                         <p>Time spent inside real labs, working alongside researchers and engineers.</p>
                     </div>
                 </div>
-
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-microchip"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Embedded Systems Intern <span class="short-form">- TechNova Solutions</span></h3>
+                            <h3>Embedded Systems &amp; Machine Learning Lab <span class="short-form">- FAST NUCES Islamabad</span></h3>
                             <span class="status-tag">Internship Experience</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
@@ -56,7 +53,6 @@
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
                         <div class="detail-left">
@@ -79,7 +75,6 @@
                                 <ul id="detailHighlights" class="detail-highlights-list"></ul>
                             </div>
                         </div>
-
                         <div class="detail-right">
                             <div class="detail-media-stack">
                                 <div class="stack-card stack-card-2"></div>
@@ -96,13 +91,11 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="national.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> National</a>
-                    <span class="page-nav-pos">03 / 06</span>
+                    <span class="page-nav-pos">03 / 07</span>
                     <a href="research.html" class="page-nav-link next">Research <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> Internships</a>
                     <span class="page-nav-pos" id="achNavPos">01 / 02</span>
@@ -111,62 +104,33 @@
             </div>
         </section>
     </main>
-
     <script>
         const recognitionData = {
-            "1": {
-                icon: "fa-microchip", status: "Internship Experience",
-                titleMain: "Embedded Systems Intern", titleAccent: "- TechNova Solutions",
-                description: "Worked on IoT device prototyping, sensor integration, and real-world agricultural monitoring systems.",
-                meta: { date: "Jul 2024 - Aug 2025", location: "Remote", category: "Internship", organization: "TechNova" },
-                role: "Developed firmware for sensor nodes. Integrated with real-world IoT devices. Debugging and validation.",
-                contributor: "Embedded C, IoT, Sensors, Debugging, PCB Basics",
-                highlights: ["Hands-on experience with real-world IoT devices.", "Improved problem-solving and debugging skills.", "Worked on industry-grade embedded development."]
-            },
-            "2": {
-                icon: "fa-robot", status: "Internship Experience",
-                titleMain: "Research Internship (RISE)", titleAccent: "- SBASSE, LUMS",
-                description: "Developed an agricultural field monitoring system and a mobile ML training app under Dr. Nauman Zaffar.",
-                meta: { date: "Jul 2025 - Aug 2025", location: "LUMS", category: "Internship", organization: "SBASSE" },
-                role: "Developed hardware-software integration for real-world agricultural threats.",
-                contributor: "Embedded Systems, Machine Learning",
-                highlights: ["Worked directly with Dr. Nauman Zaffar.", "Built a custom object detection mobile app.", "Enhanced agricultural monitoring efficiency."]
-            }
+            "1": { icon: "fa-microchip", status: "Internship Experience", titleMain: "Embedded Systems & Machine Learning Lab", titleAccent: "- FAST NUCES Islamabad", description: "Hands-on internship at FAST NUCES Islamabad gaining practical experience in 3D printing technologies, rapid prototyping, and deploying machine learning models on Raspberry Pi 5.", meta: { date: "20 Jan - 28 Feb, 2025", location: "Islamabad", category: "Internship", organization: "FAST NUCES" }, role: "Worked on rapid prototyping with 3D printing and deployed ML models on Raspberry Pi 5 hardware.", contributor: "3D Printing, Rapid Prototyping, Machine Learning, Raspberry Pi", highlights: ["Gained practical experience in 3D printing and rapid prototyping.", "Deployed machine learning models on Raspberry Pi 5.", "Integrated AI with hardware for real-world applications."] },
+            "2": { icon: "fa-robot", status: "Internship Experience", titleMain: "Research Internship (RISE)", titleAccent: "- SBASSE, LUMS", description: "Developed an agricultural field monitoring system and a mobile ML training app under Dr. Nauman Zaffar.", meta: { date: "Jul 2025 - Aug 2025", location: "LUMS", category: "Internship", organization: "SBASSE" }, role: "Developed hardware-software integration for real-world agricultural threats.", contributor: "Embedded Systems, Machine Learning", highlights: ["Worked directly with Dr. Nauman Zaffar.", "Built a custom object detection mobile app.", "Enhanced agricultural monitoring efficiency."] }
         };
-
         const achievementOrder = ["1", "2"];
-
-        const recognitionImages = {
-            "1": ["assets/FAST.jpg"],
-            "2": ["assets/LUMS1.jpeg", "assets/LUMS2.jpeg", "assets/LUMS3.jpeg", "assets/LUMS4.jpeg"]
-        };
-
+        const recognitionImages = { "1": ["assets/FAST.jpg"], "2": ["assets/LUMS1.jpeg", "assets/LUMS2.jpeg", "assets/LUMS3.jpg", "assets/LUMS4.jpeg"] };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
-
         document.querySelectorAll('.recognition-list-item').forEach(item => {
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
-
         const metaFields = [
             { key: 'date', label: 'Date', icon: 'fa-calendar' },
             { key: 'location', label: 'Location', icon: 'fa-location-dot' },
             { key: 'category', label: 'Category', icon: 'fa-tag' },
             { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
         ];
-
         function renderMetaGrid(meta) {
             const grid = document.getElementById('detailMetaGrid');
             grid.innerHTML = metaFields.map(f => `<div class="detail-meta-item"><div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div><p>${meta[f.key]}</p></div>`).join('');
         }
-
         function renderHighlights(highlights) {
             const list = document.getElementById('detailHighlights');
             list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
         }
-
         let currentSlide = 0; let slideTimer = null;
-
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
@@ -182,19 +146,13 @@
             });
             countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
-
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
             const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.toggle('active-slide', i === currentSlide);
-                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
-                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.toggle('active-slide', i === currentSlide); if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide); if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide); }
         }
-
         function nextSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
         function prevSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
         function goToSlide(i) { currentSlide = i; renderSlide(); }
@@ -208,7 +166,6 @@
         }
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
         document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
-
         function updateAchievementNav(id) {
             const idx = achievementOrder.indexOf(id); const total = achievementOrder.length;
             document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
@@ -216,7 +173,6 @@
             if (idx < total - 1) { nextBtn.style.visibility = 'visible'; nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); }; }
             else { nextBtn.style.visibility = 'hidden'; }
         }
-
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
             sectionHeadWrapper.style.display = 'none'; backBtnWrapper.style.display = 'block';
@@ -235,7 +191,6 @@
             const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();
             updateAchievementNav(id);
         }
-
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
             backBtnWrapper.style.display = 'none'; sectionHeadWrapper.style.display = 'block';

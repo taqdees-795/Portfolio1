@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html">01</a>
@@ -22,28 +21,25 @@
         <a href="projects.html">06</a>
         <a href="activity.html" class="active">07</a>
     </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
-
                 <div id="sectionHeadWrapper">
                     <div class="section-id mono">SEC. 08</div>
                     <div class="section-head">
                         <div class="eyebrow">Hobbies & Interests</div>
                         <h2>Activity</h2>
-                        <p>Things I love doing outside of work, study, and research.</p>
+                        <p>Personal, outdoor, and life outside the lab.</p>
                     </div>
                 </div>
-
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-person-hiking"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Hiking & Nature Exploration</h3>
+                            <h3>Hiking & Trekking</h3>
                             <span class="status-tag">Outdoors</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
@@ -51,45 +47,36 @@
                     <div class="recognition-list-item" data-id="2">
                         <div class="recognition-item-icon"><i class="fas fa-car-side"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Driving & Road Trips</h3>
+                            <h3>Driving</h3>
                             <span class="status-tag">Travel</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="3">
-                        <div class="recognition-item-icon"><i class="fas fa-water"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-basketball-ball"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Swimming & Water Sports</h3>
+                            <h3>Basketball <span class="short-form">(FBISE Runner-Up)</span></h3>
                             <span class="status-tag">Sport</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="4">
-                        <div class="recognition-item-icon"><i class="fas fa-comments"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-tent"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Debates & Public Speaking</h3>
-                            <span class="status-tag">Communication</span>
+                            <h3>Fazaian Adventure Camp</h3>
+                            <span class="status-tag">Outdoors</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="5">
-                        <div class="recognition-item-icon"><i class="fas fa-plane"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-flask"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Travel & Exploration</h3>
-                            <span class="status-tag">Global</span>
-                        </div>
-                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                    <div class="recognition-list-item" data-id="6">
-                        <div class="recognition-item-icon"><i class="fas fa-book-open-reader"></i></div>
-                        <div class="recognition-item-text">
-                            <h3>Reading & Research</h3>
-                            <span class="status-tag">Learning</span>
+                            <h3>Fazaian Science Exhibition</h3>
+                            <span class="status-tag">Participation</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
-
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
                         <div class="detail-left">
@@ -112,16 +99,13 @@
                                 <ul id="detailHighlights" class="detail-highlights-list"></ul>
                             </div>
                         </div>
-
                         <div class="detail-right">
                             <div class="detail-media-stack">
                                 <div class="stack-card stack-card-2"></div>
                                 <div class="stack-card stack-card-1"></div>
-                                <div class="detail-media" id="detailMedia">
-                                    <div class="slideshow-container" id="slideshowContainer"></div>
-                                </div>
-                                <button type="button" class="media-arrow prev" id="mediaPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-                                <button type="button" class="media-arrow next" id="mediaNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                                <div class="detail-media" id="detailMedia"><div class="slideshow-container" id="slideshowContainer"></div></div>
+                                <button type="button" class="media-arrow prev" id="mediaPrev"><i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="media-arrow next" id="mediaNext"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="slideshow-dots" id="slideshowDots"></div>
                             <div class="detail-thumbs" id="detailThumbs"></div>
@@ -129,111 +113,47 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="projects.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> Projects</a>
                     <span class="page-nav-pos">07 / 07</span>
                     <a href="contact.html" class="page-nav-link next">Contact <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> Activity</a>
-                    <span class="page-nav-pos" id="achNavPos">01 / 06</span>
-                    <a href="#" class="page-nav-link next" id="achNavNext">Next <i class="fas fa-arrow-right"></i></a>
+                    <span class="page-nav-pos" id="achNavPos">01 / 05</span>
+                    <a href="#" class="page-nav-link next" id="achNavNext" style="visibility: hidden;">Next <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
-
     <script>
         const recognitionData = {
-            "1": {
-                icon: "fa-person-hiking", status: "Outdoors",
-                titleMain: "Hiking & Nature Exploration", titleAccent: "",
-                description: "I love exploring nature trails, mountains, and outdoor environments to clear my mind and stay connected with nature.",
-                meta: { date: "Ongoing", location: "Pakistan", category: "Outdoors", organization: "Personal" },
-                role: "Adventure Enthusiast", contributor: "Promotes outdoor activities among youth.",
-                highlights: ["Frequently explore northern areas of Pakistan.", "Believe in staying active and close to nature.", "Promote eco-friendly tourism."]
-            },
-            "2": {
-                icon: "fa-car-side", status: "Travel",
-                titleMain: "Driving & Road Trips", titleAccent: "",
-                description: "Exploring new places through driving and road trips is a passion of mine, offering freedom and new perspectives.",
-                meta: { date: "Ongoing", location: "Various", category: "Travel", organization: "Personal" },
-                role: "Road Trip Enthusiast", contributor: "Shares travel experiences and tips.",
-                highlights: ["Enjoy long drives with friends and family.", "Explore off-the-beaten-path destinations.", "Passionate about discovering new cultures."]
-            },
-            "3": {
-                icon: "fa-water", status: "Sport",
-                titleMain: "Swimming & Water Sports", titleAccent: "",
-                description: "Swimming is a favorite physical activity that helps with fitness, relaxation, and endurance.",
-                meta: { date: "Ongoing", location: "Various", category: "Sport", organization: "Personal" },
-                role: "Sports Enthusiast", contributor: "Encourages healthy lifestyle choices.",
-                highlights: ["Regularly practice swimming for fitness.", "Enjoy water sports and activities.", "Promote mental and physical well-being."]
-            },
-            "4": {
-                icon: "fa-comments", status: "Communication",
-                titleMain: "Debates & Public Speaking", titleAccent: "",
-                description: "Active in debates and public speaking, I have won multiple awards including Best Delegate at JCMUN.",
-                meta: { date: "Ongoing", location: "Jinnah Camp", category: "Communication", organization: "MUN" },
-                role: "Debater & Speaker", contributor: "Mentors junior students in public speaking.",
-                highlights: ["Best Delegate at Jinnah Camp MUN.", "Strong communication and leadership skills.", "Passionate about youth advocacy."]
-            },
-            "5": {
-                icon: "fa-plane", status: "Global",
-                titleMain: "Travel & Exploration", titleAccent: "",
-                description: "Traveling to new countries and cities to experience different cultures, cuisines, and histories.",
-                meta: { date: "Ongoing", location: "Global", category: "Travel", organization: "Personal" },
-                role: "Global Explorer", contributor: "Shares cultural experiences and insights.",
-                highlights: ["Visited multiple countries for competitions.", "Believe in global citizenship.", "Learning from diverse cultures."]
-            },
-            "6": {
-                icon: "fa-book-open-reader", status: "Learning",
-                titleMain: "Reading & Research", titleAccent: "",
-                description: "An avid reader and researcher who loves to dive into new topics and stay updated with the latest trends.",
-                meta: { date: "Ongoing", location: "Global", category: "Learning", organization: "Personal" },
-                role: "Knowledge Seeker", contributor: "Shares insights and learnings with peers.",
-                highlights: ["Regularly reads about emerging technologies.", "Passionate about continuous learning.", "Research-driven mindset."]
-            }
+            "1": { icon: "fa-person-hiking", status: "Outdoors", titleMain: "Hiking & Trekking", titleAccent: "", description: "Exploring nature trails, mountains, and outdoor environments to clear my mind and stay connected with nature.", meta: { date: "Ongoing", location: "Pakistan", category: "Outdoors", organization: "Personal" }, role: "Adventure Enthusiast", contributor: "Promotes outdoor activities among youth.", highlights: ["Frequently explore northern areas of Pakistan.", "Believe in staying active and close to nature.", "Promote eco-friendly tourism."] },
+            "2": { icon: "fa-car-side", status: "Travel", titleMain: "Driving", titleAccent: "", description: "Exploring new places through driving and road trips, offering freedom and new perspectives.", meta: { date: "Ongoing", location: "Various", category: "Travel", organization: "Personal" }, role: "Road Trip Enthusiast", contributor: "Shares travel experiences and tips.", highlights: ["Enjoy long drives with friends and family.", "Explore off-the-beaten-path destinations.", "Passionate about discovering new cultures."] },
+            "3": { icon: "fa-basketball-ball", status: "Sport", titleMain: "Basketball", titleAccent: "(FBISE Runner-Up)", description: "An active participant on the school sports team, with basketball as a favorite way to stay competitive and fit.", meta: { date: "Ongoing", location: "Pakistan", category: "Sport", organization: "School Team" }, role: "Team Player", contributor: "Active participant in school sports team.", highlights: ["Active member of the school basketball team.", "Runner-up at the FBISE basketball competition.", "Values teamwork and staying active."] },
+            "4": { icon: "fa-tent", status: "Outdoors", titleMain: "Fazaian Adventure Camp", titleAccent: "", description: "Participated in the Fazaian Adventure Camp, experiencing outdoor survival skills, teamwork, and nature immersion.", meta: { date: "2024", location: "Pakistan", category: "Outdoors", organization: "Fazaia" }, role: "Participant", contributor: "Learned teamwork and outdoor survival skills.", highlights: ["Participated in the Fazaian Adventure Camp.", "Experienced outdoor team-building activities.", "Developed resilience and outdoor skills."] },
+            "5": { icon: "fa-flask", status: "Participation", titleMain: "Fazaian Science Exhibition", titleAccent: "", description: "Participated in the Fazaian Annual Science Exhibition to promote curiosity and hands-on learning among peers.", meta: { date: "2025", location: "Fazaia", category: "Participation", organization: "School" }, role: "Participant", contributor: "Showcased science projects to the student community.", highlights: ["Participated in the annual science exhibition.", "Demonstrated scientific curiosity.", "Engaged students in hands-on STEM learning."] }
         };
-
-        const achievementOrder = ["1", "2", "3", "4", "5", "6"];
-
-        const recognitionImages = {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": []
-        };
-
+        const achievementOrder = ["1", "2", "3", "4", "5"];
+        const recognitionImages = { "1": [], "2": [], "3": ["assets/FBISE_BASKETBALL1.jpg"], "4": [], "5": [] };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
-
-        document.querySelectorAll('.recognition-list-item').forEach(item => {
-            item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
-        });
-
+        document.querySelectorAll('.recognition-list-item').forEach(item => { item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); }); });
         const metaFields = [
             { key: 'date', label: 'Date', icon: 'fa-calendar' },
             { key: 'location', label: 'Location', icon: 'fa-location-dot' },
             { key: 'category', label: 'Category', icon: 'fa-tag' },
             { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
         ];
-
         function renderMetaGrid(meta) {
             const grid = document.getElementById('detailMetaGrid');
             grid.innerHTML = metaFields.map(f => `<div class="detail-meta-item"><div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div><p>${meta[f.key]}</p></div>`).join('');
         }
-
         function renderHighlights(highlights) {
             const list = document.getElementById('detailHighlights');
             list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
         }
-
         let currentSlide = 0; let slideTimer = null;
-
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
@@ -249,19 +169,13 @@
             });
             countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
-
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
             const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.toggle('active-slide', i === currentSlide);
-                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
-                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.toggle('active-slide', i === currentSlide); if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide); if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide); }
         }
-
         function nextSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
         function prevSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
         function goToSlide(i) { currentSlide = i; renderSlide(); }
@@ -275,7 +189,6 @@
         }
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
         document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
-
         function updateAchievementNav(id) {
             const idx = achievementOrder.indexOf(id); const total = achievementOrder.length;
             document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
@@ -283,7 +196,6 @@
             if (idx < total - 1) { nextBtn.style.visibility = 'visible'; nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); }; }
             else { nextBtn.style.visibility = 'hidden'; }
         }
-
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
             sectionHeadWrapper.style.display = 'none'; backBtnWrapper.style.display = 'block';
@@ -302,7 +214,6 @@
             const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();
             updateAchievementNav(id);
         }
-
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
             backBtnWrapper.style.display = 'none'; sectionHeadWrapper.style.display = 'block';

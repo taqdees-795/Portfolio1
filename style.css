@@ -73,9 +73,29 @@ main, footer { margin-left: 0 !important; width: 100%; position: relative; min-w
 
 .hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .hero-visual-bg { position: absolute; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; }
-.hero-visual-ring { position: absolute; width: 360px; height: 440px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-6deg); border-radius: 24px; background: linear-gradient(135deg, #d4af37, #e8c4a0); z-index: 0; opacity: 0.25; }
-.hero-photo-wrap { position: relative; width: 320px; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7); border: 6px solid var(--accent-soft); z-index: 1; margin-bottom: 24px; }
-.hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+/* -----------------------------------------------------------
+   HERO PHOTO — frame removed, image blends into the background
+   ----------------------------------------------------------- */
+.hero-photo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3 / 4;
+  z-index: 1;
+  margin: 0 auto 24px;
+  overflow: visible;
+  mask-image: radial-gradient(ellipse 74% 82% at 50% 42%, black 62%, transparent 98%);
+  -webkit-mask-image: radial-gradient(ellipse 74% 82% at 50% 42%, black 62%, transparent 98%);
+}
+.hero-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top 68%;
+  filter: grayscale(55%) contrast(1.08) brightness(0.92);
+}
+
 .hero-badge { position: absolute; bottom: 16px; left: 16px; right: 16px; background: rgba(18, 18, 18, 0.9); color: #fff; padding: 10px 14px; border-radius: 12px; font-family: "JetBrains Mono", monospace; font-size: 12px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--accent); }
 .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
 .hero-founder { margin-top: 10px; text-align: center; padding: 12px 24px; border-radius: 50px; background: rgba(18, 18, 18, 0.9); border: 1px solid var(--accent); color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); z-index: 2; }
@@ -240,11 +260,9 @@ footer .mono { color: var(--accent); }
 .hero-caption i { color: var(--accent); font-size: 12px; }
 
 .hero-photo-wrap { opacity: 0; animation: heroImgIn 1s var(--ease) 0.25s forwards; }
-.hero-photo-wrap img { animation: heroFloat 7s ease-in-out 0.5s infinite; }
 
 @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
 @keyframes heroImgIn { from { opacity: 0; transform: translateY(22px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-@keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
 .about-section { background: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(0, 0, 0, 0.12) 100%); }
 .explore-section { background: rgba(0, 0, 0, 0.18); }
@@ -543,8 +561,7 @@ body.intro-done { overflow-x: hidden; }
   .hero h1 { font-size: 42px; }
   .hero-minimal .hero-role { font-size: 10.5px; letter-spacing: 0.05em; flex-wrap: wrap; }
   .hero-minimal .hero-intro { font-size: 15px; }
-  .hero-photo-wrap { width: 270px; height: 340px; }
-  .hero-visual-ring { width: 300px; height: 370px; }
+  .hero-photo-wrap { max-width: 270px; }
   .hero-visual-bg { width: 340px; height: 340px; }
   .credentials-strip span { width: 100%; justify-content: center; }
   .about-stats { gap: 22px; }

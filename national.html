@@ -11,8 +11,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Subtle page-position indicator -->
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html">01</a>
@@ -21,18 +19,16 @@
         <a href="research.html">04</a>
         <a href="beyond-the-lab.html">05</a>
         <a href="projects.html">06</a>
+        <a href="activity.html">07</a>
     </nav>
 
     <main>
         <section class="screen">
             <div class="wrap">
-
-                <!-- BACK TO LIST BUTTON -->
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
 
-                <!-- SECTION HEAD -->
                 <div id="sectionHeadWrapper">
                     <div class="section-id mono">SEC. 03</div>
                     <div class="section-head">
@@ -42,269 +38,163 @@
                     </div>
                 </div>
 
-                <!-- LIST VIEW (Full Form + Bracket Abbreviation + Status) -->
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-crown"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Pakistan Software Houses Association (P@SHA) ICT Award </h3>
+                            <h3>Pakistan Software Houses Association <span class="short-form">(P@SHA)</span> ICT Award</h3>
                             <span class="status-tag">Gold Winner</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="2">
-                        <div class="recognition-item-icon"><i class="fas fa-code"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
                         <div class="recognition-item-text">
-                            <h3>All Pakistan Computer Science Project Presentation &amp; Exhibition Competition (COMPPEC) '25 </h3>
-                            <span class="status-tag">Winner</span>
+                            <h3>National Science &amp; Engineering Fair <span class="short-form">(NSEF)</span></h3>
+                            <span class="status-tag">Best of Category &amp; Grand Award</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="3">
-                        <div class="recognition-item-icon"><i class="fas fa-rocket"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-code"></i></div>
                         <div class="recognition-item-text">
-                            <h3>National Incubation Centre of Aerospace Technology (NICAT) Startup Incubation</h3>
-                            <span class="status-tag">Incubated</span>
+                            <h3>All Pakistan Computer Science Project Presentation &amp; Exhibition Competition <span class="short-form">(COMPPEC)</span> '25</h3>
+                            <span class="status-tag">Winner</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="4">
-                        <div class="recognition-item-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="recognition-item-icon"><i class="fas fa-satellite"></i></div>
                         <div class="recognition-item-text">
-                            <h3>League of Launchers 2025 <span class="short-form">— Top 15</span></h3>
-                            <span class="status-tag">Top 15</span>
+                            <h3>Institute of Space Technology <span class="short-form">(IST)</span> CanSat Design Competition</h3>
+                            <span class="status-tag">Winner</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="recognition-list-item" data-id="5">
+                        <div class="recognition-item-icon"><i class="fas fa-gavel"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>Jinnah Camp Model United Nations <span class="short-form">(JCMUN)</span> '25</h3>
+                            <span class="status-tag">Best Delegate</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="recognition-list-item" data-id="6">
+                        <div class="recognition-item-icon"><i class="fas fa-robot"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>National Engineering &amp; Robotics Contest <span class="short-form">(NERC)</span></h3>
+                            <span class="status-tag">Ambassador</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </div>
 
-                <!-- DETAIL VIEW -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
+                    <!-- Detail View Code (Same as before, just update data in script) -->
                     <div class="detail-columns">
-
                         <div class="detail-left">
                             <span class="status-tag" id="detailStatus"></span>
-
                             <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
                             <p class="detail-subtitle" id="detailDescription"></p>
-
                             <div class="detail-meta-grid" id="detailMetaGrid"></div>
-
                             <div class="detail-info-grid">
                                 <div class="detail-info-block">
-                                    <div class="detail-info-head">
-                                        <div class="detail-info-icon"><i class="fas fa-star"></i></div>
-                                        <span class="detail-info-label">Role &amp; Impact</span>
-                                    </div>
+                                    <div class="detail-info-head"><div class="detail-info-icon"><i class="fas fa-star"></i></div><span class="detail-info-label">Role &amp; Impact</span></div>
                                     <p id="detailRole"></p>
                                 </div>
                                 <div class="detail-info-block">
-                                    <div class="detail-info-head">
-                                        <div class="detail-info-icon"><i class="fas fa-people-group"></i></div>
-                                        <span class="detail-info-label">Secondary Contributor</span>
-                                    </div>
+                                    <div class="detail-info-head"><div class="detail-info-icon"><i class="fas fa-people-group"></i></div><span class="detail-info-label">Secondary Contributor</span></div>
                                     <p id="detailContributor"></p>
                                 </div>
                             </div>
-
                             <div class="detail-highlights-block">
-                                <div class="detail-info-head">
-                                    <div class="detail-info-icon"><i class="fas fa-bullseye"></i></div>
-                                    <span class="detail-info-label">Project Highlights</span>
-                                </div>
+                                <div class="detail-info-head"><div class="detail-info-icon"><i class="fas fa-bullseye"></i></div><span class="detail-info-label">Project Highlights</span></div>
                                 <ul id="detailHighlights" class="detail-highlights-list"></ul>
                             </div>
                         </div>
-
                         <div class="detail-right">
                             <div class="detail-media-stack">
                                 <div class="stack-card stack-card-2"></div>
                                 <div class="stack-card stack-card-1"></div>
-                                <div class="detail-media" id="detailMedia">
-                                    <div class="slideshow-container" id="slideshowContainer"></div>
-                                </div>
-                                <button type="button" class="media-arrow prev" id="mediaPrev" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
-                                <button type="button" class="media-arrow next" id="mediaNext" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                                <div class="detail-media" id="detailMedia"><div class="slideshow-container" id="slideshowContainer"></div></div>
+                                <button type="button" class="media-arrow prev" id="mediaPrev"><i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="media-arrow next" id="mediaNext"><i class="fas fa-chevron-right"></i></button>
                             </div>
                             <div class="slideshow-dots" id="slideshowDots"></div>
-
                             <div class="detail-thumbs" id="detailThumbs"></div>
                             <div class="detail-media-count" id="detailMediaCount"></div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- JOURNEY NAVIGATION -->
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="international.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> International</a>
-                    <span class="page-nav-pos">02 / 06</span>
+                    <span class="page-nav-pos">02 / 07</span>
                     <a href="internships.html" class="page-nav-link next">Internships <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <!-- ACHIEVEMENT-LEVEL NAVIGATION -->
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> National Recognition</a>
-                    <span class="page-nav-pos" id="achNavPos">01 / 04</span>
-                    <a href="#" class="page-nav-link next" id="achNavNext">Next Achievement <i class="fas fa-arrow-right"></i></a>
+                    <span class="page-nav-pos" id="achNavPos">01 / 06</span>
+                    <a href="#" class="page-nav-link next" id="achNavNext">Next <i class="fas fa-arrow-right"></i></a>
                 </div>
-
             </div>
         </section>
     </main>
-
     <script>
-        // Detail View Data (Full Form Titles)
         const recognitionData = {
-            "1": {
-                icon: "fa-crown", status: "Gold Winner",
-                titleMain: "Pakistan Software Houses Association (P@SHA) ICT Award", titleAccent: "",
-                description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.",
-                meta: { date: "Sep 2025", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" },
-                role: "Gold Award Winner &amp; Youngest Innovator", contributor: "Supported by NICAT and Fazaian Science &amp; Entrepreneurship Society.",
-                highlights: ["Only high school student to represent Pakistan at APICTA.", "Won Gold in the biggest national ICT competition.", "Startup 'SenseGuard' recognized for social impact."]
-            },
-            "2": {
-                icon: "fa-code", status: "Winner",
-                titleMain: "All Pakistan Computer Science Project Presentation &amp; Exhibition Competition (COMPPEC) '25", titleAccent: "",
-                description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.",
-                meta: { date: "May 2025", location: "NUST, EME", category: "Project Competition", organization: "COMPPEC" },
-                role: "Winner &amp; Team Leader", contributor: "Collaborated with SenseGuard team members.",
-                highlights: ["Won All Pakistan Computer Science Competition.", "Presented a scalable safety solution.", "Demonstrated excellence in innovation and teamwork."]
-            },
-            "3": {
-                icon: "fa-rocket", status: "Incubated",
-                titleMain: "National Incubation Centre of Aerospace Technology (NICAT) Startup Incubation", titleAccent: "",
-                description: "SenseGuard selected into NICAT, one of Pakistan's premier startup incubators with selection rate <2%. Youngest entrepreneur at NICAT.",
-                meta: { date: "Oct 2025", location: "Pakistan", category: "Startup Incubation", organization: "NICAT" },
-                role: "Founder &amp; Youngest Entrepreneur", contributor: "Mentored by NICAT industry experts.",
-                highlights: ["Selected with a rate of less than 2%.", "Youngest entrepreneur at NICAT.", "Access to aerospace technology resources."]
-            },
-            "4": {
-                icon: "fa-chart-line", status: "Top 15",
-                titleMain: "League of Launchers 2025", titleAccent: "— Top 15",
-                description: "Placed Top 15 at League of Launchers 2025. Youngest and only high schooler in the cohort.",
-                meta: { date: "Jul – Sep 2025", location: "Pakistan", category: "Startup Program", organization: "Changemechanics" },
-                role: "Top 15 Startup Founder", contributor: "Supported by NIC Islamabad.",
-                highlights: ["Only high schooler in the cohort.", "Refined startup idea with university students.", "Placed in Top 15 startups."]
-            }
+            "1": { icon: "fa-crown", status: "Gold Winner", titleMain: "Pakistan Software Houses Association", titleAccent: "(P@SHA) ICT Award", description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", meta: { date: "Sep 2025", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" }, role: "Gold Award Winner & Youngest Innovator", contributor: "Supported by Fazaian Science & Entrepreneurship Society.", highlights: ["Only high school student to represent Pakistan at APICTA.", "Won Gold in the biggest national ICT competition.", "Startup 'SenseGuard' recognized for social impact."] },
+            "2": { icon: "fa-award", status: "Best of Category & Grand Award", titleMain: "National Science & Engineering Fair", titleAccent: "(NSEF)", description: "Won Best of Category and Grand Award at NSEF 2026 for research on embedded systems addressing agricultural threats, leading to International Greenwich Olympiad selection.", meta: { date: "Jan 2026", location: "Karachi", category: "Environmental Engineering", organization: "NSEF" }, role: "Winner & Researcher", contributor: "Presented research on agricultural field threats.", highlights: ["Won Best of Category in Environmental Engineering.", "Also won the Grand Award at NSEF.", "Selected to represent Pakistan at the International Greenwich Olympiad."] },
+            "3": { icon: "fa-code", status: "Winner", titleMain: "All Pakistan Computer Science Project Presentation & Exhibition Competition", titleAccent: "(COMPPEC) '25", description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.", meta: { date: "May 2025", location: "NUST, EME", category: "Project Competition", organization: "COMPPEC" }, role: "Winner & Team Leader", contributor: "Collaborated with SenseGuard team members.", highlights: ["Won All Pakistan Computer Science Competition.", "Presented a scalable safety solution.", "Demonstrated excellence in innovation and teamwork."] },
+            "4": { icon: "fa-satellite", status: "Winner", titleMain: "Institute of Space Technology", titleAccent: "(IST) CanSat Design Competition", description: "Won the CanSat Design Competition at IST during World Space Week by building a fully working satellite model the size of a can.", meta: { date: "Oct 2024", location: "Institute of Space Technology", category: "Space Tech", organization: "IST" }, role: "Satellite Builder & Presenter", contributor: "Mentored by school science teachers.", highlights: ["Built a working satellite model the size of a can.", "Presented at the Institute of Space Technology.", "Won the prestigious World Space Week competition."] },
+            "5": { icon: "fa-gavel", status: "Best Delegate", titleMain: "Jinnah Camp Model United Nations", titleAccent: "(JCMUN) '25", description: "Awarded Best Delegate at Jinnah Camp MUN for outstanding diplomacy, persuasive communication, and strategic negotiation.", meta: { date: "Feb 2025", location: "Pakistan", category: "Diplomacy", organization: "JCMUN" }, role: "Best Delegate & Leader", contributor: "Represented assigned positions effectively.", highlights: ["Won the Best Delegate award.", "Recognized for drafting standout resolutions.", "Demonstrated excellent public speaking and leadership."] },
+            "6": { icon: "fa-robot", status: "Ambassador", titleMain: "National Engineering & Robotics Contest", titleAccent: "(NERC)", description: "Served as an Ambassador for the National Engineering & Robotics Contest, encouraging peers to pursue engineering and robotics.", meta: { date: "2025", location: "Pakistan", category: "Ambassador", organization: "NERC" }, role: "Ambassador", contributor: "Promoted engineering and robotics among students.", highlights: ["Represented the contest as an Ambassador.", "Encouraged students to participate in robotics.", "Supported the growth of STEM education in Pakistan."] }
         };
-
-        const achievementOrder = ["1", "2", "3", "4"];
-
-        const recognitionImages = {
-            "1": ["assets/P@SHA1.jpg", "assets/P@SHA.jpg", "assets/P@SHA2.jpg"], 
-            "2": ["assets/COMPEC1.jpg", "assets/COMPEC2.jpg", "assets/COMPEC3.jpg"], 
-            "3": [], 
-            "4": [] 
-        };
-
+        const achievementOrder = ["1", "2", "3", "4", "5", "6"];
+        const recognitionImages = { "1": ["assets/P@SHA1.jpg", "assets/P@SHA.jpg"], "2": [], "3": ["assets/COMPEC1.jpg"], "4": [], "5": [], "6": [] };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
-
-        document.querySelectorAll('.recognition-list-item').forEach(item => {
-            item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
-        });
-
+        document.querySelectorAll('.recognition-list-item').forEach(item => { item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); }); });
         const metaFields = [
             { key: 'date', label: 'Date', icon: 'fa-calendar' },
             { key: 'location', label: 'Location', icon: 'fa-location-dot' },
-            { key: 'category', label: 'Category', icon: 'fa-user' },
+            { key: 'category', label: 'Category', icon: 'fa-tag' },
             { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
         ];
-
         function renderMetaGrid(meta) {
             const grid = document.getElementById('detailMetaGrid');
-            grid.innerHTML = metaFields.map(f => `
-                <div class="detail-meta-item">
-                    <div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div>
-                    <p>${meta[f.key]}</p>
-                </div>
-            `).join('');
+            grid.innerHTML = metaFields.map(f => `<div class="detail-meta-item"><div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div><p>${meta[f.key]}</p></div>`).join('');
         }
-
         function renderHighlights(highlights) {
             const list = document.getElementById('detailHighlights');
             list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
         }
-
-        let currentSlide = 0;
-        let slideTimer = null;
-
+        let currentSlide = 0; let slideTimer = null;
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
             const thumbsContainer = document.getElementById('detailThumbs');
             const countLabel = document.getElementById('detailMediaCount');
-            slideshowContainer.innerHTML = '';
-            dotsContainer.innerHTML = '';
-            thumbsContainer.innerHTML = '';
+            slideshowContainer.innerHTML = ''; dotsContainer.innerHTML = ''; thumbsContainer.innerHTML = '';
             const images = recognitionImages[id] || [];
-
-            if (images.length === 0) {
-                slideshowContainer.innerHTML = '<div class="photo-placeholder"><i class="fas fa-image"></i>Photos coming soon</div>';
-                countLabel.textContent = '';
-                return;
-            }
-
+            if (images.length === 0) { slideshowContainer.innerHTML = '<div class="photo-placeholder"><i class="fas fa-image"></i>Photos coming soon</div>'; countLabel.textContent = ''; return; }
             images.forEach((imageSrc, index) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = 'slides';
-                slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`;
-                slideshowContainer.appendChild(slideDiv);
-
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.onclick = () => { goToSlide(index); restartAutoplay(); };
-                dotsContainer.appendChild(dot);
-
-                const thumb = document.createElement('div');
-                thumb.className = 'detail-thumb';
-                thumb.innerHTML = `<img src="${imageSrc}" alt="Thumbnail ${index + 1}">`;
-                thumb.onclick = () => { goToSlide(index); restartAutoplay(); renderSlide(); };
-                thumbsContainer.appendChild(thumb);
+                const slideDiv = document.createElement('div'); slideDiv.className = 'slides'; slideDiv.innerHTML = `<img src="${imageSrc}" alt="Achievement Image">`; slideshowContainer.appendChild(slideDiv);
+                const dot = document.createElement('span'); dot.className = 'dot'; dot.onclick = () => { goToSlide(index); restartAutoplay(); }; dotsContainer.appendChild(dot);
+                const thumb = document.createElement('div'); thumb.className = 'detail-thumb'; thumb.innerHTML = `<img src="${imageSrc}" alt="Thumbnail ${index + 1}">`; thumb.onclick = () => { goToSlide(index); restartAutoplay(); renderSlide(); }; thumbsContainer.appendChild(thumb);
             });
-
             countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
-
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
             const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.toggle('active-slide', i === currentSlide);
-                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
-                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.toggle('active-slide', i === currentSlide); if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide); if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide); }
         }
-
-        function nextSlide() {
-            const slides = document.getElementsByClassName("slides");
-            if (slides.length === 0) return;
-            currentSlide = (currentSlide + 1) % slides.length;
-            renderSlide();
-        }
-
-        function prevSlide() {
-            const slides = document.getElementsByClassName("slides");
-            if (slides.length === 0) return;
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            renderSlide();
-        }
-
-        function goToSlide(i) {
-            currentSlide = i;
-            renderSlide();
-        }
-
-        function restartAutoplay() {
-            clearInterval(slideTimer);
-            const slides = document.getElementsByClassName("slides");
-            if (slides.length > 1) { slideTimer = setInterval(nextSlide, 3500); }
-        }
-
+        function nextSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
+        function prevSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
+        function goToSlide(i) { currentSlide = i; renderSlide(); }
+        function restartAutoplay() { clearInterval(slideTimer); const slides = document.getElementsByClassName("slides"); if (slides.length > 1) { slideTimer = setInterval(nextSlide, 3500); } }
         function updateMediaControls(count) {
             const showControls = count > 1;
             document.getElementById('mediaPrev').style.display = showControls ? 'flex' : 'none';
@@ -312,60 +202,36 @@
             document.getElementById('slideshowDots').style.display = showControls ? 'flex' : 'none';
             document.getElementById('detailThumbs').style.display = count > 0 ? 'flex' : 'none';
         }
-
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
         document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
-
         function updateAchievementNav(id) {
-            const idx = achievementOrder.indexOf(id);
-            const total = achievementOrder.length;
+            const idx = achievementOrder.indexOf(id); const total = achievementOrder.length;
             document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-
             const nextBtn = document.getElementById('achNavNext');
-            if (idx < total - 1) {
-                nextBtn.style.visibility = 'visible';
-                nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); };
-            } else {
-                nextBtn.style.visibility = 'hidden';
-            }
+            if (idx < total - 1) { nextBtn.style.visibility = 'visible'; nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); }; }
+            else { nextBtn.style.visibility = 'hidden'; }
         }
-
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
-            sectionHeadWrapper.style.display = 'none';
-            backBtnWrapper.style.display = 'block';
+            sectionHeadWrapper.style.display = 'none'; backBtnWrapper.style.display = 'block';
             document.getElementById('recognitionDetail').style.display = 'block';
             document.getElementById('pageNavBottom').style.display = 'none';
             document.getElementById('achievementNavBottom').style.display = 'flex';
-
             const data = recognitionData[id];
-
             document.getElementById('detailTitleMain').textContent = data.titleMain;
             document.getElementById('detailTitleAccent').textContent = data.titleAccent;
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
-            document.getElementById('detailRole').innerHTML = data.role;
+            document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;
-
-            renderMetaGrid(data.meta);
-            renderHighlights(data.highlights);
-
-            buildSlideshow(id);
-            currentSlide = 0;
-            clearInterval(slideTimer);
-
-            const images = recognitionImages[id] || [];
-            updateMediaControls(images.length);
-            if (images.length > 0) { renderSlide(); }
-            restartAutoplay();
-
+            renderMetaGrid(data.meta); renderHighlights(data.highlights);
+            buildSlideshow(id); currentSlide = 0; clearInterval(slideTimer);
+            const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();
             updateAchievementNav(id);
         }
-
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
-            backBtnWrapper.style.display = 'none';
-            sectionHeadWrapper.style.display = 'block';
+            backBtnWrapper.style.display = 'none'; sectionHeadWrapper.style.display = 'block';
             document.getElementById('recognitionList').style.display = 'flex';
             document.getElementById('pageNavBottom').style.display = 'flex';
             document.getElementById('achievementNavBottom').style.display = 'none';

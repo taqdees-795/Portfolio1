@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html">01</a>
@@ -22,14 +21,12 @@
         <a href="projects.html" class="active">06</a>
         <a href="activity.html">07</a>
     </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
-
                 <div id="sectionHeadWrapper">
                     <div class="section-id mono">SEC. 06</div>
                     <div class="section-head">
@@ -38,25 +35,16 @@
                         <p>What the research, internships, and long nights have actually produced.</p>
                     </div>
                 </div>
-
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-microchip"></i></div>
                         <div class="recognition-item-text">
                             <h3>AI-Powered Security & Monitoring System <span class="short-form">(SenseGuard)</span></h3>
-                            <span class="status-tag">Research & Innovation</span>
+                            <span class="status-tag">Startup</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
                     <div class="recognition-list-item" data-id="2">
-                        <div class="recognition-item-icon"><i class="fas fa-satellite"></i></div>
-                        <div class="recognition-item-text">
-                            <h3>Edge ML-Based CanSat <span class="short-form">(ICAST)</span></h3>
-                            <span class="status-tag">Research Paper</span>
-                        </div>
-                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                    <div class="recognition-list-item" data-id="3">
                         <div class="recognition-item-icon"><i class="fas fa-mobile-alt"></i></div>
                         <div class="recognition-item-text">
                             <h3>Custom Object Detection App <span class="short-form">(Mobile ML)</span></h3>
@@ -64,16 +52,7 @@
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="recognition-list-item" data-id="4">
-                        <div class="recognition-item-icon"><i class="fas fa-leaf"></i></div>
-                        <div class="recognition-item-text">
-                            <h3>Agricultural Field Monitoring System <span class="short-form">(NSEF)</span></h3>
-                            <span class="status-tag">Winner</span>
-                        </div>
-                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
-                    </div>
                 </div>
-
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
                         <div class="detail-left">
@@ -112,93 +91,46 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="beyond-the-lab.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> Beyond the Lab</a>
                     <span class="page-nav-pos">06 / 07</span>
                     <a href="activity.html" class="page-nav-link next">Activity <i class="fas fa-arrow-right"></i></a>
                 </div>
-
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> Projects</a>
-                    <span class="page-nav-pos" id="achNavPos">01 / 04</span>
+                    <span class="page-nav-pos" id="achNavPos">01 / 02</span>
                     <a href="#" class="page-nav-link next" id="achNavNext">Next Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
     </main>
-
     <script>
         const recognitionData = {
-            "1": {
-                icon: "fa-microchip", status: "Research & Innovation",
-                titleMain: "AI-Powered Security & Monitoring System", titleAccent: "(SenseGuard)",
-                description: "An AI and IoT based system for real-time threat detection and smart monitoring in homes and agricultural environments.",
-                meta: { date: "2024 – Present", location: "Pakistan", category: "Startup / Hardware", organization: "NICAT" },
-                role: "Python, TensorFlow, OpenCV, IoT", contributor: "Smart Surveillance, Agriculture",
-                highlights: ["Real-time object detection with high accuracy.", "Reduced false alerts by 25% using ML optimization.", "Low-cost and scalable solution for rural deployment."]
-            },
-            "2": {
-                icon: "fa-satellite", status: "Published Research",
-                titleMain: "Edge ML-Based CanSat", titleAccent: "(ICAST)",
-                description: "Low-cost satellite running machine learning at the edge, published and presented at ICAST 2025.",
-                meta: { date: "Nov 2025", location: "Pakistan", category: "Space Tech", organization: "ICAST" },
-                role: "Edge ML, Embedded Systems", contributor: "Remote Sensing, Agriculture",
-                highlights: ["First-authored paper presented internationally.", "Applied edge ML techniques to CanSat telemetry.", "One of the youngest researchers in this field."]
-            },
-            "3": {
-                icon: "fa-mobile-alt", status: "Mobile ML",
-                titleMain: "Custom Object Detection App", titleAccent: "(Mobile ML)",
-                description: "Mobile app for training custom object detection models directly on phones (LUMS RISE 2025).",
-                meta: { date: "2025", location: "LUMS", category: "Mobile ML", organization: "SBASSE" },
-                role: "TensorFlow Lite, Mobile Development", contributor: "AgriTech, Real-time Detection",
-                highlights: ["Trains models directly on mobile.", "Reduces dependency on cloud computing.", "Integrated with agricultural monitoring systems."]
-            },
-            "4": {
-                icon: "fa-leaf", status: "Winner",
-                titleMain: "Agricultural Field Monitoring System", titleAccent: "(NSEF)",
-                description: "Embedded system addressing multiple agricultural field threats. Won Best of Category at NSEF 2026.",
-                meta: { date: "2025 – 2026", location: "Pakistan", category: "AgriTech", organization: "NSEF" },
-                role: "Embedded Systems, IoT Sensors", contributor: "Agriculture, Field Monitoring",
-                highlights: ["Won Best of Category at NSEF 2026.", "Monitors multiple agricultural threats in real-time.", "Designed for low-cost and easy deployment."]
-            }
+            "1": { icon: "fa-microchip", status: "Startup", titleMain: "AI-Powered Security & Monitoring System", titleAccent: "(SenseGuard)", description: "An AI and IoT based system for real-time threat detection and smart monitoring in homes and agricultural environments.", meta: { date: "2024 – Present", location: "Pakistan", category: "Startup / Hardware", organization: "SenseGuard" }, role: "Python, TensorFlow, OpenCV, IoT", contributor: "Smart Surveillance, Agriculture", highlights: ["Recognized with a Gold Award at P@SHA ICT 2025 and Runner-Up at APICTA 2025.", "Selected into NICAT, Pakistan's premier aerospace startup incubator, at a <2% acceptance rate.", "Addresses real-world child and home safety through smart monitoring."] },
+            "2": { icon: "fa-mobile-alt", status: "Mobile ML", titleMain: "Custom Object Detection App", titleAccent: "(Mobile ML)", description: "Mobile app for training custom object detection models directly on phones (LUMS RISE 2025).", meta: { date: "2025", location: "LUMS", category: "Mobile ML", organization: "SBASSE" }, role: "TensorFlow Lite, Mobile Development", contributor: "AgriTech, Real-time Detection", highlights: ["Trains models directly on mobile.", "Reduces dependency on cloud computing.", "Integrated with agricultural monitoring systems."] }
         };
-
-        const achievementOrder = ["1", "2", "3", "4"];
-
-        const recognitionImages = {
-            "1": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg"],
-            "2": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"],
-            "3": ["assets/LUMS1.jpeg", "assets/LUMS2.jpeg"],
-            "4": ["assets/P@SHA1.jpg", "assets/P@SHA.jpg"]
-        };
-
+        const achievementOrder = ["1", "2"];
+        const recognitionImages = { "1": ["assets/APICTA1.jpg", "assets/APICTA2.jpg"], "2": ["assets/LUMS1.jpeg"] };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
-
         document.querySelectorAll('.recognition-list-item').forEach(item => {
             item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); });
         });
-
         const metaFields = [
             { key: 'date', label: 'Date', icon: 'fa-calendar' },
             { key: 'location', label: 'Location', icon: 'fa-location-dot' },
             { key: 'category', label: 'Category', icon: 'fa-tag' },
             { key: 'organization', label: 'Organization', icon: 'fa-building-columns' }
         ];
-
         function renderMetaGrid(meta) {
             const grid = document.getElementById('detailMetaGrid');
             grid.innerHTML = metaFields.map(f => `<div class="detail-meta-item"><div class="detail-meta-item-head"><i class="fas ${f.icon}"></i><span>${f.label}</span></div><p>${meta[f.key]}</p></div>`).join('');
         }
-
         function renderHighlights(highlights) {
             const list = document.getElementById('detailHighlights');
             list.innerHTML = highlights.map(h => `<li><i class="fas fa-circle-check"></i><span>${h}</span></li>`).join('');
         }
-
         let currentSlide = 0; let slideTimer = null;
-
         function buildSlideshow(id) {
             const slideshowContainer = document.getElementById('slideshowContainer');
             const dotsContainer = document.getElementById('slideshowDots');
@@ -214,19 +146,13 @@
             });
             countLabel.textContent = images.length === 1 ? '1 Photo' : `${images.length} Photos`;
         }
-
         function renderSlide() {
             const slides = document.getElementsByClassName("slides");
             const dots = document.getElementsByClassName("dot");
             const thumbs = document.getElementsByClassName("detail-thumb");
             if (slides.length === 0) return;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.toggle('active-slide', i === currentSlide);
-                if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide);
-                if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide);
-            }
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.toggle('active-slide', i === currentSlide); if (dots[i]) dots[i].classList.toggle('active-dot', i === currentSlide); if (thumbs[i]) thumbs[i].classList.toggle('active-thumb', i === currentSlide); }
         }
-
         function nextSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
         function prevSlide() { const slides = document.getElementsByClassName("slides"); if (slides.length === 0) return; currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
         function goToSlide(i) { currentSlide = i; renderSlide(); }
@@ -240,7 +166,6 @@
         }
         document.getElementById('mediaPrev').addEventListener('click', () => { prevSlide(); restartAutoplay(); });
         document.getElementById('mediaNext').addEventListener('click', () => { nextSlide(); restartAutoplay(); });
-
         function updateAchievementNav(id) {
             const idx = achievementOrder.indexOf(id); const total = achievementOrder.length;
             document.getElementById('achNavPos').textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
@@ -248,7 +173,6 @@
             if (idx < total - 1) { nextBtn.style.visibility = 'visible'; nextBtn.onclick = (e) => { e.preventDefault(); showDetail(achievementOrder[idx + 1]); }; }
             else { nextBtn.style.visibility = 'hidden'; }
         }
-
         function showDetail(id) {
             document.getElementById('recognitionList').style.display = 'none';
             sectionHeadWrapper.style.display = 'none'; backBtnWrapper.style.display = 'block';
@@ -267,7 +191,6 @@
             const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();
             updateAchievementNav(id);
         }
-
         function showList() {
             document.getElementById('recognitionDetail').style.display = 'none';
             backBtnWrapper.style.display = 'none'; sectionHeadWrapper.style.display = 'block';
