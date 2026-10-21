@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="premium.css">
 </head>
 <body>
     <nav class="page-progress">
@@ -199,6 +200,15 @@
             document.getElementById('achievementNavBottom').style.display = 'none';
             clearInterval(slideTimer);
         }
+    
+        /* Opened from the home page: ?id=N shows that detail directly, Back returns to the home scroll */
+        (function () {
+            var id = new URLSearchParams(location.search).get('id');
+            if (!id) return;
+            window.showList = function () { location.href = 'index.html#internships'; };
+            try { showDetail(id); } catch (e) {}
+        })();
     </script>
+    <script src="premium.js"></script>
 </body>
 </html>
