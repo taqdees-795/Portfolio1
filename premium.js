@@ -3,7 +3,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var onHome = !!document.getElementById('playground');
   var P = onHome ? '' : 'index.html';
-  var links = [['home', 'Home'], ['video', 'Intro'], ['international', 'International'], ['national', 'National'],
+  var links = [['home', 'Home'], ['about', 'About'], ['playground', 'Playground'], ['international', 'International'], ['national', 'National'],
     ['internships', 'Internships'], ['research', 'Research'], ['beyond-the-lab', 'Beyond the Lab'],
     ['projects', 'Projects'], ['activity', 'Activity'], ['contact', 'Contact']];
 
@@ -41,7 +41,7 @@
   }
 
   /* reveal on scroll */
-  var rev = document.querySelectorAll('.section-head, .recognition-list-item, .about-grid, .nav-card, .detail-columns');
+  var rev = onHome ? [] : document.querySelectorAll('.section-head, .recognition-list-item, .about-grid, .nav-card, .detail-columns');
   rev.forEach(function (el) { el.classList.add('reveal-in'); });
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (es) {
@@ -77,5 +77,56 @@
     v.addEventListener('play', function () { fr.classList.add('playing'); v.controls = true; });
     v.addEventListener('pause', function () { if (!v.ended) { fr.classList.remove('playing'); } });
     v.addEventListener('ended', function () { fr.classList.remove('playing'); v.controls = false; });
+  }
+
+  /* home: every screen's cards fly in (3D) each time the screen is reached */
+  if (onHome) {
+    var dirs = [['-170px', '50px', '0deg', '38deg'], ['0px', '130px', '-38deg', '0deg'], ['170px', '50px', '0deg', '-38deg'], ['0px', '-110px', '38deg', '0deg']];
+    var secs = document.querySelectorAll('#about,#video,#playground,#international,#national,#internships,#research,#beyond-the-lab,#projects,#activity');
+    secs.forEach(function (sec) {
+      sec.querySelectorAll('.section-head,.recognition-list-item,.about-content,.info-card,.video-frame,.char-canvas,.skills-world').forEach(function (el, i) {
+        var d = dirs[i % 4];
+        el.setAttribute('data-fly', '');
+        el.style.setProperty('--i', i); el.style.setProperty('--fx', d[0]); el.style.setProperty('--fy', d[1]);
+        el.style.setProperty('--rx', d[2]); el.style.setProperty('--ry', d[3]);
+      });
+    });
+    if (reduce || !('IntersectionObserver' in window)) secs.forEach(function (s) { s.classList.add('fly-on'); });
+    else {
+      var fo = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target.classList.toggle('fly-on', e.intersectionRatio >= 0.2); });
+      }, { threshold: [0, 0.2] });
+      secs.forEach(function (s) { fo.observe(s); });
+    }
+  }
+
+  /* hero photo: draggable, tilting frame that springs back */
+  var pf = document.getElementById('photoFrame');
+  if (pf && !reduce) {
+    var st = { x: 0, y: 0, vx: 0, vy: 0, rx: 0, ry: 0, drag: false, ox: 0, oy: 0 }, raf = 0;
+    var paint = function () {
+      pf.style.transform = 'translate3d(' + st.x + 'px,' + st.y + 'px,0) perspective(900px) rotateX(' + st.rx + 'deg) rotateY(' + st.ry + 'deg) scale(' + (st.drag ? 1.03 : 1) + ')';
+    };
+    var spring = function () {
+      if (st.drag) { raf = 0; return; }
+      st.vx = (st.vx - st.x * 0.08) * 0.8; st.vy = (st.vy - st.y * 0.08) * 0.8;
+      st.x += st.vx; st.y += st.vy; st.rx *= 0.85; st.ry *= 0.85; paint();
+      if (Math.abs(st.x) + Math.abs(st.y) + Math.abs(st.vx) + Math.abs(st.vy) + Math.abs(st.rx) + Math.abs(st.ry) > 0.3) raf = requestAnimationFrame(spring);
+      else { raf = 0; st.x = st.y = st.rx = st.ry = 0; pf.style.transform = ''; }
+    };
+    var kick = function () { if (!raf) raf = requestAnimationFrame(spring); };
+    pf.addEventListener('pointerdown', function (e) {
+      st.drag = true; st.ox = e.clientX - st.x; st.oy = e.clientY - st.y;
+      pf.setPointerCapture(e.pointerId); pf.classList.add('dragging'); paint();
+    });
+    pf.addEventListener('pointermove', function (e) {
+      var r = pf.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      st.ry = Math.max(-16, Math.min(16, px * 22)); st.rx = Math.max(-16, Math.min(16, -py * 22));
+      if (st.drag) { st.x = e.clientX - st.ox; st.y = e.clientY - st.oy; }
+      paint();
+    });
+    var release = function () { st.drag = false; pf.classList.remove('dragging'); kick(); };
+    pf.addEventListener('pointerup', release); pf.addEventListener('pointercancel', release);
+    pf.addEventListener('pointerleave', function () { if (!st.drag) kick(); });
   }
 })();

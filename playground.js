@@ -18,33 +18,33 @@
     host.appendChild(renderer.domElement);
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-    var key = new THREE.PointLight(0xd4af37, 1.4, 30); key.position.set(3, 3, 5); scene.add(key);
-    var rim = new THREE.PointLight(0x4aa3ff, 0.8, 30); rim.position.set(-4, 1, -2); scene.add(rim);
+    var key = new THREE.PointLight(0xd99a4e, 1.4, 30); key.position.set(3, 3, 5); scene.add(key);
+    var rim = new THREE.PointLight(0xb5a493, 0.8, 30); rim.position.set(-4, 1, -2); scene.add(rim);
 
     function mat(c, m, r) { return new THREE.MeshStandardMaterial({ color: c, metalness: m, roughness: r }); }
     var bot = new THREE.Group(); scene.add(bot);
 
-    var body = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 1.15, 1.6, 32), mat(0x2b3140, 0.6, 0.35));
+    var body = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 1.15, 1.6, 32), mat(0x292929, 0.6, 0.35));
     body.position.y = -1.6; bot.add(body);
-    var chest = new THREE.Mesh(new THREE.CircleGeometry(0.28, 32), new THREE.MeshBasicMaterial({ color: 0xd4af37 }));
+    var chest = new THREE.Mesh(new THREE.CircleGeometry(0.28, 32), new THREE.MeshBasicMaterial({ color: 0xd99a4e }));
     chest.position.set(0, -1.5, 1.01); bot.add(chest);
 
     var head = new THREE.Group(); head.position.y = 0.3; bot.add(head);
-    var skull = new THREE.Mesh(new THREE.SphereGeometry(1.3, 48, 48), mat(0xe9e6df, 0.25, 0.3));
+    var skull = new THREE.Mesh(new THREE.SphereGeometry(1.3, 48, 48), mat(0xf5f2ee, 0.25, 0.3));
     skull.scale.set(1, 0.92, 0.95); head.add(skull);
     var visor = new THREE.Mesh(new THREE.SphereGeometry(1.0, 48, 48), mat(0x0d1117, 0.9, 0.1));
     visor.scale.set(1.05, 0.62, 0.55); visor.position.set(0, 0.05, 0.85); head.add(visor);
-    var eyeMat = new THREE.MeshBasicMaterial({ color: 0xd4af37 });
+    var eyeMat = new THREE.MeshBasicMaterial({ color: 0xd99a4e });
     var eyes = [-0.38, 0.38].map(function (x) {
       var e = new THREE.Mesh(new THREE.SphereGeometry(0.15, 24, 24), eyeMat);
       e.position.set(x, 0.05, 1.28); e.scale.z = 0.4; head.add(e); return e;
     });
-    var ant = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.7, 12), mat(0x2b3140, 0.6, 0.3));
+    var ant = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.7, 12), mat(0x292929, 0.6, 0.3));
     ant.position.y = 1.55; head.add(ant);
     var tip = new THREE.Mesh(new THREE.SphereGeometry(0.12, 16, 16), eyeMat);
     tip.position.y = 1.95; head.add(tip);
     [-1, 1].forEach(function (s) {
-      var ear = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.2, 24), mat(0x2b3140, 0.6, 0.3));
+      var ear = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.2, 24), mat(0x292929, 0.6, 0.3));
       ear.rotation.z = Math.PI / 2; ear.position.set(1.3 * s, 0, 0); head.add(ear);
     });
 
@@ -54,6 +54,8 @@
     }
     size(); window.addEventListener('resize', size);
 
+    var vis = true;
+    new IntersectionObserver(function (e) { vis = e[0].isIntersecting; }).observe(host);
     var t = 0, blink = 0;
     (function loop() {
       requestAnimationFrame(loop);
@@ -80,7 +82,8 @@
     var M = Matter;
     var skills = ['Robotics', 'Embedded Systems', 'Machine Learning', 'IoT', 'CAD', 'Programming',
       'Python', 'C / C++', 'Arduino', 'ESP32', 'Research', 'Public Speaking', 'SenseGuard'];
-    var engine = M.Engine.create(), started = false, items = [];
+    var engine = M.Engine.create(), started = false, items = [], pv = true;
+    new IntersectionObserver(function (e) { pv = e[0].isIntersecting; }).observe(world);
     var W = world.clientWidth, H = world.clientHeight;
 
     function wall(x, y, w, h) { return M.Bodies.rectangle(x, y, w, h, { isStatic: true }); }
