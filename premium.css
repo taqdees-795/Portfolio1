@@ -107,17 +107,17 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 700; letter-spacin
 .recognition-item-cta { opacity: 1; font-weight: 600; }
 .eyebrow { font-size: 13px; }
 
-/* ===== Hero photo frame ===== */
-.photo-frame { position: relative; z-index: 2; width: min(100%, 360px); background: #fff; border-radius: 26px; padding: 14px; box-shadow: 0 30px 60px -24px rgba(41, 41, 41, .38); cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; will-change: transform; animation: flyRight 1s .3s cubic-bezier(.2, .8, .2, 1) backwards; }
-.photo-frame.dragging { cursor: grabbing; box-shadow: 0 44px 70px -20px rgba(41, 41, 41, .45); }
+/* ===== Hero photo: layered frame ===== */
+.pf-stage { position: relative; z-index: 2; width: min(100%, 370px); }
+.pf-back { position: absolute; inset: 0; border-radius: 32px; background: linear-gradient(145deg, #cbbfae, #b5a493); transform: translate(16px, 14px) rotate(4deg); opacity: .75; }
+.photo-frame { position: relative; z-index: 1; background: #fff; border-radius: 30px; padding: 12px; box-shadow: 0 30px 60px -26px rgba(41, 41, 41, .45); cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; will-change: transform; animation: flyRight 1s .3s cubic-bezier(.2, .8, .2, 1) backwards; }
+.photo-frame.dragging { cursor: grabbing; box-shadow: 0 44px 70px -22px rgba(41, 41, 41, .5); }
 .photo-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.pf-top { display: flex; justify-content: space-between; align-items: center; font: 600 11px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 2px 6px 12px; }
-.pf-dots i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--taupe); margin-left: 5px; }
-.pf-media { border-radius: 16px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 4 / 4.4; max-height: min(46vh, 420px); width: 100%; }
+.pf-media { border-radius: 22px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 4 / 4.7; max-height: min(52vh, 460px); width: 100%; box-shadow: inset 0 0 0 1px rgba(41, 41, 41, .06); }
 .pf-media img { width: 100%; height: 100%; object-fit: cover; object-position: top 30%; display: block; pointer-events: none; }
-.pf-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 12px 6px 4px; }
-.pf-chip { display: inline-flex; align-items: center; gap: 7px; font: 600 12.5px "DM Sans", sans-serif; color: #fff; background: var(--accent); padding: 7px 13px; border-radius: 999px; }
-.pf-hint { font: 600 11px "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pf-chip { position: absolute; left: -18px; bottom: 30px; display: inline-flex; align-items: center; gap: 7px; font: 600 12.5px "DM Sans", sans-serif; color: #fff; background: var(--accent); padding: 9px 15px; border-radius: 999px; box-shadow: 0 12px 24px -10px rgba(111, 65, 48, .6); }
+.pf-badge { position: absolute; right: -14px; top: 34px; display: inline-flex; align-items: center; gap: 7px; font: 600 12px "DM Sans", sans-serif; color: var(--ink); background: #fff; border: 1px solid var(--line); padding: 8px 13px; border-radius: 999px; box-shadow: var(--shadow); }
+.pf-badge i { color: var(--accent); }
 @keyframes flyRight { from { opacity: 0; transform: translate3d(140px, 40px, -200px) perspective(900px) rotateY(-35deg); } }
 @media (max-width: 860px) { .landing-page .hero .wrap { grid-template-columns: 1fr; } .hero-minimal { min-height: auto; padding: 48px 0; } }
 
@@ -130,34 +130,6 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 700; letter-spacin
 .fly-on [data-fly] { opacity: 1; animation: fly3d .95s cubic-bezier(.2, .8, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 85ms + 80ms); }
 @media (prefers-reduced-motion: reduce) { [data-fly] { opacity: 1; } .fly-on [data-fly] { animation: none; } .photo-frame { animation: none; } }
 
-/* ===== One laptop screen per section (equal height, no inner scrolling) ===== */
-.screen > .wrap { width: 100%; }
-.screen:not(#contact) .section-id { display: none !important; }
-@media (min-width: 861px) and (min-height: 621px) {
-  html { scroll-snap-type: y proximity; }
-  .hero-minimal, .screen:not(#contact) { min-height: calc(100svh - 64px); scroll-snap-align: start; scroll-margin-top: 64px; }
-  .screen:not(#contact) { padding: 22px 0; }
-  .screen:not(#contact) .section-head { margin-bottom: 20px; max-width: 780px; }
-  .screen:not(#contact) .section-head h2 { font-size: clamp(26px, 3.2vw, 38px); margin: 6px 0 8px; }
-  .screen:not(#contact) .section-head p { font-size: 15px; }
-  .wrap { max-width: 1240px; }
-  .about-stats { margin-top: 22px; gap: 34px; }
-  .video-section .video-frame { max-width: min(900px, calc((100svh - 250px) * 16 / 9)); }
-  .char-canvas, .skills-world { height: min(460px, calc(100svh - 260px)); min-height: 300px; }
-  #international .recognition-list { grid-template-columns: repeat(2, 1fr); }
-  #national .recognition-list { grid-template-columns: repeat(3, 1fr); }
-  #international .recognition-list-item, #national .recognition-list-item { min-height: 0; padding: 22px; gap: 12px; }
-  #beyond-the-lab .recognition-list, #activity .recognition-list { display: grid !important; overflow: visible; padding: 0; gap: 16px; }
-  #beyond-the-lab .recognition-list { grid-template-columns: repeat(4, 1fr); }
-  #activity .recognition-list { grid-template-columns: repeat(5, 1fr); }
-  #activity .recognition-list::before, #activity .recognition-list-item::after { display: none; }
-  #beyond-the-lab .recognition-list-item, #activity .recognition-list-item { flex: initial; min-height: 0; padding: 20px; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 12px; border-radius: 22px; overflow: hidden; }
-  #beyond-the-lab .recognition-item-icon { margin: 0; width: 46px; height: 46px; font-size: 17px; }
-  #projects .recognition-list { flex-direction: row; gap: 20px; }
-  #projects .recognition-list-item { flex: 1; min-height: 220px; flex-direction: column; align-items: flex-start; gap: 14px; }
-}
-@media (max-width: 1100px) { #national .recognition-list { grid-template-columns: repeat(2, 1fr); } #beyond-the-lab .recognition-list { grid-template-columns: repeat(2, 1fr); } #activity .recognition-list { grid-template-columns: repeat(3, 1fr); } }
-
 /* ===== Contact: nothing spills out of the boxes; hover stays readable ===== */
 .contact-methods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
 .method-card { min-width: 0; flex: initial; }
@@ -168,3 +140,101 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 700; letter-spacin
 .method-card:hover .method-label, .method-card:focus-visible .method-label, .method-card:active .method-label { color: rgba(255, 255, 255, .85); }
 .method-card:hover .method-value, .method-card:focus-visible .method-value, .method-card:active .method-value { color: #fff; }
 .method-card:hover .method-icon, .method-card:focus-visible .method-icon, .method-card:active .method-icon { background: #fff; color: var(--accent); }
+
+
+/* ===== One screen per section (home page only) ===== */
+.landing-page .screen > .wrap { width: 100%; }
+.landing-page .screen:not(#contact) .section-id { display: none !important; }
+.section-head h2 { line-height: 1.15; }
+.credentials-strip span { font-size: 11.5px; padding: 7px 12px; }
+@media (max-width: 860px) { .landing-page .hero-minimal { flex-direction: column; } .hero-minimal .credentials-strip { position: static; margin-top: 24px; } }
+@media (min-width: 861px) and (min-height: 480px) {
+  html:has(body.landing-page) { scroll-snap-type: y mandatory; }
+  .landing-page .hero-minimal, .landing-page .screen:not(#contact) { height: calc(100vh - 64px); height: calc(100svh - 64px); min-height: 0 !important; padding: 16px 0 !important; align-items: flex-start; overflow: hidden; scroll-snap-align: start; scroll-margin-top: 64px; }
+  .landing-page #contact { scroll-snap-align: start; scroll-margin-top: 64px; }
+  .landing-page .site-footer { scroll-snap-align: end; }
+  .landing-page .hero-minimal { position: relative; }
+  .hero-minimal .credentials-strip { position: absolute; left: 0; right: 0; bottom: 10px; padding: 0; margin: 0; }
+  .landing-page .screen:not(#contact) > .wrap, .landing-page .hero-minimal > .wrap { transform-origin: top left; }
+  .wrap { max-width: 1240px; }
+  .landing-page .screen:not(#contact) .section-head { margin-bottom: 16px; max-width: 780px; }
+  .landing-page .screen:not(#contact) .section-head h2 { font-size: clamp(26px, 3vw, 36px); margin: 6px 0 8px; }
+  .landing-page .screen:not(#contact) .section-head p { font-size: 15px; }
+  .about-stats { margin-top: 20px; gap: 32px; }
+  .video-section .video-frame { max-width: min(900px, calc((100svh - 250px) * 16 / 9)); }
+  .char-canvas, .skills-world { height: min(460px, calc(100svh - 260px)); min-height: 260px; }
+
+  /* International (4): plain divider list, no boxes */
+  .landing-page #international .recognition-list { display: flex; flex-direction: column; gap: 0; }
+  .landing-page #international .recognition-list .recognition-list-item { flex-direction: row; align-items: center; min-height: 0; padding: 16px 6px; gap: 16px; background: transparent !important; box-shadow: none; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+  .landing-page #international .recognition-list .recognition-list-item:first-child { border-top: 1px solid var(--line); }
+  .landing-page #international .recognition-list-item::before { display: none; }
+  .landing-page #international .recognition-list-item:hover { transform: translateX(8px); }
+  .landing-page #international .recognition-item-cta { margin: 0 0 0 auto; }
+
+  /* National / Beyond the Lab / Activity: small horizontal cards */
+  .landing-page #national .recognition-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .landing-page #beyond-the-lab .recognition-list { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 12px; overflow: visible; padding: 0; }
+  .landing-page #activity .recognition-list { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0; }
+  .landing-page #activity .recognition-list::before, .landing-page #activity .recognition-list-item::after { display: none; }
+  .landing-page #national .recognition-list .recognition-list-item, .landing-page #beyond-the-lab .recognition-list .recognition-list-item, .landing-page #activity .recognition-list .recognition-list-item { flex: initial; min-height: 0; padding: 12px 16px; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; border-radius: 16px; overflow: hidden; }
+  .landing-page #national .recognition-item-icon, .landing-page #beyond-the-lab .recognition-item-icon, .landing-page #activity .recognition-item-icon { width: 40px; height: 40px; font-size: 15px; margin: 0; flex-shrink: 0; }
+  .landing-page #national h3, .landing-page #beyond-the-lab h3, .landing-page #activity h3 { font-size: 15px; }
+  .landing-page #national .recognition-item-cta, .landing-page #beyond-the-lab .recognition-item-cta, .landing-page #activity .recognition-item-cta { margin: 0 0 0 auto; }
+  .landing-page #national .cta-label, .landing-page #beyond-the-lab .cta-label, .landing-page #activity .cta-label { display: none; }
+
+  /* Projects (2): two wide cards */
+  .landing-page #projects .recognition-list { flex-direction: row; gap: 16px; }
+  .landing-page #projects .recognition-list .recognition-list-item { flex: 1; min-height: 0; padding: 22px; flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (min-width: 861px) and (max-width: 1100px) { .landing-page #activity .recognition-list { grid-template-columns: repeat(2, 1fr); } }
+
+/* ===== Round 5 tweaks ===== */
+/* credential pills: one centred row of small pills, like before */
+.landing-page .hero .credentials-strip .wrap { display: flex; grid-template-columns: none; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px; padding: 0 40px; }
+/* playground: skills left, bot right, no boxes, page background */
+.playground-grid { grid-template-columns: 1.2fr 1fr; }
+.char-canvas, .skills-world { border: 0 !important; background: transparent !important; border-radius: 0; }
+@media (min-width: 861px) and (min-height: 480px) {
+  /* Beyond the Lab: small square-ish cards again */
+  .landing-page #beyond-the-lab .recognition-list { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .landing-page #beyond-the-lab .recognition-list .recognition-list-item { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; padding: 16px; border-radius: 20px; }
+  .landing-page #beyond-the-lab .recognition-item-icon { width: 38px; height: 38px; font-size: 14px; }
+  .landing-page #beyond-the-lab h3 { font-size: 14.5px; }
+  .landing-page #beyond-the-lab .recognition-item-cta { margin: auto 0 0; }
+  .landing-page #beyond-the-lab .cta-label { display: inline; }
+  /* Activity: back to the timeline list */
+  .landing-page #activity .recognition-list { display: flex !important; flex-direction: column; gap: 14px; position: relative; padding: 0 0 0 38px; }
+  .landing-page #activity .recognition-list::before, .landing-page #activity .recognition-list-item::after { display: block; }
+  .landing-page #activity .recognition-list .recognition-list-item { flex-direction: row; align-items: center; padding: 20px 24px; border-radius: 16px; overflow: visible; gap: 0; }
+  .landing-page #activity .recognition-item-icon { width: 40px; height: 40px; font-size: 15px; margin-right: 18px; }
+  .landing-page #activity h3 { font-size: 17px; }
+  .landing-page #activity .recognition-item-cta { margin: 0 0 0 16px; }
+  .landing-page #activity .cta-label { display: inline; }
+}
+
+/* ===== Round 6: Beyond the Lab back to the sideways gallery, smaller Projects cards ===== */
+@media (min-width: 861px) and (min-height: 480px) {
+  .landing-page #beyond-the-lab .recognition-list { display: flex !important; flex-direction: row !important; grid-template-columns: none; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; gap: 18px; padding: 8px 4px 22px; scrollbar-width: thin; scrollbar-color: var(--taupe) transparent; }
+  .landing-page #beyond-the-lab .recognition-list .recognition-list-item { flex: 0 0 260px; min-height: 250px; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 14px; padding: 22px; scroll-snap-align: start; border-radius: 26px; background: linear-gradient(200deg, var(--accent-soft), #fff) !important; }
+  .landing-page #beyond-the-lab .recognition-item-icon { width: 52px; height: 52px; font-size: 19px; margin: 0 0 auto; }
+  .landing-page #beyond-the-lab h3 { font-size: 16.5px; }
+  .landing-page #beyond-the-lab .recognition-item-cta { margin: 0; }
+
+  .landing-page #projects .recognition-list { max-width: 900px; gap: 14px; }
+  .landing-page #projects .recognition-list .recognition-list-item { padding: 18px 20px; gap: 10px; border-radius: 18px; }
+  .landing-page #projects .recognition-item-icon { width: 40px; height: 40px; font-size: 15px; margin: 0; }
+  .landing-page #projects .recognition-item-text h3 { font-size: 17px; }
+}
+
+/* ===== Round 7: Projects as a list, bigger skills area ===== */
+@media (min-width: 861px) and (min-height: 480px) {
+  .landing-page #projects .recognition-list { flex-direction: column; max-width: none; gap: 14px; }
+  .landing-page #projects .recognition-list .recognition-list-item { flex: none; flex-direction: row; align-items: center; padding: 20px 24px; gap: 0; }
+  .landing-page #projects .recognition-item-icon { margin: 0 18px 0 0; }
+  .landing-page #projects .recognition-item-cta { margin: 0 0 0 16px; }
+  .char-canvas, .skills-world { height: min(540px, calc(100svh - 150px)); min-height: 280px; }
+}
+
+/* playground: room for the heading again */
+@media (min-width: 861px) and (min-height: 480px) { .char-canvas, .skills-world { height: min(500px, calc(100svh - 270px)); min-height: 260px; } }

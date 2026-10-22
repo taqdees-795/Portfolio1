@@ -59,6 +59,7 @@
     var t = 0, blink = 0;
     (function loop() {
       requestAnimationFrame(loop);
+      if (!vis) return;
       t += 0.02;
       head.rotation.y += (mouse.x * 0.8 - head.rotation.y) * 0.08;
       head.rotation.x += (mouse.y * 0.45 - head.rotation.x) * 0.08;
@@ -81,9 +82,9 @@
     if (!world || !window.Matter) return;
     var M = Matter;
     var skills = ['Robotics', 'Embedded Systems', 'Machine Learning', 'IoT', 'CAD', 'Programming',
-      'Python', 'C / C++', 'Arduino', 'ESP32', 'Research', 'Public Speaking', 'SenseGuard'];
-    var engine = M.Engine.create(), started = false, items = [], pv = true;
-    new IntersectionObserver(function (e) { pv = e[0].isIntersecting; }).observe(world);
+      'Python', 'C / C++', 'Arduino', 'ESP32', 'Research', 'Public Speaking'];
+    var engine = M.Engine.create(), started = false, items = [], pv = false;
+    engine.gravity.y = 0.35;
     var W = world.clientWidth, H = world.clientHeight;
 
     function wall(x, y, w, h) { return M.Bodies.rectangle(x, y, w, h, { isStatic: true }); }
@@ -94,8 +95,8 @@
       var el = document.createElement('div');
       el.className = 'skill-pill'; el.textContent = name; world.appendChild(el);
       var w = el.offsetWidth, h = el.offsetHeight;
-      var b = M.Bodies.rectangle(60 + Math.random() * (W - 120), -60 - i * 55, w, h,
-        { chamfer: { radius: h / 2 }, restitution: 0.45, friction: 0.2, angle: Math.random() - 0.5 });
+      var b = M.Bodies.rectangle(60 + Math.random() * (W - 120), -60 - i * 90, w, h,
+        { chamfer: { radius: h / 2 }, restitution: 0.45, friction: 0.2, frictionAir: 0.02, angle: Math.random() - 0.5 });
       items.push({ el: el, b: b, w: w, h: h });
     });
 
@@ -108,18 +109,28 @@
 
     /* cursor gently pushes pills away */
     world.addEventListener('mousemove', function (e) {
-      var r = world.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+      var r = world.getBoundingClientRect(), sc = (r.width / world.clientWidth) || 1, mx = (e.clientX - r.left) / sc, my = (e.clientY - r.top) / sc;
       items.forEach(function (it) {
         var dx = it.b.position.x - mx, dy = it.b.position.y - my, d = Math.sqrt(dx * dx + dy * dy);
         if (d < 90 && d > 0) M.Body.applyForce(it.b, it.b.position, { x: dx / d * 0.004, y: dy / d * 0.004 });
       });
     });
 
+    function reset() {
+      items.forEach(function (it, i) {
+        M.Body.setPosition(it.b, { x: 60 + Math.random() * (W - 120), y: -60 - i * 90 });
+        M.Body.setVelocity(it.b, { x: 0, y: 0 }); M.Body.setAngularVelocity(it.b, 0);
+        M.Body.setAngle(it.b, Math.random() - 0.5);
+      });
+    }
     function start() {
       if (started) return; started = true;
       items.forEach(function (it) { M.World.add(engine.world, it.b); });
       (function loop() {
         requestAnimationFrame(loop);
+        if (!pv) return;
+        var rr = world.getBoundingClientRect();
+        mc.mouse.pixelRatio = (world.clientWidth ? rr.width / world.clientWidth : 1) || 1;
         M.Engine.update(engine, 1000 / 60);
         items.forEach(function (it) {
           it.el.style.transform = 'translate(' + (it.b.position.x - it.w / 2) + 'px,' +
@@ -127,6 +138,11 @@
         });
       })();
     }
-    new IntersectionObserver(function (en) { if (en[0].isIntersecting) start(); }, { threshold: 0.3 }).observe(world);
+    /* every time this screen is reached, the skills drop again from the top */
+    new IntersectionObserver(function (en) {
+      var on = en[0].intersectionRatio >= 0.25;
+      if (on && !pv) { start(); reset(); }
+      pv = on;
+    }, { threshold: [0, 0.25] }).observe(world);
   })();
 })();

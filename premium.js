@@ -3,7 +3,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var onHome = !!document.getElementById('playground');
   var P = onHome ? '' : 'index.html';
-  var links = [['home', 'Home'], ['about', 'About'], ['playground', 'Playground'], ['international', 'International'], ['national', 'National'],
+  var links = [['home', 'Home'], ['about', 'About'], ['playground', 'Skills'], ['international', 'International'], ['national', 'National'],
     ['internships', 'Internships'], ['research', 'Research'], ['beyond-the-lab', 'Beyond the Lab'],
     ['projects', 'Projects'], ['activity', 'Activity'], ['contact', 'Contact']];
 
@@ -52,7 +52,7 @@
 
   /* 3D tilt (mouse devices only) */
   if (!reduce && matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('#international .recognition-list-item, #national .recognition-list-item, #beyond-the-lab .recognition-list-item, .video-frame, .info-card')
+    document.querySelectorAll('#national .recognition-list-item, #beyond-the-lab .recognition-list-item, .video-frame, .info-card')
       .forEach(function (el) {
         el.setAttribute('data-tilt', '');
         el.addEventListener('mousemove', function (e) {
@@ -91,6 +91,11 @@
         el.style.setProperty('--rx', d[2]); el.style.setProperty('--ry', d[3]);
       });
     });
+    /* projects: each row slides in from far left / right with a 3D turn */
+    document.querySelectorAll('#projects .recognition-list-item').forEach(function (el, n) {
+      el.style.setProperty('--fx', n % 2 ? '420px' : '-420px'); el.style.setProperty('--fy', '0px');
+      el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', n % 2 ? '-50deg' : '50deg');
+    });
     if (reduce || !('IntersectionObserver' in window)) secs.forEach(function (s) { s.classList.add('fly-on'); });
     else {
       var fo = new IntersectionObserver(function (es) {
@@ -128,5 +133,43 @@
     var release = function () { st.drag = false; pf.classList.remove('dragging'); kick(); };
     pf.addEventListener('pointerup', release); pf.addEventListener('pointercancel', release);
     pf.addEventListener('pointerleave', function () { if (!st.drag) kick(); });
+  }
+
+  /* auto-fit: if a screen's content is taller than the viewport, scale it down so the whole
+     section is visible at once (no inner scrolling) while every section keeps the same height */
+  if (onHome) {
+    var fitting = false, fitTimer = 0;
+    var fit = function () {
+      if (fitting) return; fitting = true;
+      var desk = matchMedia('(min-width: 861px) and (min-height: 480px)').matches;
+      var items = [];
+      document.querySelectorAll('.hero-minimal, .screen:not(#contact)').forEach(function (sec) {
+        var w = sec.querySelector(':scope > .wrap'); if (!w) return;
+        ['transform', 'width', 'maxWidth', 'margin', 'marginLeft', 'marginTop'].forEach(function (p) { w.style[p] = ''; });
+        if (desk) items.push({ sec: sec, w: w, cw: sec.clientWidth, w0: Math.min(1240, sec.clientWidth), avail: sec.clientHeight - 32 - (sec.querySelector('.credentials-strip') ? 76 : 0) });
+      });
+      /* pass 1: the smallest scale any section needs; pass 2: every section uses that same scale,
+         so all sections have the same height AND the same content size */
+      var best = 1;
+      items.forEach(function (it) {
+        it.w.style.maxWidth = 'none'; it.w.style.margin = '0';
+        for (var s = 1; s >= 0.45; s -= 0.05) {
+          it.w.style.width = (it.w0 / s) + 'px';
+          if (it.w.offsetHeight * s <= it.avail) { best = Math.min(best, s); break; }
+          if (s - 0.05 < 0.45) best = 0.45;
+        }
+      });
+      items.forEach(function (it) {
+        it.w.style.width = (it.w0 / best) + 'px'; it.w.style.marginLeft = ((it.cw - it.w0) / 2) + 'px';
+        it.w.style.transform = 'scale(' + best + ')';
+        it.w.style.marginTop = (16 + Math.max(0, (it.avail - it.w.offsetHeight * best) / 2)) + 'px';
+      });
+      fitting = false;
+    };
+    var fitSoon = function () { clearTimeout(fitTimer); fitTimer = setTimeout(fit, 60); };
+    fit(); addEventListener('load', fit); addEventListener('resize', fitSoon);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    setTimeout(fit, 900); setTimeout(fit, 2500);
+    if ('ResizeObserver' in window) new ResizeObserver(fitSoon).observe(document.documentElement);
   }
 })();
