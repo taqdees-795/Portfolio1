@@ -107,14 +107,14 @@ h1, h2, h3, h4 { font-family: "Fraunces", serif; font-weight: 700; letter-spacin
 .recognition-item-cta { opacity: 1; font-weight: 600; }
 .eyebrow { font-size: 13px; }
 
-/* ===== Hero photo: layered frame ===== */
-.pf-stage { position: relative; z-index: 2; width: min(100%, 370px); }
+/* ===== Hero photo: layered frame (BIGGER + full picture visible) ===== */
+.pf-stage { position: relative; z-index: 2; width: min(100%, 480px, calc((100svh - 210px) * 0.75 + 24px)); }
 .pf-back { position: absolute; inset: 0; border-radius: 32px; background: linear-gradient(145deg, #cbbfae, #b5a493); transform: translate(16px, 14px) rotate(4deg); opacity: .75; }
 .photo-frame { position: relative; z-index: 1; background: #fff; border-radius: 30px; padding: 12px; box-shadow: 0 30px 60px -26px rgba(41, 41, 41, .45); cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; will-change: transform; animation: flyRight 1s .3s cubic-bezier(.2, .8, .2, 1) backwards; }
 .photo-frame.dragging { cursor: grabbing; box-shadow: 0 44px 70px -22px rgba(41, 41, 41, .5); }
 .photo-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.pf-media { border-radius: 22px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 4 / 4.7; max-height: min(52vh, 460px); width: 100%; box-shadow: inset 0 0 0 1px rgba(41, 41, 41, .06); }
-.pf-media img { width: 100%; height: 100%; object-fit: cover; object-position: top 30%; display: block; pointer-events: none; }
+.pf-media { border-radius: 22px; overflow: hidden; background: var(--accent-soft); aspect-ratio: 3 / 4; width: 100%; box-shadow: inset 0 0 0 1px rgba(41, 41, 41, .06); }
+.pf-media img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; pointer-events: none; }
 .pf-chip { position: absolute; left: -18px; bottom: 30px; display: inline-flex; align-items: center; gap: 7px; font: 600 12.5px "DM Sans", sans-serif; color: #fff; background: var(--accent); padding: 9px 15px; border-radius: 999px; box-shadow: 0 12px 24px -10px rgba(111, 65, 48, .6); }
 .pf-badge { position: absolute; right: -14px; top: 34px; display: inline-flex; align-items: center; gap: 7px; font: 600 12px "DM Sans", sans-serif; color: var(--ink); background: #fff; border: 1px solid var(--line); padding: 8px 13px; border-radius: 999px; box-shadow: var(--shadow); }
 .pf-badge i { color: var(--accent); }
