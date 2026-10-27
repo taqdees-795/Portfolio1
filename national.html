@@ -148,7 +148,14 @@
             "6": { icon: "fa-crown", status: "Entry Added", titleMain: "P@SHA ICT Award 2026", titleAccent: "", description: "Entry added for the P@SHA ICT Award 2026. Results and further details to be published after the competition concludes.", meta: { date: "2026", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" }, role: "Participant", contributor: "Details pending.", highlights: ["Entry submitted for P@SHA ICT Award 2026.", "Results pending — no unverified claims made.", "Details to be updated once confirmed."] }
         };
         const achievementOrder = ["1", "2", "3", "4", "5", "6"];
-        const recognitionImages = { "1": ["assets/P@SHA1.jpg", "assets/P@SHA.jpg"], "2": [], "3": ["assets/COMPEC1.jpg"], "4": [], "5": [], "6": [] };
+        const recognitionImages = {
+            "1": ["assets/pasha-2025-winner-stage.jpg", "assets/pasha-2025-certificate.jpg", "assets/pasha-2025-trophy.jpg"],
+            "2": ["assets/nsef-2025-grand-winner-shield.jpg", "assets/nsef-2025-grand-winner-certificate.jpg", "assets/nsef-2025-best-of-category-certificate.jpg", "assets/nsef-2025-participation-certificate.jpg"],
+            "3": ["assets/comppec-2025-winner-stage.jpg", "assets/comppec-2025-certificate.jpg", "assets/comppec-2025-trophy.jpg"],
+            "4": ["assets/ist-cansat-winner-certificate.jpg", "assets/ist-cansat-winner-shield.jpg", "assets/ist-cansat-acknowledgement-certificate.jpg"],
+            "5": ["assets/nerc-2025-participation-certificate.jpg", "assets/nerc-2025-ambassador-certificate.jpg"],
+            "6": []
+        };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
         document.querySelectorAll('.recognition-list-item').forEach(item => { item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); }); });

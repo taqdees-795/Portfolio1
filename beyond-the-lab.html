@@ -166,7 +166,16 @@
             "8": { icon: "fa-basketball-ball", status: "Sport", titleMain: "Basketball", titleAccent: "(FBISE Runner-Up)", description: "An active participant on the school sports team, with basketball as a favorite way to stay competitive and fit.", meta: { date: "Ongoing", location: "Pakistan", category: "Sport", organization: "School Team" }, role: "Team Player", contributor: "Active participant in school sports team.", highlights: ["Active member of the school basketball team.", "Runner-up at the FBISE basketball competition.", "Values teamwork and staying active."] }
         };
         const achievementOrder = ["1", "2", "3", "4", "5", "6", "7", "8"];
-        const recognitionImages = { "1": ["assets/P@SHA1.jpg"], "2": [], "3": ["assets/FAIZAN1.jpg"], "4": ["assets/FAIZAN3.jpg"], "5": ["assets/JCMUN%20sheild.jpg"], "6": [], "7": [], "8": ["assets/FBISE_BASKETBALL1.jpg"] };
+        const recognitionImages = {
+            "1": ["assets/apicta-senseguard-booth.jpg", "assets/pasha-2025-winner-stage.jpg", "assets/apicta-first-runner-up-stage.jpg"],
+            "2": ["assets/league-of-launchers-certificate.jpg"],
+            "3": ["assets/fazaian-investiture-ceremony.jpg"],
+            "4": ["assets/fazaian-science-exhibition-project.jpg", "assets/fazaian-science-exhibition-certificate.jpg"],
+            "5": ["assets/jcmun-best-delegate-shield.jpg", "assets/jcmun-best-delegate-certificate.jpg", "assets/jcmun-appreciation-certificate.jpg"],
+            "6": ["assets/stemx-awardees-group.jpg", "assets/stemx-merit-certificate.jpg", "assets/stemx-completion-certificate.jpg"],
+            "7": ["assets/nsbp-volunteer-training-certificate.jpg", "assets/nsbp-recognition-certificate.jpg"],
+            "8": ["assets/basketball-team.jpg", "assets/basketball-runner-up-certificate.jpg"]
+        };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
         document.querySelectorAll('.recognition-list-item').forEach(item => { item.addEventListener('click', function() { const id = this.getAttribute('data-id'); showDetail(id); }); });
