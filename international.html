@@ -13,28 +13,23 @@
 </head>
 <body>
 
-    <!-- Subtle page-position indicator, replaces the old right-side dots -->
     <nav class="page-progress">
         <span class="page-progress-line"></span>
         <a href="international.html" class="active">01</a>
         <a href="national.html">02</a>
-        <a href="internships.html">03</a>
-        <a href="research.html">04</a>
-        <a href="beyond-the-lab.html">05</a>
-        <a href="projects.html">06</a>
-        <a href="activity.html">07</a>
+        <a href="internship_research.html">03</a>
+        <a href="beyond-the-lab.html">04</a>
+        <a href="projects.html">05</a>
     </nav>
 
     <main>
         <section class="screen">
             <div class="wrap">
 
-                <!-- BACK TO LIST BUTTON (Sab se upar) -->
                 <div id="backBtnWrapper" style="display: none; margin-bottom: 20px;">
                     <button class="back-btn" onclick="showList()"><i class="fas fa-arrow-left"></i> Back to List</button>
                 </div>
 
-                <!-- SECTION HEAD (Hidden in detail view) -->
                 <div id="sectionHeadWrapper">
                     <div class="section-id mono">SEC. 01</div>
                     <div class="section-head">
@@ -44,7 +39,6 @@
                     </div>
                 </div>
 
-                <!-- LIST VIEW -->
                 <div id="recognitionList" class="recognition-list">
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
@@ -80,7 +74,6 @@
                     </div>
                 </div>
 
-                <!-- DETAIL VIEW: expanded layout matching reference -->
                 <div id="recognitionDetail" class="recognition-detail" style="display: none;">
                     <div class="detail-columns">
 
@@ -137,14 +130,12 @@
                     </div>
                 </div>
 
-                <!-- JOURNEY NAVIGATION: replaces top navbar / footer -->
                 <div class="page-nav-bottom" id="pageNavBottom">
                     <a href="index.html" class="page-nav-link prev"><i class="fas fa-arrow-left"></i> Home</a>
-                    <span class="page-nav-pos">01 / 07</span>
+                    <span class="page-nav-pos">01 / 05</span>
                     <a href="national.html" class="page-nav-link next">National Recognition <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <!-- ACHIEVEMENT-LEVEL NAVIGATION: prev/next within this page's detail view -->
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> International Recognition</a>
                     <span class="page-nav-pos" id="achNavPos">01 / 04</span>
@@ -162,7 +153,7 @@
                 titleMain: "International Greenwich Olympiad", titleAccent: "(iGO)",
                 description: "Selected to represent Pakistan at the International Greenwich Olympiad in London after winning Best of Category at NSEF 2026 for research on embedded systems addressing agricultural threats.",
                 meta: { date: "Jan 2026", location: "London, UK", category: "Research Delegate", organization: "iGO" },
-                role: "Lead Researcher &amp; Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS).",
+                role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS).",
                 highlights: ["Won Best of Category at NSEF 2026 ahead of selection.", "Embedded sensor system designed for real farm conditions.", "One of a small group of Pakistani delegates selected for London."]
             },
             "2": {
@@ -170,7 +161,7 @@
                 titleMain: "Asia Pacific ICT Alliance Award", titleAccent: "(APICTA) 2025",
                 description: "Achieved 1st Runner-Up at the Asia Pacific ICT Alliance Awards (APICTA) 2025 — the region's largest ICT and entrepreneurship awards, recognizing innovative technology solutions with strong societal impact.",
                 meta: { date: "8 Dec 2025", location: "Kaohsiung, Taiwan", category: "Senior Student (HC-SS)", organization: "APICTA" },
-                role: "Youngest Delegate &amp; Entrepreneur", contributor: "Supported by P@SHA (Pakistan Software Houses Association) and NICAT.",
+                role: "Youngest Delegate & Entrepreneur", contributor: "Supported by P@SHA (Pakistan Software Houses Association) and NICAT.",
                 highlights: ["Only high school student in Pakistan's 55-member delegation.", "Competed against senior university and industry teams.", "Recognized for scalability, security, and real-world impact."]
             },
             "3": {
@@ -178,7 +169,7 @@
                 titleMain: "International Science and Engineering Fair", titleAccent: "(ISEF)",
                 description: "Finalist and attendee at ISEF 2025, the world's largest pre-college science and engineering fair, selected for a novel embedded system addressing gas leakage and child safety at home.",
                 meta: { date: "May 2025", location: "Columbus, Ohio, USA", category: "Embedded Systems", organization: "ISEF" },
-                role: "Pakistan's Representative &amp; Innovator", contributor: "Mentored by the school science club.",
+                role: "Pakistan's Representative & Innovator", contributor: "Mentored by the school science club.",
                 highlights: ["Presented alongside finalists from 60+ countries.", "Prototype tested for real household gas-leak scenarios.", "Selected through Pakistan's national science fair circuit."]
             },
             "4": {
@@ -186,19 +177,18 @@
                 titleMain: "International Conference on Applications of Space Science & Technology", titleAccent: "(ICAST) 2025",
                 description: "Presented an original research paper on an Edge ML-based CanSat at ICAST 2025, contributing to the intersection of embedded machine learning and space technology research.",
                 meta: { date: "Nov 2025", location: "Pakistan", category: "Research Paper", organization: "ICAST" },
-                role: "First Author &amp; Presenter", contributor: "Collaborated with space technology experts.",
+                role: "First Author & Presenter", contributor: "Collaborated with space technology experts.",
                 highlights: ["Accepted for oral presentation after peer review.", "Applied edge ML techniques to CanSat telemetry.", "First authored and independently presented the paper."]
             }
         };
 
         const achievementOrder = ["1", "2", "3", "4"];
 
-        // Assets folder se exact image paths
         const recognitionImages = {
-            "1": [], // Placeholder for Greenwich (Aap yahan Greenwich images daalein)
-            "2": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg", "assets/APICTA4.jpg", "assets/APICTA5.jpg"], // APICTA (5 images)
-            "3": [], // Placeholder for ISEF (Aap yahan ISEF images daalein)
-            "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"] // ICAST (2 images)
+            "1": [],
+            "2": ["assets/APICTA1.jpg", "assets/APICTA2.jpg", "assets/APICTA3.jpg", "assets/APICTA4.jpg", "assets/APICTA5.jpg"],
+            "3": [],
+            "4": ["assets/ICAST1.jpeg", "assets/ICAST2.jpeg"]
         };
 
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
@@ -373,8 +363,7 @@
             document.getElementById('achievementNavBottom').style.display = 'none';
             clearInterval(slideTimer);
         }
-    
-        /* Opened from the home page: ?id=N shows that detail directly, Back returns to the home scroll */
+
         (function () {
             var id = new URLSearchParams(location.search).get('id');
             if (!id) return;
