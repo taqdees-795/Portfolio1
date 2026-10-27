@@ -139,4 +139,65 @@
     pf.addEventListener('pointerup', release); pf.addEventListener('pointercancel', release);
     pf.addEventListener('pointerleave', function () { if (!st.drag) kick(); });
   }
+
+  /* SenseCard device: floats and tilts with the mouse, opens on hover and
+     shows the exploded view automatically each time the screen is reached */
+  var scBox = document.getElementById('scVisual');
+  if (scBox) {
+    var scStage = scBox.querySelector('.sc-device-stage'), scSec = document.getElementById('sensecard');
+    var hover = false, demo = false, inside = false, seen = false, dTimer = 0, sTimer = 0, onScreen = false;
+    var mx = 0, my = 0, rx = -8, ry = -24, shift = 0, t = 0;
+    var sync = function () { scBox.classList.toggle('is-open', hover || demo); };
+
+    scBox.addEventListener('pointerenter', function () { inside = true; });
+    scBox.addEventListener('pointerleave', function () { inside = false; mx = my = 0; hover = false; sync(); });
+    scBox.addEventListener('pointermove', function (e) {
+      var r = scBox.getBoundingClientRect(), s = scStage.offsetWidth;
+      mx = ((e.clientX - r.left) / r.width - .5) * 2; my = ((e.clientY - r.top) / r.height - .5) * 2;
+      if (e.pointerType === 'touch') return;
+      var dx = e.clientX - (r.left + r.width / 2 + shift), dy = e.clientY - (r.top + r.height / 2);
+      var open = scBox.classList.contains('is-open');
+      hover = Math.abs(dx) < s * (open ? .95 : .65) && Math.abs(dy) < s * .7;
+      sync();
+    });
+    scBox.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch') { hover = !hover; sync(); } });
+
+    var stopDemo = function () { clearTimeout(sTimer); clearTimeout(dTimer); demo = false; sync(); };
+    if ('IntersectionObserver' in window && scSec) {
+      new IntersectionObserver(function (es) {
+        var r = es[0].intersectionRatio;
+        if (r >= .6 && !seen) {
+          seen = true;
+          sTimer = setTimeout(function () { demo = true; sync(); dTimer = setTimeout(function () { demo = false; sync(); }, 3400); }, 900);
+        } else if (r < .2) { seen = false; stopDemo(); }
+      }, { threshold: [0, .2, .6] }).observe(scSec);
+      new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(scBox);
+    }
+
+    var scSvg = scBox.querySelector('.sc-lines'), scLabels = scBox.querySelectorAll('.sc-callout');
+    var scLines = function () {
+      if (!scBox.classList.contains('is-open') && scSvg.style.opacity === '0') return;
+      var br = scBox.getBoundingClientRect(), out = '';
+      scLabels.forEach(function (lb) {
+        var tg = scBox.querySelector(lb.getAttribute('data-t')); if (!tg) return;
+        var a = tg.getBoundingClientRect(), l = lb.getBoundingClientRect();
+        var tx = a.left + a.width / 2 - br.left, ty = a.top + a.height / 2 - br.top;
+        var lx = l.left - br.left, ly = l.top + l.height / 2 - br.top;
+        out += '<polyline points="' + tx + ',' + ty + ' ' + (lx - 26) + ',' + ly + ' ' + lx + ',' + ly + '"/><circle cx="' + tx + '" cy="' + ty + '" r="3"/>';
+      });
+      scSvg.innerHTML = out;
+    };
+    (function loop() {
+      requestAnimationFrame(loop);
+      if (!onScreen) return;
+      t += .016;
+      var tRy = inside ? -24 + mx * 24 : -24 + (reduce ? 0 : Math.sin(t * .7) * 10);
+      var tRx = inside ? -8 - my * 16 : -8 + (reduce ? 0 : Math.sin(t * .5) * 6);
+      var tSh = (hover || demo) ? -scStage.offsetWidth * .22 : 0;
+      scLines();
+      ry += (tRy - ry) * .08; rx += (tRx - rx) * .08; shift += (tSh - shift) * .08;
+      var bob = reduce ? 0 : Math.sin(t * 1.4) * 6;
+      scStage.style.transform = 'translate3d(' + shift + 'px,' + bob + 'px,0) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+    })();
+  }
 })();
