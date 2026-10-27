@@ -12,15 +12,6 @@
 <link rel="stylesheet" href="premium.css">
 </head>
 <body>
-    <nav class="page-progress">
-        <span class="page-progress-line"></span>
-        <a href="international.html">01</a>
-        <a href="national.html" class="active">02</a>
-        <a href="internship_research.html">03</a>
-        <a href="beyond-the-lab.html">04</a>
-        <a href="projects.html">05</a>
-    </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
@@ -38,6 +29,7 @@
                 </div>
 
                 <div id="recognitionList" class="recognition-list">
+                    <!-- ID 1 -->
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-crown"></i></div>
                         <div class="recognition-item-text">
@@ -46,39 +38,53 @@
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
+                    <!-- ID 2 -->
                     <div class="recognition-list-item" data-id="2">
                         <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
                         <div class="recognition-item-text">
-                            <h3>National Science <span class="amp">&amp;</span> Engineering Fair <span class="short-form">(NSEF)</span></h3>
-                            <span class="status-tag">Best of Category &amp; Grand Award</span>
+                            <h3>National Science <span class="amp">&amp;</span> Engineering Fair 2025 <span class="short-form">(NSEF)</span></h3>
+                            <span class="status-tag">Grand Award &amp; Best of Category</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
+                    <!-- ID 3 -->
                     <div class="recognition-list-item" data-id="3">
+                        <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>National Science <span class="amp">&amp;</span> Engineering Fair 2026 <span class="short-form">(NSEF)</span></h3>
+                            <span class="status-tag">Grand Award &amp; Best of Category</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <!-- ID 4 -->
+                    <div class="recognition-list-item" data-id="4">
                         <div class="recognition-item-icon"><i class="fas fa-code"></i></div>
                         <div class="recognition-item-text">
-                            <h3>All Pakistan Computer Science Project Presentation <span class="amp">&amp;</span> Exhibition Competition <span class="short-form">(COMPPEC)</span> '25</h3>
+                            <h3>COMPAC '25</h3>
                             <span class="status-tag">Winner</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="recognition-list-item" data-id="4">
+                    <!-- ID 5 -->
+                    <div class="recognition-list-item" data-id="5">
                         <div class="recognition-item-icon"><i class="fas fa-satellite"></i></div>
                         <div class="recognition-item-text">
-                            <h3>Institute of Space Technology <span class="short-form">(IST)</span> CanSat Design Competition</h3>
+                            <h3>World Space Week 2024 CanSat Design Competition</h3>
                             <span class="status-tag">Winner</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="recognition-list-item" data-id="5">
+                    <!-- ID 6 -->
+                    <div class="recognition-list-item" data-id="6">
                         <div class="recognition-item-icon"><i class="fas fa-robot"></i></div>
                         <div class="recognition-item-text">
-                            <h3>National Engineering <span class="amp">&amp;</span> Robotics Contest <span class="short-form">(NERC)</span></h3>
+                            <h3>National Engineering <span class="amp">&amp;</span> Robotics Contest 2025 <span class="short-form">(NERC)</span></h3>
                             <span class="status-tag">Ambassador + Top 8</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
-                    <div class="recognition-list-item" data-id="6">
+                    <!-- ID 7 -->
+                    <div class="recognition-list-item" data-id="7">
                         <div class="recognition-item-icon"><i class="fas fa-crown"></i></div>
                         <div class="recognition-item-text">
                             <h3>P@SHA ICT Award 2026</h3>
@@ -95,14 +101,11 @@
                             <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
                             <p class="detail-subtitle" id="detailDescription"></p>
                             <div class="detail-meta-grid" id="detailMetaGrid"></div>
-                            <div class="detail-info-grid">
+                            <!-- Secondary Contributor removed, grid will be 1 column -->
+                            <div class="detail-info-grid single-col">
                                 <div class="detail-info-block">
                                     <div class="detail-info-head"><div class="detail-info-icon"><i class="fas fa-star"></i></div><span class="detail-info-label">Role &amp; Impact</span></div>
                                     <p id="detailRole"></p>
-                                </div>
-                                <div class="detail-info-block">
-                                    <div class="detail-info-head"><div class="detail-info-icon"><i class="fas fa-people-group"></i></div><span class="detail-info-label">Secondary Contributor</span></div>
-                                    <p id="detailContributor"></p>
                                 </div>
                             </div>
                             <div class="detail-highlights-block">
@@ -132,7 +135,7 @@
                 </div>
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> National Recognition</a>
-                    <span class="page-nav-pos" id="achNavPos">01 / 06</span>
+                    <span class="page-nav-pos" id="achNavPos">01 / 07</span>
                     <a href="#" class="page-nav-link next" id="achNavNext">Next <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -140,21 +143,65 @@
     </main>
     <script>
         const recognitionData = {
-            "1": { icon: "fa-crown", status: "Gold Winner", titleMain: "P@SHA ICT Award 2025", titleAccent: "", description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", meta: { date: "Sep 2025", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" }, role: "Gold Award Winner & Youngest Innovator", contributor: "Supported by Fazaian Science & Entrepreneurship Society.", highlights: ["Only high school student to represent Pakistan at APICTA.", "Won Gold in the biggest national ICT competition.", "Startup 'SenseGuard' recognized for social impact."] },
-            "2": { icon: "fa-award", status: "Best of Category & Grand Award", titleMain: "National Science & Engineering Fair", titleAccent: "(NSEF)", description: "Won Best of Category and Grand Award at NSEF 2026 for research on embedded systems addressing agricultural threats, leading to International Greenwich Olympiad selection.", meta: { date: "Jan 2026", location: "Karachi", category: "Environmental Engineering", organization: "NSEF" }, role: "Winner & Researcher", contributor: "Presented research on agricultural field threats.", highlights: ["Won Best of Category in Environmental Engineering.", "Also won the Grand Award at NSEF.", "Selected to represent Pakistan at the International Greenwich Olympiad."] },
-            "3": { icon: "fa-code", status: "Winner", titleMain: "All Pakistan Computer Science Project Presentation & Exhibition Competition", titleAccent: "(COMPPEC) '25", description: "Won COMPPEC '25 at NUST EME. Presented a scalable tech-based startup solution addressing Children and House safety.", meta: { date: "May 2025", location: "NUST, EME", category: "Project Competition", organization: "COMPPEC" }, role: "Winner & Team Leader", contributor: "Collaborated with SenseGuard team members.", highlights: ["Won All Pakistan Computer Science Competition.", "Presented a scalable safety solution.", "Demonstrated excellence in innovation and teamwork."] },
-            "4": { icon: "fa-satellite", status: "Winner", titleMain: "Institute of Space Technology", titleAccent: "(IST) CanSat Design Competition", description: "Won the CanSat Design Competition at IST during World Space Week by building a fully working satellite model the size of a can.", meta: { date: "Oct 2024", location: "Institute of Space Technology", category: "Space Tech", organization: "IST" }, role: "Satellite Builder & Presenter", contributor: "Mentored by school science teachers.", highlights: ["Built a working satellite model the size of a can.", "Presented at the Institute of Space Technology.", "Won the prestigious World Space Week competition."] },
-            "5": { icon: "fa-robot", status: "Ambassador + Top 8", titleMain: "National Engineering & Robotics Contest", titleAccent: "(NERC)", description: "Served as an Ambassador for the National Engineering & Robotics Contest and placed in the Top 8, encouraging peers to pursue engineering and robotics.", meta: { date: "2025", location: "Pakistan", category: "Ambassador", organization: "NERC" }, role: "Ambassador & Top 8 Finalist", contributor: "Promoted engineering and robotics among students.", highlights: ["Represented the contest as an Ambassador.", "Placed in the Top 8 of the competition.", "Supported the growth of STEM education in Pakistan."] },
-            "6": { icon: "fa-crown", status: "Entry Added", titleMain: "P@SHA ICT Award 2026", titleAccent: "", description: "Entry added for the P@SHA ICT Award 2026. Results and further details to be published after the competition concludes.", meta: { date: "2026", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" }, role: "Participant", contributor: "Details pending.", highlights: ["Entry submitted for P@SHA ICT Award 2026.", "Results pending — no unverified claims made.", "Details to be updated once confirmed."] }
+            "1": { 
+                icon: "fa-crown", status: "Gold Winner", titleMain: "P@SHA ICT Award 2025", titleAccent: "", 
+                description: "Gold award winner at Pakistan's biggest entrepreneurship competition, P@SHA ICT Awards 2025. Selected as the only high school student to represent Pakistan at APICTA 2025.", 
+                meta: { date: "Sep 2025", location: "Lahore, Pakistan", category: "Senior Student", organization: "P@SHA" }, 
+                role: "Gold Award Winner", 
+                highlights: ["Only high school student to represent Pakistan at APICTA.", "Won Gold in the biggest national ICT competition.", "Sense Guard recognized for technology instead of social impact."] 
+            },
+            "2": { 
+                icon: "fa-award", status: "Grand Award & Best of Category", titleMain: "National Science & Engineering Fair 2025", titleAccent: "(NSEF)", 
+                description: "Won Best of Category and Grand Award at NSEF 2025 for research on embedded systems addressing agricultural threats.", 
+                meta: { date: "Jan 2025", location: "Lahore, Pakistan", category: "Embedded Systems", organization: "NSEF" }, 
+                role: "Grand Award Winner & Best of Category Winner", 
+                highlights: ["Won Best of Category in Embedded Systems.", "Also won the Grand Award at NSEF.", "Selected to represent Pakistan at the International Greenwich Olympiad."] 
+            },
+            "3": { 
+                icon: "fa-award", status: "Grand Award & Best of Category", titleMain: "National Science & Engineering Fair 2026", titleAccent: "(NSEF)", 
+                description: "Won Best of Category and Grand Award at NSEF 2026 for research on embedded systems addressing agricultural threats.", 
+                meta: { date: "Jan 2026", location: "Karachi, Pakistan", category: "Environmental Engineering", organization: "NSEF" }, 
+                role: "Grand Award Winner & Best of Category Winner", 
+                highlights: ["Won Best of Category in Environmental Engineering.", "Also won the Grand Award at NSEF.", "Selected to represent Pakistan at the International Greenwich Olympiad."] 
+            },
+            "4": { 
+                icon: "fa-code", status: "Winner", titleMain: "COMPAC '25", titleAccent: "", 
+                description: "Won COMPAC '25. Presented a scalable tech-based startup solution addressing Children and House safety.", 
+                meta: { date: "May 2025", location: "NUST, EME", category: "Ideathon", organization: "COMPAC" }, 
+                role: "Winner", 
+                highlights: ["Won first place at COMPAC in Pakistan, competing against top universities such as NUST.", "Presented a scalable safety solution."] 
+            },
+            "5": { 
+                icon: "fa-satellite", status: "Winner", titleMain: "World Space Week 2024 CanSat Design Competition", titleAccent: "", 
+                description: "Won the CanSat Design Competition during World Space Week by building a fully working satellite model the size of a can.", 
+                meta: { date: "Oct 2024", location: "Pakistan", category: "CanSat Design", organization: "World Space Week" }, 
+                role: "Winner", 
+                highlights: ["Built a working satellite model the size of a can.", "Presented at the Institute of Space Technology.", "Won the World Space Week national competition."] 
+            },
+            "6": { 
+                icon: "fa-robot", status: "Ambassador + Top 8", titleMain: "National Engineering & Robotics Contest 2025", titleAccent: "(NERC)", 
+                description: "Served as an Ambassador for the National Engineering & Robotics Contest and placed in the Top 8 in the Line Following Robot category.", 
+                meta: { date: "2025", location: "Pakistan", category: "Ambassador — Line Following Robot", organization: "NERC" }, 
+                role: "Ambassador & Top 8 Finalist", 
+                highlights: ["Represented the contest as an Ambassador.", "Placed in the Top 8 in the Line Following Robot category of the competition.", "Supported the growth of STEM education in Pakistan."] 
+            },
+            "7": { 
+                icon: "fa-crown", status: "Entry Added", titleMain: "P@SHA ICT Award 2026", titleAccent: "", 
+                description: "Entry added for the P@SHA ICT Award 2026. Results and further details to be published after the competition concludes.", 
+                meta: { date: "2026", location: "Pakistan", category: "Entrepreneurship", organization: "P@SHA" }, 
+                role: "Participant", 
+                highlights: ["Entry submitted for P@SHA ICT Award 2026.", "Results pending — no unverified claims made.", "Details to be updated once confirmed."] 
+            }
         };
-        const achievementOrder = ["1", "2", "3", "4", "5", "6"];
+        const achievementOrder = ["1", "2", "3", "4", "5", "6", "7"];
         const recognitionImages = {
             "1": ["assets/pasha-2025-winner-stage.jpg", "assets/pasha-2025-certificate.jpg", "assets/pasha-2025-trophy.jpg"],
             "2": ["assets/nsef-2025-grand-winner-shield.jpg", "assets/nsef-2025-grand-winner-certificate.jpg", "assets/nsef-2025-best-of-category-certificate.jpg", "assets/nsef-2025-participation-certificate.jpg"],
-            "3": ["assets/comppec-2025-winner-stage.jpg", "assets/comppec-2025-certificate.jpg", "assets/comppec-2025-trophy.jpg"],
-            "4": ["assets/ist-cansat-winner-certificate.jpg", "assets/ist-cansat-winner-shield.jpg", "assets/ist-cansat-acknowledgement-certificate.jpg"],
-            "5": ["assets/nerc-2025-participation-certificate.jpg", "assets/nerc-2025-ambassador-certificate.jpg"],
-            "6": []
+            "3": [], // NSEF 2026 images to be added later
+            "4": ["assets/comppec-2025-winner-stage.jpg", "assets/comppec-2025-certificate.jpg", "assets/comppec-2025-trophy.jpg"],
+            "5": ["assets/ist-cansat-winner-certificate.jpg", "assets/ist-cansat-winner-shield.jpg", "assets/ist-cansat-acknowledgement-certificate.jpg"],
+            "6": ["assets/nerc-2025-participation-certificate.jpg", "assets/nerc-2025-ambassador-certificate.jpg"],
+            "7": []
         };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
@@ -228,7 +275,9 @@
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
             document.getElementById('detailRole').textContent = data.role;
-            document.getElementById('detailContributor').textContent = data.contributor;
+            
+            // Removed Secondary Contributor from HTML, so we don't need to set it here.
+            
             renderMetaGrid(data.meta); renderHighlights(data.highlights);
             buildSlideshow(id); currentSlide = 0; clearInterval(slideTimer);
             const images = recognitionImages[id] || []; updateMediaControls(images.length); if (images.length > 0) { renderSlide(); } restartAutoplay();

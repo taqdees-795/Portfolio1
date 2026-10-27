@@ -13,15 +13,6 @@
 </head>
 <body>
 
-    <nav class="page-progress">
-        <span class="page-progress-line"></span>
-        <a href="international.html" class="active">01</a>
-        <a href="national.html">02</a>
-        <a href="internship_research.html">03</a>
-        <a href="beyond-the-lab.html">04</a>
-        <a href="projects.html">05</a>
-    </nav>
-
     <main>
         <section class="screen">
             <div class="wrap">
@@ -43,8 +34,8 @@
                     <div class="recognition-list-item" data-id="1">
                         <div class="recognition-item-icon"><i class="fas fa-award"></i></div>
                         <div class="recognition-item-text">
-                            <h3>International Greenwich Olympiad <span class="short-form">(iGO)</span></h3>
-                            <span class="status-tag">Selected</span>
+                            <h3>International Greenwich Olympiad <span class="short-form">(IGO)</span></h3>
+                            <span class="status-tag">Selected • Linked to NSEF 2026</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
@@ -81,11 +72,12 @@
                             <span class="status-tag" id="detailStatus"></span>
 
                             <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
+                            <p class="detail-note" id="detailNote" style="display:none; margin-bottom: 12px; font-size: 14px; color: var(--accent); font-style: italic;"></p>
                             <p class="detail-subtitle" id="detailDescription"></p>
 
                             <div class="detail-meta-grid" id="detailMetaGrid"></div>
 
-                            <div class="detail-info-grid">
+                            <div class="detail-info-grid" id="detailInfoGrid">
                                 <div class="detail-info-block">
                                     <div class="detail-info-head">
                                         <div class="detail-info-icon"><i class="fas fa-star"></i></div>
@@ -93,7 +85,7 @@
                                     </div>
                                     <p id="detailRole"></p>
                                 </div>
-                                <div class="detail-info-block">
+                                <div class="detail-info-block" id="secondaryContributorBlock">
                                     <div class="detail-info-head">
                                         <div class="detail-info-icon"><i class="fas fa-people-group"></i></div>
                                         <span class="detail-info-label">Secondary Contributor</span>
@@ -150,9 +142,10 @@
         const recognitionData = {
             "1": {
                 icon: "fa-award", status: "Selected",
-                titleMain: "International Greenwich Olympiad", titleAccent: "(iGO)",
+                titleMain: "International Greenwich Olympiad", titleAccent: "(IGO)",
+                note: "Note: This same project/data is also associated with the National Science and Engineering Fair (NSEF) 2026.",
                 description: "Selected to represent Pakistan at the International Greenwich Olympiad in London after winning Best of Category at NSEF 2026 for research on embedded systems addressing agricultural threats.",
-                meta: { date: "Jan 2026", location: "London, UK", category: "Research Delegate", organization: "iGO" },
+                meta: { date: "Jan 2026", location: "London, UK", category: "Research Delegate", organization: "IGO" },
                 role: "Lead Researcher & Innovator", contributor: "Mentored by Dr. Nauman Zaffar (LUMS).",
                 highlights: ["Won Best of Category at NSEF 2026 ahead of selection.", "Embedded sensor system designed for real farm conditions.", "One of a small group of Pakistani delegates selected for London."]
             },
@@ -170,15 +163,15 @@
                 description: "Finalist and attendee at ISEF 2025, the world's largest pre-college science and engineering fair, selected for a novel embedded system addressing gas leakage and child safety at home.",
                 meta: { date: "May 2025", location: "Columbus, Ohio, USA", category: "Embedded Systems", organization: "ISEF" },
                 role: "Pakistan's Representative & Innovator", contributor: "Mentored by the school science club.",
-                highlights: ["Presented alongside finalists from 60+ countries.", "Prototype tested for real household gas-leak scenarios.", "Selected through Pakistan's national science fair circuit."]
+                highlights: ["Presented alongside finalists from 60+ countries.", "Device developed for gas-leakage detection and child-burn safety.", "Selected through Pakistan's national science fair circuit."]
             },
             "4": {
                 icon: "fa-book-open", status: "Paper Presenter",
                 titleMain: "International Conference on Applications of Space Science & Technology", titleAccent: "(ICAST) 2025",
                 description: "Presented an original research paper on an Edge ML-based CanSat at ICAST 2025, contributing to the intersection of embedded machine learning and space technology research.",
                 meta: { date: "Nov 2025", location: "Pakistan", category: "Research Paper", organization: "ICAST" },
-                role: "First Author & Presenter", contributor: "Collaborated with space technology experts.",
-                highlights: ["Accepted for oral presentation after peer review.", "Applied edge ML techniques to CanSat telemetry.", "First authored and independently presented the paper."]
+                role: "Author", contributor: "", 
+                highlights: ["Accepted for Triple IEEE (In Progress)", "Applied edge ML techniques to CanSat telemetry.", "Author"]
             }
         };
 
@@ -337,7 +330,24 @@
             document.getElementById('detailDescription').textContent = data.description;
             document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
             document.getElementById('detailRole').innerHTML = data.role;
-            document.getElementById('detailContributor').textContent = data.contributor;
+
+            // Handle dynamic note
+            if (data.note) {
+                document.getElementById('detailNote').textContent = data.note;
+                document.getElementById('detailNote').style.display = 'block';
+            } else {
+                document.getElementById('detailNote').style.display = 'none';
+            }
+
+            // Handle Secondary Contributor visibility
+            if (data.contributor && data.contributor.trim() !== "") {
+                document.getElementById('secondaryContributorBlock').style.display = 'block';
+                document.getElementById('detailContributor').textContent = data.contributor;
+                document.getElementById('detailInfoGrid').style.gridTemplateColumns = '1fr 1fr';
+            } else {
+                document.getElementById('secondaryContributorBlock').style.display = 'none';
+                document.getElementById('detailInfoGrid').style.gridTemplateColumns = '1fr';
+            }
 
             renderMetaGrid(data.meta);
             renderHighlights(data.highlights);

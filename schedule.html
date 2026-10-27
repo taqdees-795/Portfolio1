@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule a Meeting — Umair Ahmed</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css">
+</head>
+<body>
+
+    <main>
+        <section class="screen">
+            <div class="wrap">
+                <div class="schedule-container">
+                    
+                    <div class="section-head" style="margin-bottom: 30px;">
+                        <div class="eyebrow">Get in Touch</div>
+                        <h2>Schedule a <span style="color: var(--accent)">Meeting</span></h2>
+                        <p>Arrange a meeting to discuss projects, collaborations, or professional opportunities.</p>
+                    </div>
+
+                    <form class="schedule-form" id="scheduleForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="purpose">Meeting Purpose</label>
+                            <select id="purpose" name="purpose" required>
+                                <option value="" disabled selected>Select a purpose</option>
+                                <option value="Project Discussion">Project Discussion</option>
+                                <option value="Professional Collaboration">Professional Collaboration</option>
+                                <option value="Research / Academic Discussion">Research / Academic Discussion</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Preferred Time (PKT, UTC+5)</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Meeting Type</label>
+                            <select id="type" name="type" required>
+                                <option value="Virtual (Google Meet / Zoom)">Virtual (Google Meet / Zoom)</option>
+                                <option value="In-Person">In-Person</option>
+                                <option value="Phone Call">Phone Call</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="submitBtn" class="btn-journey btn-submit">Request Meeting</button>
+                    </form>
+
+                    <div class="form-success" id="formSuccess">
+                        <h3>Request Sent Successfully!</h3>
+                        <p>Your meeting request has been sent. We’ll contact you soon to confirm the schedule.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        // 1. Initialize EmailJS with your Public Key
+        // REPLACE 'YOUR_PUBLIC_KEY' WITH YOUR ACTUAL KEY
+        emailjs.init("YOUR_PUBLIC_KEY");
+
+        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            var form = this;
+            var btn = document.getElementById('submitBtn');
+            
+            // Change button text to show loading state
+            btn.textContent = "Sending Request...";
+            btn.disabled = true;
+
+            // 2. Send form via EmailJS
+            // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' WITH YOUR ACTUAL IDS
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+                .then(function() {
+                    // Success
+                    form.style.display = 'none';
+                    document.getElementById('formSuccess').style.display = 'block';
+                }, function(error) {
+                    // Error
+                    console.error('FAILED...', error);
+                    alert("Oops! There was an issue sending your request. Please try again or email me directly.");
+                    
+                    // Reset button on error
+                    btn.textContent = "Request Meeting";
+                    btn.disabled = false;
+                });
+        });
+    </script>
+    <script src="premium.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* Premium layer: nav, scroll progress, reveal, 3D tilt, video, footer */
+/* Premium layer: nav, scroll progress, reveal, 3D tilt, video, footer, stats */
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var onHome = !!document.getElementById('playground');
@@ -11,8 +11,9 @@
     ['playground', 'Skills'],
     ['international', 'International'],
     ['national', 'National'],
-    ['sensecard', 'SenseCard'],
+    ['senseguard', 'Sense Guard'],
     ['internship-research', 'Internship & Research'],
+    ['academic-journey', 'Academic Journey'],
     ['beyond-the-lab', 'Beyond the Lab'],
     ['contact', 'Contact']
   ];
@@ -24,7 +25,8 @@
     '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>' +
     '<ul class="nav-links">' + links.map(function (l) {
       return '<li><a href="' + P + '#' + l[0] + '" data-s="' + l[0] + '">' + l[1] + '</a></li>';
-    }).join('') + '</ul>';
+    }).join('') + '</ul>' +
+    '<a href="schedule.html" class="nav-cta-btn">Schedule a Meeting</a>';
   document.body.prepend(nav);
   var bar = document.createElement('div'); bar.className = 'scroll-bar'; document.body.prepend(bar);
   var ul = nav.querySelector('.nav-links'), tg = nav.querySelector('.nav-toggle');
@@ -44,7 +46,7 @@
   /* footer where none exists */
   if (!document.querySelector('footer')) {
     var f = document.createElement('footer'); f.className = 'site-footer';
-    f.innerHTML = '<span>© 2026 Umair Ahmed · Founder, SenseGuard &amp; SenseCard</span><span>' +
+    f.innerHTML = '<span>© 2026 Umair Ahmed · Founder, Sense Guard</span><span>' +
       '<a href="mailto:umairahmed00301@gmail.com">Email</a>' +
       '<a href="https://www.linkedin.com/in/umair-ahmed-2274a9356/" target="_blank" rel="noopener">LinkedIn</a></span>';
     document.body.appendChild(f);
@@ -62,7 +64,7 @@
 
   /* 3D tilt (mouse devices only) */
   if (!reduce && matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('#national .recognition-list-item, #beyond-the-lab .recognition-list-item, .video-frame, .info-card, .feature-card, .workflow-step')
+    document.querySelectorAll('#national .recognition-list-item, #beyond-the-lab .recognition-list-item, .video-frame, .info-card, .feature-card, .workflow-step, .milestone-card')
       .forEach(function (el) {
         el.setAttribute('data-tilt', '');
         el.addEventListener('mousemove', function (e) {
@@ -92,9 +94,9 @@
   /* home: every screen's cards fly in (3D) each time the screen is reached */
   if (onHome) {
     var dirs = [['-170px', '50px', '0deg', '38deg'], ['0px', '130px', '-38deg', '0deg'], ['170px', '50px', '0deg', '-38deg'], ['0px', '-110px', '38deg', '0deg']];
-    var secs = document.querySelectorAll('#about,#video,#playground,#international,#national,#sensecard,#internship-research,#beyond-the-lab');
+    var secs = document.querySelectorAll('#about,#video,#playground,#international,#national,#senseguard,#internship-research,#academic-journey,#beyond-the-lab');
     secs.forEach(function (sec) {
-      sec.querySelectorAll('.section-head,.recognition-list-item,.about-content,.info-card,.video-frame,.char-canvas,.skills-world,.workflow-step,.feature-card,.sensecard-ceo,.sensecard-intro').forEach(function (el, i) {
+      sec.querySelectorAll('.section-head,.recognition-list-item,.about-content,.info-card,.video-frame,.char-canvas,.skills-world,.workflow-step,.feature-card,.sensecard-ceo,.sensecard-intro,.milestone-card').forEach(function (el, i) {
         var d = dirs[i % 4];
         el.setAttribute('data-fly', '');
         el.style.setProperty('--i', i); el.style.setProperty('--fx', d[0]); el.style.setProperty('--fy', d[1]);
@@ -140,11 +142,10 @@
     pf.addEventListener('pointerleave', function () { if (!st.drag) kick(); });
   }
 
-  /* SenseCard device: floats and tilts with the mouse, opens on hover and
-     shows the exploded view automatically each time the screen is reached */
+  /* Sense Guard device */
   var scBox = document.getElementById('scVisual');
   if (scBox) {
-    var scStage = scBox.querySelector('.sc-device-stage'), scSec = document.getElementById('sensecard');
+    var scStage = scBox.querySelector('.sc-device-stage'), scSec = document.getElementById('senseguard');
     var hover = false, demo = false, inside = false, seen = false, dTimer = 0, sTimer = 0, onScreen = false;
     var mx = 0, my = 0, rx = -8, ry = -24, shift = 0, t = 0;
     var sync = function () { scBox.classList.toggle('is-open', hover || demo); };
@@ -200,4 +201,88 @@
       scStage.style.transform = 'translate3d(' + shift + 'px,' + bob + 'px,0) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
     })();
   }
+
+  /* Animated Statistics */
+  if (onHome) {
+    var statNums = document.querySelectorAll('.stat-num[data-target]');
+    var animateCounter = function(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var current = 0;
+      var duration = 1500; 
+      var stepTime = Math.abs(Math.floor(duration / target));
+      
+      var timer = setInterval(function() {
+        current += 1;
+        el.textContent = current;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        }
+      }, stepTime);
+    };
+
+    if (statNums.length) {
+      if ('IntersectionObserver' in window && !reduce) {
+        var statObserver = new IntersectionObserver(function(entries, obs) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.5 });
+        statNums.forEach(function(num) { statObserver.observe(num); });
+      } else {
+        statNums.forEach(function(num) { num.textContent = num.getAttribute('data-target'); });
+      }
+    }
+  }
+
+  /* SENSOR CARDS MODAL LOGIC */
+  var modalOverlay = document.getElementById('customModal');
+  var modalClose = document.getElementById('modalClose');
+  var milestoneCards = document.querySelectorAll('.milestone-card');
+  var modalBodies = document.querySelectorAll('.modal-body');
+
+  if (modalOverlay && milestoneCards.length > 0) {
+    milestoneCards.forEach(function(card) {
+      card.addEventListener('click', function() {
+        var targetId = this.getAttribute('data-target');
+        
+        // Hide all modals
+        modalBodies.forEach(function(body) { body.style.display = 'none'; });
+        
+        // Show the targeted one
+        var targetBody = document.getElementById(targetId);
+        if (targetBody) {
+          targetBody.style.display = 'block';
+          modalOverlay.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+      });
+    });
+
+    // Close on button click
+    modalClose.addEventListener('click', closeModal);
+
+    // Close on clicking outside the box
+    modalOverlay.addEventListener('click', function(e) {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
 })();

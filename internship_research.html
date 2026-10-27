@@ -12,14 +12,6 @@
     <link rel="stylesheet" href="premium.css">
 </head>
 <body>
-    <nav class="page-progress">
-        <span class="page-progress-line"></span>
-        <a href="international.html">01</a>
-        <a href="national.html">02</a>
-        <a href="internship_research.html" class="active">03</a>
-        <a href="beyond-the-lab.html">04</a>
-        <a href="projects.html">05</a>
-    </nav>
     <main>
         <section class="screen">
             <div class="wrap">
@@ -64,6 +56,14 @@
                         <div class="recognition-item-text">
                             <h3>Edge ML-Based CanSat <span class="short-form">(ICAST 2025)</span></h3>
                             <span class="status-tag">Published Paper</span>
+                        </div>
+                        <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                    <div class="recognition-list-item" data-id="5">
+                        <div class="recognition-item-icon"><i class="fas fa-flask"></i></div>
+                        <div class="recognition-item-text">
+                            <h3>STEM Bootcamp <span class="short-form">(NUST EME)</span></h3>
+                            <span class="status-tag">STEM Exposure</span>
                         </div>
                         <span class="recognition-item-cta"><span class="cta-label">View Details</span> <i class="fas fa-arrow-right"></i></span>
                     </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="page-nav-bottom" id="achievementNavBottom" style="display: none;">
                     <a href="#" class="page-nav-link prev" onclick="showList(); return false;"><i class="fas fa-arrow-left"></i> Internship &amp; Research</a>
-                    <span class="page-nav-pos" id="achNavPos">01 / 04</span>
+                    <span class="page-nav-pos" id="achNavPos">01 / 05</span>
                     <a href="#" class="page-nav-link next" id="achNavNext">Next <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -124,14 +124,16 @@
             "1": { icon: "fa-microchip", status: "Internship Experience", titleMain: "Embedded Systems & Machine Learning Lab", titleAccent: "- FAST NUCES Islamabad", description: "Hands-on internship at FAST NUCES Islamabad gaining practical experience in 3D printing technologies, rapid prototyping, and deploying machine learning models on Raspberry Pi 5.", meta: { date: "20 Jan - 28 Feb, 2025", location: "Islamabad", category: "Internship", organization: "FAST NUCES" }, role: "Worked on rapid prototyping with 3D printing and deployed ML models on Raspberry Pi 5 hardware.", contributor: "3D Printing, Rapid Prototyping, Machine Learning, Raspberry Pi", highlights: ["Gained practical experience in 3D printing and rapid prototyping.", "Deployed machine learning models on Raspberry Pi 5.", "Integrated AI with hardware for real-world applications."] },
             "2": { icon: "fa-robot", status: "Internship Experience", titleMain: "Research Internship (RISE)", titleAccent: "- SBASSE, LUMS", description: "Developed an agricultural field monitoring system and a mobile ML training app under Dr. Nauman Zaffar.", meta: { date: "Jul 2025 - Aug 2025", location: "LUMS", category: "Internship", organization: "SBASSE" }, role: "Developed hardware-software integration for real-world agricultural threats.", contributor: "Embedded Systems, Machine Learning", highlights: ["Worked directly with Dr. Nauman Zaffar.", "Built a custom object detection mobile app.", "Enhanced agricultural monitoring efficiency."] },
             "3": { icon: "fa-leaf", status: "Research Work", titleMain: "Agricultural Field Monitoring System", titleAccent: "(RISE 2025 - LUMS)", description: "Developed an independent embedded system addressing agricultural field threats with machine learning and a mobile app for custom datasets.", meta: { date: "2025", location: "LUMS", category: "Research", organization: "SBASSE" }, role: "Lead Researcher", contributor: "Machine Learning, Embedded Systems", highlights: ["Worked under Dr. Nauman Zaffar at LUMS.", "Built a mobile app for training ML models.", "Won Best of Category at NSEF 2026."] },
-            "4": { icon: "fa-satellite", status: "Published Paper", titleMain: "Edge ML-Based CanSat", titleAccent: "(ICAST 2025)", description: "First-authored research paper on a low-cost multipurpose remote sensing solution using Edge ML, published and presented at ICAST 2025.", meta: { date: "Nov 2025", location: "Pakistan", category: "Space Tech", organization: "ICAST" }, role: "First Author & Presenter", contributor: "Edge ML, Embedded Systems", highlights: ["Published internationally.", "Applied edge ML to satellite technology.", "One of the youngest researchers in this field."] }
+            "4": { icon: "fa-satellite", status: "Published Paper", titleMain: "Edge ML-Based CanSat", titleAccent: "(ICAST 2025)", description: "First-authored research paper on a low-cost multipurpose remote sensing solution using Edge ML, published and presented at ICAST 2025.", meta: { date: "Nov 2025", location: "Pakistan", category: "Space Tech", organization: "ICAST" }, role: "First Author & Presenter", contributor: "Edge ML, Embedded Systems", highlights: ["Published internationally.", "Applied edge ML to satellite technology.", "One of the youngest researchers in this field."] },
+            "5": { icon: "fa-flask", status: "STEM Exposure", titleMain: "STEM Bootcamp", titleAccent: "(NUST EME)", description: "Received a Merit Certificate at a highly selective STEM Bootcamp organized by Stemx and the Pakistan Innovation Foundation at NUST EME.", meta: { date: "Jul 2024", location: "NUST EME", category: "Education", organization: "Stemx" }, role: "Participant & Merit Holder", contributor: "Trained by renowned professors and entrepreneurs.", highlights: ["Selected from a highly competitive pool.", "First hands-on learning experience at a top university.", "Received a merit certificate for outstanding performance."] }
         };
-        const achievementOrder = ["1", "2", "3", "4"];
+        const achievementOrder = ["1", "2", "3", "4", "5"];
         const recognitionImages = {
             "1": ["assets/fast-genesys-internship-certificate.jpg"],
             "2": ["assets/lums-rise-certificate.jpg", "assets/lums-rise-mentor-2.jpg", "assets/lums-rise-mentor-1.jpg", "assets/lums-rise-poster.jpg"],
             "3": ["assets/lums-rise-poster.jpg", "assets/lums-rise-mentor-2.jpg", "assets/lums-rise-certificate.jpg"],
-            "4": ["assets/icast-presentation.jpg", "assets/icast-certificate.jpg"]
+            "4": ["assets/icast-presentation.jpg", "assets/icast-certificate.jpg"],
+            "5": ["assets/stemx-awardees-group.jpg", "assets/stemx-merit-certificate.jpg", "assets/stemx-completion-certificate.jpg"]
         };
         const sectionHeadWrapper = document.getElementById('sectionHeadWrapper');
         const backBtnWrapper = document.getElementById('backBtnWrapper');
