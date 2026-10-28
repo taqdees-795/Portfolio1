@@ -68,7 +68,10 @@
                         <div class="detail-left">
                             <span class="status-tag" id="detailStatus"></span>
                             <h3 class="detail-title"><span id="detailTitleMain"></span> <span id="detailTitleAccent" class="accent-part"></span></h3>
-                            <p class="detail-subtitle" id="detailDescription"></p>
+                            <div class="detail-intro" style="display: flex; flex-direction: column; gap: 8px;">
+                                <p class="detail-subtitle" id="detailDescription"></p>
+                                <p class="detail-subtitle detail-extra" id="detailExtra"></p>
+                            </div>
                             <div class="detail-meta-grid" id="detailMetaGrid"></div>
                             <div class="detail-info-grid">
                                 <div class="detail-info-block">
@@ -115,10 +118,10 @@
     </main>
     <script>
         const recognitionData = {
-            "3": { icon: "fa-user-graduate", status: "Leadership", titleMain: "Headboy", titleAccent: "(2025–26)", description: "Leading the student body for the current academic session at Fazaia Inter College.", meta: { date: "2025 – 26", location: "Fazaia", category: "Leadership", organization: "School" }, role: "Student Body Leader", contributor: "Mentored students and organized school events.", highlights: ["Represented the student body in school administration.", "Led student council meetings.", "Promoted discipline and student engagement."] },
-            "5": { icon: "fa-gavel", status: "Diplomacy", titleMain: "General Secretary", titleAccent: "(JCMUN '26)", description: "Runs the secretariat for the Jinnah Camp Model United Nations.", meta: { date: "2026", location: "Jinnah Camp", category: "Diplomacy", organization: "JCMUN" }, role: "General Secretary", contributor: "Managed MUN sessions and delegate coordination.", highlights: ["Organized successful MUN conference.", "Managed delegate logistics.", "Won Best Delegate award in 2025."] },
-            "4": { icon: "fa-users", status: "Leadership", titleMain: "Founder & President", titleAccent: "(Fazaian Science Society)", description: "Founded and currently leading the Fazaian Science & Entrepreneurship Society.", meta: { date: "2024 – Present", location: "Fazaia", category: "Society", organization: "School" }, role: "Founder & President", contributor: "Promoted science and entrepreneurship among students.", highlights: ["Founded the society from scratch.", "Organized science exhibitions and competitions.", "Encouraged students to pursue STEM fields."] },
-            "8": { icon: "fa-basketball-ball", status: "Sport", titleMain: "Basketball", titleAccent: "(FBISE Runner-Up)", description: "An active participant on the school sports team, with basketball as a favorite way to stay competitive and fit.", meta: { date: "Ongoing", location: "Pakistan", category: "Sport", organization: "School Team" }, role: "Team Player", contributor: "Active participant in school sports team.", highlights: ["Active member of the school basketball team.", "Runner-up at the FBISE basketball competition.", "Values teamwork and staying active."] }
+            "3": { icon: "fa-user-graduate", status: "Leadership", titleMain: "Headboy", titleAccent: "(2025–26)", description: "Leading the student body for the current academic session at Fazaia Inter College.", more: "As Headboy, I act as the link between students and school administration, helping set the tone for discipline, respect and school spirit across the campus.", meta: { date: "2025 – 26", location: "Fazaia", category: "Leadership", organization: "School" }, role: "Student Body Leader", contributor: "Mentored students and organized school events.", highlights: ["Represented the student body in school administration.", "Led student council meetings.", "Promoted discipline and student engagement."] },
+            "5": { icon: "fa-gavel", status: "Diplomacy", titleMain: "General Secretary", titleAccent: "(JCMUN '26)", description: "Runs the secretariat for the Jinnah Camp Model United Nations.", more: "The secretariat shapes the conference from committee setup to the closing ceremony, keeping debate productive, fair and on schedule for every delegate.", meta: { date: "2026", location: "Jinnah Camp", category: "Diplomacy", organization: "JCMUN" }, role: "General Secretary", contributor: "Managed MUN sessions and delegate coordination.", highlights: ["Organized successful MUN conference.", "Managed delegate logistics.", "Won Best Delegate award in 2025."] },
+            "4": { icon: "fa-users", status: "Leadership", titleMain: "Founder & President", titleAccent: "(Fazaian Science Society)", description: "Founded and currently leading the Fazaian Science & Entrepreneurship Society.", more: "The society gives students a hands-on space to turn curiosity into projects, from science exhibitions to early startup thinking.", meta: { date: "2024 – Present", location: "Fazaia", category: "Society", organization: "School" }, role: "Founder & President", contributor: "Promoted science and entrepreneurship among students.", highlights: ["Founded the society from scratch.", "Organized science exhibitions and competitions.", "Encouraged students to pursue STEM fields."] },
+            "8": { icon: "fa-basketball-ball", status: "Sport", titleMain: "Basketball", titleAccent: "(FBISE Runner-Up)", description: "An active participant on the school sports team, with basketball as a favorite way to stay competitive and fit.", more: "Competing at board level taught me teamwork, quick decisions under pressure and how to keep improving after every match.", meta: { date: "Ongoing", location: "Pakistan", category: "Sport", organization: "School Team" }, role: "Team Player", contributor: "Active participant in school sports team.", highlights: ["Active member of the school basketball team.", "Runner-up at the FBISE basketball competition.", "Values teamwork and staying active."] }
         };
         const achievementOrder = ["3", "5", "4", "8"];
         const recognitionImages = {
@@ -197,6 +200,9 @@
             document.getElementById('detailTitleMain').textContent = data.titleMain;
             document.getElementById('detailTitleAccent').textContent = data.titleAccent;
             document.getElementById('detailDescription').textContent = data.description;
+            const extra = document.getElementById('detailExtra');
+            extra.textContent = data.more || '';
+            extra.style.display = data.more ? 'block' : 'none';
             document.getElementById('detailStatus').innerHTML = `<i class="fas ${data.icon}"></i> ${data.status}`;
             document.getElementById('detailRole').textContent = data.role;
             document.getElementById('detailContributor').textContent = data.contributor;

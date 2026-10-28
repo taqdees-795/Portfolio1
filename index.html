@@ -13,6 +13,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="premium.css">
+  <style>
+    /* Sense Guard: compact workflow cards + link pills */
+    #senseguard .sensecard-workflow { gap: 8px !important; }
+    #senseguard .workflow-step { padding: 9px 12px !important; gap: 5px !important; border-radius: 11px !important; }
+    #senseguard .workflow-icon { width: 26px !important; height: 26px !important; font-size: 12px !important; border-radius: 8px !important; }
+    #senseguard .workflow-step h3 { font-size: 12.5px !important; }
+    #senseguard .workflow-step p { font-size: 11.5px !important; line-height: 1.4 !important; }
+
+    .sg-links { display: flex; flex-wrap: nowrap; gap: 8px; margin-top: 2px; }
+    .sg-link { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 6px; border-radius: 999px; background: var(--accent-soft); border: 1px solid var(--taupe); color: var(--accent); font: 600 clamp(10.5px, .85vw, 12px) "Source Sans 3", sans-serif; text-decoration: none; white-space: nowrap; flex: 0 1 auto; min-width: 0; transition: all .25s ease; }
+    .sg-link .sg-link-ic { width: 20px; height: 20px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; transition: all .25s ease; }
+    .sg-link .sg-link-go { font-size: 8.5px; opacity: .7; transition: transform .25s ease; }
+    .sg-link:hover, .sg-link:focus-visible { background: var(--accent); border-color: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(111, 65, 48, .22); outline: none; }
+    .sg-link:hover .sg-link-ic, .sg-link:focus-visible .sg-link-ic { background: rgba(255, 255, 255, .95); color: var(--accent); }
+    .sg-link:hover .sg-link-go { transform: translate(2px, -2px); opacity: 1; }
+    @media (max-width: 560px) { .sg-links { flex-wrap: wrap; } }
+  </style>
 </head>
 
 <body class="landing-page intro-active">
@@ -313,23 +330,40 @@
             <div class="sensecard-workflow">
               <div class="workflow-step">
                 <div class="workflow-icon"><i class="fas fa-smog"></i></div>
-                <div><h3><span class="workflow-num mono">01</span>Gas Detection</h3><p>The sensor continuously monitors for gas leaks.</p></div>
+                <div><h3><span class="workflow-num mono">01</span>Gas Detection</h3><p>The onboard gas sensor continuously monitors the surrounding air for any sign of a gas leak.</p></div>
               </div>
               <div class="workflow-step">
                 <div class="workflow-icon"><i class="fas fa-bell"></i></div>
-                <div><h3><span class="workflow-num mono">02</span>Local Alarm</h3><p>An onboard buzzer sounds when the threshold is exceeded.</p></div>
+                <div><h3><span class="workflow-num mono">02</span>Local Alarm</h3><p>When gas exceeds the detection threshold, the onboard buzzer sounds to alert people nearby.</p></div>
               </div>
               <div class="workflow-step">
                 <div class="workflow-icon"><i class="fas fa-mobile-screen-button"></i></div>
-                <div><h3><span class="workflow-num mono">03</span>Mobile Alerts</h3><p>The companion app notifies you when internet is available.</p></div>
+                <div><h3><span class="workflow-num mono">03</span>Mobile Alerts</h3><p>The companion app sends a notification to your phone when a leak is detected and internet is available.</p></div>
               </div>
               <div class="workflow-step">
                 <div class="workflow-icon"><i class="fas fa-satellite-dish"></i></div>
-                <div><h3><span class="workflow-num mono">04</span>Remote Awareness</h3><p>Get alerts even when you are away from the device.</p></div>
+                <div><h3><span class="workflow-num mono">04</span>Remote Awareness</h3><p>Stay informed even when you are away from home, so you can act quickly and keep your household safe.</p></div>
               </div>
             </div>
-            
-            <!-- CEO Card Removed Here -->
+
+            <!-- Official links -->
+            <div class="sg-links">
+              <a class="sg-link" href="https://senseguard.io/" target="_blank" rel="noopener">
+                <span class="sg-link-ic"><i class="fas fa-globe"></i></span>
+                <span>Official Website</span>
+                <i class="fas fa-arrow-up-right-from-square sg-link-go"></i>
+              </a>
+              <a class="sg-link" href="https://youtu.be/-jmVY2wP4xM" target="_blank" rel="noopener">
+                <span class="sg-link-ic"><i class="fas fa-circle-play"></i></span>
+                <span>Device &amp; App Setup Video</span>
+                <i class="fas fa-arrow-up-right-from-square sg-link-go"></i>
+              </a>
+              <a class="sg-link" href="https://www.leagueoflaunchers.com/alumni/#senseguard" target="_blank" rel="noopener">
+                <span class="sg-link-ic"><i class="fas fa-rocket"></i></span>
+                <span>League of Launchers Alumni</span>
+                <i class="fas fa-arrow-up-right-from-square sg-link-go"></i>
+              </a>
+            </div>
 
           </div>
 
@@ -673,7 +707,7 @@
     var DATA = {
       accelerate: { eyebrow: 'Startup Program', title: 'Accelerate Punjab — Cohort 1', img: 'assets/accelerate-punjab.jpg',
         text: 'Yahan Accelerate Punjab Cohort 1 ki details likhein.', points: ['Detail 1', 'Detail 2'] },
-      itcn: { eyebrow: 'Expo', title: 'ITCN Asia 2026', img: 'assets/itcn-asia.jpg',
+      itcn: { eyebrow: 'Expo', title: 'ITCN Asia 2026', img: 'assets/ITCN.jpeg',
         text: 'Yahan ITCN Asia 2026 ki details likhein.', points: ['Detail 1', 'Detail 2'] },
       techbridge: { eyebrow: 'International Expo', title: 'Techbridge Expo 2025 — Taiwan', img: 'assets/techbridge.jpg',
         text: 'Yahan Techbridge Expo 2025 Taiwan ki details likhein.', points: ['Detail 1', 'Detail 2'] },
